@@ -5,7 +5,7 @@
 #include "CrosshairWidget.generated.h"
 
 class UImage;
-enum class EInteractionType : uint8;
+enum EInteractionType : uint8;
 
 UCLASS()
 class NOBODY_API UCrosshairWidget : public UWidgetBase

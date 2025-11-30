@@ -29,6 +29,7 @@ APlayerCharacter::APlayerCharacter()
 	
 	UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement();
 	CharacterMovementComponent->MaxWalkSpeed = 100.0f;
+	CharacterMovementComponent->MaxStepHeight = 15.0f;
 	
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	
@@ -77,5 +78,5 @@ void APlayerCharacter::DoLook(const FInputActionValue& InputActionValue)
 
 void APlayerCharacter::DoInteract(const FInputActionValue& InputActionValue)
 {
-	LOG(TEXT("Interact Action"));
+	InteractionComponent->ExecuteInteractIfPossible();
 }
