@@ -2,6 +2,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Nobody.h"
 #include "InputMappingContext.h"
+#include "UI/Crosshair/CrosshairWidget.h"
 
 APlayerControllerBase::APlayerControllerBase()
 {
@@ -16,6 +17,12 @@ APlayerControllerBase::APlayerControllerBase()
 	{
 		PlayerCameraManagerClass = BP_PlayerCameraManager.Class;
 	}
+	
+	static ConstructorHelpers::FClassFinder<UCrosshairWidget> WBP_Crosshair(TEXT("/Game/_Nobody/UI/WPB_Crosshair"));
+	if (WBP_Crosshair.Succeeded())
+	{
+		CrosshairWidgetClass = WBP_Crosshair.Class;
+	}
 }
 
 void APlayerControllerBase::SetupInputComponent()
@@ -29,5 +36,28 @@ void APlayerControllerBase::SetupInputComponent()
 	else
 	{
 		LOG(TEXT("MappingContext 추가 실패했습니다."));
+	}
+}
+
+void APlayerControllerBase::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+}
+
+void APlayerControllerBase::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	CreateWidgetInstance();
+}
+
+void APlayerControllerBase::CreateWidgetInstance()
+{
+	if (CrosshairWidgetClass)
+	{
+		if (CrosshairWidgetInstance = CreateWidget<UCrosshairWidget>(this, CrosshairWidgetClass))
+		{
+			CrosshairWidgetInstance->AddToViewport();
+		}
 	}
 }
