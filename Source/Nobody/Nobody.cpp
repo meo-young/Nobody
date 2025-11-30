@@ -4,3 +4,5 @@
 #include "Modules/ModuleManager.h"
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, Nobody, "Nobody" );
+
+DEFINE_LOG_CATEGORY(AMeoyoung);

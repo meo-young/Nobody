@@ -4,9 +4,19 @@
 #include "GameFramework/PlayerController.h"
 #include "PlayerControllerBase.generated.h"
 
+class UInputMappingContext;
+
 UCLASS()
 class NOBODY_API APlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
+	
+public:
+	APlayerControllerBase();
+	virtual void SetupInputComponent() override;
+	
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
+	TObjectPtr<UInputMappingContext> MappingContext;
 	
 };

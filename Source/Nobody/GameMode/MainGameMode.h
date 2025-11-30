@@ -9,4 +9,7 @@ class NOBODY_API AMainGameMode : public ABaseGameMode
 {
 	GENERATED_BODY()
 	
+public:
+	AMainGameMode();
+	
 };
