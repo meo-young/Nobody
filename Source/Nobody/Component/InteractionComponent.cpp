@@ -60,7 +60,7 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 		}
 	}
 	
-	DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.5f);
+	//DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.5f);
 }
 
 void UInteractionComponent::ExecuteInteractIfPossible()
