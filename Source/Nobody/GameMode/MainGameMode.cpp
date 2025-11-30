@@ -1,5 +1,6 @@
 #include "MainGameMode.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "PlayerController/PlayerControllerBase.h"
 
 AMainGameMode::AMainGameMode()
 {
@@ -9,7 +10,7 @@ AMainGameMode::AMainGameMode()
 		DefaultPawnClass = BP_Player.Class;
 	}
 	
-	static ConstructorHelpers::FClassFinder<APlayerCharacter> BP_PlayerController(TEXT("/Game/_Nobody/Blueprint/PlayerController/BP_MainPlayerController"));
+	static ConstructorHelpers::FClassFinder<APlayerControllerBase> BP_PlayerController(TEXT("/Game/_Nobody/Blueprint/PlayerController/BP_MainPlayerController"));
 	if (BP_PlayerController.Succeeded())
 	{
 		PlayerControllerClass = BP_PlayerController.Class;

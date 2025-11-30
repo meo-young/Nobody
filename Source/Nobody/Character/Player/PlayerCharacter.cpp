@@ -1,8 +1,11 @@
 #include "PlayerCharacter.h"
+#include "PlayerCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "Nobody.h"
 #include "InputAction.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Component/InteractionComponent.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -26,6 +29,11 @@ APlayerCharacter::APlayerCharacter()
 	
 	UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement();
 	CharacterMovementComponent->MaxWalkSpeed = 100.0f;
+	
+	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
+	
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
+	CameraComponent->SetupAttachment(RootComponent);
 }
 
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

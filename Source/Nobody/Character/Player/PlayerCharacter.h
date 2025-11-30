@@ -4,8 +4,10 @@
 #include "Character/CharacterBase.h"
 #include "PlayerCharacter.generated.h"
 
+class UCameraComponent;
 struct FInputActionValue;
 class UInputAction;
+class UInteractionComponent;
 
 UCLASS()
 class NOBODY_API APlayerCharacter : public ACharacterBase
@@ -30,5 +32,14 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
 	TObjectPtr<UInputAction> InteractAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UInteractionComponent> InteractionComponent;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UCameraComponent> CameraComponent;
+	
+public:
+	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	
 };

@@ -2,6 +2,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Nobody.h"
 #include "InputMappingContext.h"
+#include "Camera/PlayerCameraManagerBase.h"
 #include "UI/Crosshair/CrosshairWidget.h"
 
 APlayerControllerBase::APlayerControllerBase()
@@ -12,13 +13,13 @@ APlayerControllerBase::APlayerControllerBase()
 		MappingContext = IMC_Player.Object;
 	}
 	
-	static ConstructorHelpers::FClassFinder<UInputMappingContext> BP_PlayerCameraManager(TEXT("/Game/_Nobody/Blueprint/Camera/BP_PlayerCameraManager"));
+	static ConstructorHelpers::FClassFinder<APlayerCameraManagerBase> BP_PlayerCameraManager(TEXT("/Game/_Nobody/Blueprint/Camera/BP_PlayerCameraManager"));
 	if (BP_PlayerCameraManager.Succeeded())
 	{
 		PlayerCameraManagerClass = BP_PlayerCameraManager.Class;
 	}
 	
-	static ConstructorHelpers::FClassFinder<UCrosshairWidget> WBP_Crosshair(TEXT("/Game/_Nobody/UI/WPB_Crosshair"));
+	static ConstructorHelpers::FClassFinder<UCrosshairWidget> WBP_Crosshair(TEXT("/Game/_Nobody/UI/WBP_Crosshair"));
 	if (WBP_Crosshair.Succeeded())
 	{
 		CrosshairWidgetClass = WBP_Crosshair.Class;
