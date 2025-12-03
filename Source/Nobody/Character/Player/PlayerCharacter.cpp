@@ -33,8 +33,14 @@ APlayerCharacter::APlayerCharacter()
 	
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	
-	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
-	CameraComponent->SetupAttachment(RootComponent);
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
+	CameraComponent->SetupAttachment(GetMesh(), FName("head"));
+	CameraComponent->SetRelativeLocationAndRotation(FVector(-2.8f, 5.89f, 0.0f), FRotator(0.0f, 90.0f, -90.0f));
+	CameraComponent->bUsePawnControlRotation = true;
+	CameraComponent->bEnableFirstPersonFieldOfView = true;
+	CameraComponent->bEnableFirstPersonScale = true;
+	CameraComponent->FirstPersonFieldOfView = 70.0f;
+	CameraComponent->FirstPersonScale = 0.6f;
 }
 
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -64,8 +70,25 @@ void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 {
 	const FVector2D MoveValue = InputActionValue.Get<FVector2D>();
 	
-	AddMovementInput(GetActorForwardVector(), MoveValue.X);
-	AddMovementInput(GetActorRightVector(), MoveValue.Y);
+	// 카메라/컨트롤러 방향의 Yaw만 추출합니다.
+	const FRotator ControlRot = Controller->GetControlRotation();
+	const FRotator YawRot(0.f, ControlRot.Yaw, 0.f);
+
+	// 방향 벡터 계산
+	const FVector Forward = FRotationMatrix(YawRot).GetUnitAxis(EAxis::X);
+	const FVector Right   = FRotationMatrix(YawRot).GetUnitAxis(EAxis::Y);
+
+	// 캐릭터를 전방으로 이동시킵니다.
+	if (!FMath::IsNearlyZero(MoveValue.X))
+	{
+		AddMovementInput(Forward, MoveValue.X);
+	}
+
+	// 캐릭터를 측면으로 이동시킵니다.
+	if (!FMath::IsNearlyZero(MoveValue.Y))
+	{
+		AddMovementInput(Right, MoveValue.Y);
+	}
 }
 
 void APlayerCharacter::DoLook(const FInputActionValue& InputActionValue)

@@ -11,33 +11,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="" />
+    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../Coding/UE_5.6/Engine/Source/Runtime/CoreUObject/Public/Templates/Casts.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Coding/UE_5.6/Engine/Source/Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Coding/UE_5.6/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Camera/PlayerCameraManagerBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Camera/PlayerCameraManagerBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/CharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/CharacterBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Define/Define.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Define/Define.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Enum/EInteractType.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Enum/EInteractType.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interaction/Bed.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/PlayerController/MainPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/PlayerController/MainPlayerController.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="366uMB4KqIhvLCWrHyWmt54MUb2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ 프로젝트.Nobody.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C/C++ 프로젝트.Nobody">
     <configuration name="Nobody" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -110,7 +156,10 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration name="EpicGames.Perforce.Fixture/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
@@ -133,12 +182,15 @@
       <option name="presentableId" value="Default" />
       <updated>1764339293225</updated>
       <workItem from="1764339296335" duration="1052000" />
+      <workItem from="1764471546523" duration="23728000" />
+      <workItem from="1764725185516" duration="1650000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
