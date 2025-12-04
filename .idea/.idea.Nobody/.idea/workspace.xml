@@ -15,14 +15,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AtmosphericHouse/Blueprints/Blueprints_lamps/BP_Lamp_table_work.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AtmosphericHouse/Blueprints/Blueprints_lamps/BP_Lamp_table_work.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Material/MI_EV_Lightbeam_Master_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Material/MI_EV_Lightbeam_Master_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/VFX/DustFlake/NS_Dust2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/VFX/DustFlake/NS_Dust2.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +218,8 @@
       <workItem from="1764725185516" duration="4002000" />
       <workItem from="1764734239328" duration="6240000" />
       <workItem from="1764769811970" duration="4300000" />
-      <workItem from="1764812922609" duration="810000" />
+      <workItem from="1764812922609" duration="2713000" />
+      <workItem from="1764827230997" duration="706000" />
     </task>
     <servers />
   </component>

@@ -46,7 +46,7 @@ void AOpenableDoor::Interact_Implementation()
 	// 액터 시퀀스를 재생합니다.
 	PlayActorSequence();
 
-	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를  숨깁니다.
+	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를 숨깁니다.
 	Player->SetActorHiddenInGame(true);
 	
 	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
