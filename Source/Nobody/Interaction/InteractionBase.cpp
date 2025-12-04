@@ -11,6 +11,12 @@
 
 AInteractionBase::AInteractionBase()
 {
+	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Look(TEXT("/Game/_Nobody/Input/IA_Look"));
+	if (IA_Look.Succeeded())
+	{
+		LookAction = IA_Look.Object;	
+	}
+	
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	SetRootComponent(Root);
 	
@@ -19,6 +25,9 @@ AInteractionBase::AInteractionBase()
 	InteractionZone->SetCollisionResponseToChannel(ECC_INTERACTION, ECR_Block);
 	InteractionZone->SetCollisionResponseToChannel(ECC_Pawn, ECR_Block);
 	InteractionZone->SetupAttachment(Root);
+	
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	CameraComponent->SetupAttachment(Root);
 }
 
 void AInteractionBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -29,23 +38,7 @@ void AInteractionBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	{
 		if (LookAction)
 		{
-			LOG(TEXT("LookAction 바인드 성공"));
 			EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &ThisClass::DoLook);
-		}
-	}
-}
-
-void AInteractionBase::PossessedBy(AController* NewController)
-{
-	Super::PossessedBy(NewController);
-
-	if (APlayerController* PC = Cast<APlayerController>(NewController))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
-		{
-			Subsystem->ClearAllMappings();
-			Subsystem->AddMappingContext(InputMappingContext, 0);
-			LOG(TEXT("Input Mapping Context 추가됨"));
 		}
 	}
 }
@@ -60,7 +53,35 @@ void AInteractionBase::Interact_Implementation()
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 }
 
+void AInteractionBase::OnActorSequenceEnded()
+{
+	// 플레이어 컨트롤러를 빙의시킵니다.
+	PlayerController->Possess(this);
+	
+	// 카메라의 초기위치를 저장합니다.
+	OriginRotation = CameraComponent->GetRelativeRotation();
+	CurrentYawOffset = 0.f;
+	CurrentPitchOffset = 0.f;
+}
+
 void AInteractionBase::DoLook(const FInputActionValue& Value)
 {
-	LOG(TEXT("호출"));
+	// 마우스 입력으로부터 FVector2D 값을 추출합니다.
+	FVector2D LookInput = Value.Get<FVector2D>();
+	const float YawInput = LookInput.X;
+	const float PitchInput = LookInput.Y;
+
+	// 초기 위치로부터 최대 MaxAngle만큼 회전 값을 누적시킵니다.
+	CurrentYawOffset += YawInput;
+	CurrentPitchOffset += PitchInput;
+	CurrentYawOffset = FMath::Clamp(CurrentYawOffset, -MaxYawAngle, MaxYawAngle);
+	CurrentPitchOffset = FMath::Clamp(CurrentPitchOffset, -MaxPitchAngle, MaxPitchAngle);
+
+	// 초기 위치에 누적한 회전값을 적용합니다.
+	FRotator NewRot = OriginRotation;
+	NewRot.Yaw += CurrentYawOffset;
+	NewRot.Pitch -= CurrentPitchOffset;
+	
+	// 최종 회전값을 적용합니다.
+	CameraComponent->SetRelativeRotation(NewRot);
 }

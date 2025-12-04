@@ -15,19 +15,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Eqiup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Eqiup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_FlickerReaction.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_FlickerReaction.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_InAir.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_InAir.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Inspection.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Inspection.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Jump.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Land.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Land.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_NearToWallAdditive.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_NearToWallAdditive.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Sprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Sprint.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Unequip.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Unequip.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPFlashlightAnims/Animations/AS_Flashlight_Walk.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Material/MI_EV_Lightbeam_Master_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Material/MI_EV_Lightbeam_Master_01.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" afterDir="false" />
@@ -134,9 +125,12 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <option name="PROJECT_PATH" value="$USER_HOME$/Coding/UE_5.6/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -152,9 +146,12 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <option name="PROJECT_PATH" value="$USER_HOME$/Coding/UE_5.6/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -169,16 +166,24 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="EpicGames.AspNet" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
     </configuration>
     <configuration name="EpicGames.Perforce.Fixture/Dockerfile (1)" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
@@ -202,13 +207,6 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -222,6 +220,8 @@
       <workItem from="1764471546523" duration="23728000" />
       <workItem from="1764725185516" duration="4002000" />
       <workItem from="1764734239328" duration="6240000" />
+      <workItem from="1764769811970" duration="4300000" />
+      <workItem from="1764812922609" duration="810000" />
     </task>
     <servers />
   </component>

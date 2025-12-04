@@ -25,9 +25,6 @@ AOpenableDoor::AOpenableDoor()
 	InteractionZone->SetRelativeLocation(FVector(7.0f, 91.5f, 99.5f));
 	InteractionZone->SetBoxExtent(FVector(5.0f, 10.0f, 10.0f));
 
-	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
-	CameraComponent->SetupAttachment(Root);
-
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	SpringArmComponent->SetupAttachment(CameraComponent);
 
@@ -49,6 +46,7 @@ void AOpenableDoor::Interact_Implementation()
 	// 액터 시퀀스를 재생합니다.
 	PlayActorSequence();
 
+	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를  숨깁니다.
 	Player->SetActorHiddenInGame(true);
 	
 	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
@@ -60,11 +58,12 @@ void AOpenableDoor::Interact_Implementation()
 			VTBlend_Cubic
 		);
 	}
-
 }
 
-void AOpenableDoor::PossessSpotlightCamera()
+void AOpenableDoor::OnActorSequenceEnded()
 {
-	PlayerController->Possess(this);
+	Super::OnActorSequenceEnded();
+	
+	// 손전등을 활성화합니다.
 	SpotLightComponent->SetVisibility(true);
 }
