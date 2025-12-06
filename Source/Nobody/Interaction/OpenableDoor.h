@@ -16,15 +16,10 @@ public:
 	AOpenableDoor();
 	virtual void BeginPlay() override;
 	
-public:
-	virtual void Interact_Implementation() override;
-	
 protected:
-	virtual void OnActorSequenceEnded() override;
-	
-	UFUNCTION(BlueprintImplementableEvent)
-	void PlayActorSequence();
-	
+	virtual void OnStartActorSequenceEnded() override;
+	virtual void DoControl(const FInputActionValue& Value) override;	
+
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UStaticMeshComponent> Door;

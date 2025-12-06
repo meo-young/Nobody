@@ -5,6 +5,7 @@
 #include "Interface/Interactable.h"
 #include "InteractionBase.generated.h"
 
+class APlayerControllerBase;
 class UInputMappingContext;
 struct FInputActionValue;
 class UInputAction;
@@ -26,10 +27,27 @@ public:
 	virtual void Interact_Implementation() override;
 
 protected:
+	/** 시작 ActorSequence의 끝부분에 Trigger로 호출되는 이벤트입니다. */
 	UFUNCTION(BlueprintCallable)
-	virtual void OnActorSequenceEnded();
+	virtual void OnStartActorSequenceEnded();
+
+	/** 종료 ActorSequence의 끝부분에 Trigger로 호출되는 이벤트입니다. */
+	UFUNCTION(BlueprintCallable)
+	virtual void OnEndActorSequenceEnded();
+
+	/** 상호작용 시작 시 ActorSequence를 재생하는 함수입니다. */
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayInteractionStartSequence();
+
+	/** 상호작용 종료 시 ActorSequence를 재생하는 함수입니다. */
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayInteractionEndSequence();
 	
-	void DoLook(const FInputActionValue& Value);
+	virtual void DoLook(const FInputActionValue& Value);
+	virtual void DoControl(const FInputActionValue& Value);
+
+private:
+	void PossessToPlayer();
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
@@ -43,6 +61,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
 	TObjectPtr<UInputAction> LookAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
+	TObjectPtr<UInputAction> ControlAction;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	float MaxYawAngle = 45.0f;
@@ -51,10 +72,10 @@ protected:
 	float MaxPitchAngle = 25.0f;
 	
 	UPROPERTY()
-	TWeakObjectPtr<APlayerController> PlayerController;
+	TObjectPtr<APlayerControllerBase> PlayerController;
 	
 	UPROPERTY()
-	TWeakObjectPtr<APlayerCharacter> Player;
+	TObjectPtr<APlayerCharacter> Player;
 	
 	EInteractionType InteractionType;
 	

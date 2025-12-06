@@ -52,6 +52,24 @@ void APlayerControllerBase::BeginPlay()
 	CreateWidgetInstance();
 }
 
+void APlayerControllerBase::SetInputEnable(const bool InEnable)
+{
+	if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+		{
+			if (InEnable)
+			{
+				Subsystem->AddMappingContext(MappingContext, 0);
+			}
+			else
+			{
+				Subsystem->RemoveMappingContext(MappingContext);
+			}
+		}
+	}
+}
+
 void APlayerControllerBase::CreateWidgetInstance()
 {
 	if (CrosshairWidgetClass)

@@ -8,6 +8,7 @@
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
 #include "Kismet/GameplayStatics.h"
+#include "PlayerController/PlayerControllerBase.h"
 
 AInteractionBase::AInteractionBase()
 {
@@ -15,6 +16,12 @@ AInteractionBase::AInteractionBase()
 	if (IA_Look.Succeeded())
 	{
 		LookAction = IA_Look.Object;	
+	}
+
+	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Control(TEXT("/Game/_Nobody/Input/IA_Control"));
+	if (IA_Control.Succeeded())
+	{
+		ControlAction = IA_Control.Object;
 	}
 	
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
@@ -40,6 +47,11 @@ void AInteractionBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		{
 			EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &ThisClass::DoLook);
 		}
+
+		if (ControlAction)
+		{
+			EIC->BindAction(ControlAction, ETriggerEvent::Started, this, &ThisClass::DoControl);
+		}
 	}
 }
 
@@ -49,11 +61,29 @@ void AInteractionBase::Interact_Implementation()
 	
 	LOG(TEXT("상호작용을 수행합니다."));
 	
-	PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+
+	// 액터 시퀀스를 재생합니다.
+	PlayInteractionStartSequence();
+
+	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를 숨깁니다.
+	Player->SetActorHiddenInGame(true);
+	Player->GetMesh()->SetPlayRate(0.0f);
+	PlayerController->SetInputEnable(false);
+	
+	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
+	if (PlayerController)
+	{
+		PlayerController->SetViewTargetWithBlend(
+			this,                   
+			0.5f,                   
+			VTBlend_Cubic
+		);
+	}
 }
 
-void AInteractionBase::OnActorSequenceEnded()
+void AInteractionBase::OnStartActorSequenceEnded()
 {
 	// 플레이어 컨트롤러를 빙의시킵니다.
 	PlayerController->Possess(this);
@@ -62,12 +92,31 @@ void AInteractionBase::OnActorSequenceEnded()
 	OriginRotation = CameraComponent->GetRelativeRotation();
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
+
+	PlayerController->SetInputEnable(true);
+	Player->GetMesh()->SetPlayRate(1.0f);
+}
+
+void AInteractionBase::OnEndActorSequenceEnded()
+{
+	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
+	if (PlayerController)
+	{
+		PlayerController->SetViewTargetWithBlend(
+			Player,                   
+			0.5f,                   
+			VTBlend_Cubic
+		);
+	}
+
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ThisClass::PossessToPlayer, 0.5f, false);
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)
 {
 	// 마우스 입력으로부터 FVector2D 값을 추출합니다.
-	FVector2D LookInput = Value.Get<FVector2D>();
+	const FVector2D LookInput = Value.Get<FVector2D>();
 	const float YawInput = LookInput.X;
 	const float PitchInput = LookInput.Y;
 
@@ -84,4 +133,22 @@ void AInteractionBase::DoLook(const FInputActionValue& Value)
 	
 	// 최종 회전값을 적용합니다.
 	CameraComponent->SetRelativeRotation(NewRot);
+}
+
+void AInteractionBase::DoControl(const FInputActionValue& Value)
+{
+	PlayerController->SetInputEnable(false);
+	Player->GetMesh()->SetPlayRate(0.0f);
+
+	PlayInteractionEndSequence();
+}
+
+void AInteractionBase::PossessToPlayer()
+{
+	PlayerController->Possess(Player);
+	PlayerController->SetInputEnable(true);
+	Player->GetMesh()->SetPlayRate(1.0f);
+
+	// ActorSequence가 종료된 이후 플레이어의 모습을 다시 활성화 합니다.
+	Player->SetActorHiddenInGame(false);
 }

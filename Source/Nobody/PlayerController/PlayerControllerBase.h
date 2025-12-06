@@ -17,6 +17,9 @@ public:
 	virtual void SetupInputComponent() override;
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;
+
+public:
+	void SetInputEnable(const bool InEnable);
 	
 private:
 	void CreateWidgetInstance();

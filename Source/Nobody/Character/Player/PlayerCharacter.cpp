@@ -16,13 +16,13 @@ APlayerCharacter::APlayerCharacter()
 	}
 	
 	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Look(TEXT("/Game/_Nobody/Input/IA_Look"));
-	if (IA_Move.Succeeded())
+	if (IA_Look.Succeeded())
 	{
 		LookAction = IA_Look.Object;
 	}
 	
 	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Interact(TEXT("/Game/_Nobody/Input/IA_Interact"));
-	if (IA_Move.Succeeded())
+	if (IA_Interact.Succeeded())
 	{
 		InteractAction = IA_Interact.Object;
 	}

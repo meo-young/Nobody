@@ -39,30 +39,17 @@ void AOpenableDoor::BeginPlay()
 	Super::BeginPlay();
 }
 
-void AOpenableDoor::Interact_Implementation()
+void AOpenableDoor::DoControl(const FInputActionValue& Value)
 {
-	Super::Interact_Implementation();
-	
-	// 액터 시퀀스를 재생합니다.
-	PlayActorSequence();
+	// 손전등을 활성화합니다.
+	SpotLightComponent->SetVisibility(false);
 
-	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를 숨깁니다.
-	Player->SetActorHiddenInGame(true);
-	
-	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
-	if (PlayerController.Get())
-	{
-		PlayerController->SetViewTargetWithBlend(
-			this,                   
-			0.5f,                   
-			VTBlend_Cubic
-		);
-	}
+	Super::DoControl(Value);
 }
 
-void AOpenableDoor::OnActorSequenceEnded()
+void AOpenableDoor::OnStartActorSequenceEnded()
 {
-	Super::OnActorSequenceEnded();
+	Super::OnStartActorSequenceEnded();
 	
 	// 손전등을 활성화합니다.
 	SpotLightComponent->SetVisibility(true);
