@@ -60,6 +60,7 @@ void AInteractionBase::Interact_Implementation()
 	IInteractable::Interact_Implementation();
 	
 	LOG(TEXT("상호작용을 수행합니다."));
+	InteractionZone->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
@@ -69,7 +70,6 @@ void AInteractionBase::Interact_Implementation()
 
 	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를 숨깁니다.
 	Player->SetActorHiddenInGame(true);
-	Player->GetMesh()->SetPlayRate(0.0f);
 	PlayerController->SetInputEnable(false);
 	
 	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
@@ -94,7 +94,6 @@ void AInteractionBase::OnStartActorSequenceEnded()
 	CurrentPitchOffset = 0.f;
 
 	PlayerController->SetInputEnable(true);
-	Player->GetMesh()->SetPlayRate(1.0f);
 }
 
 void AInteractionBase::OnEndActorSequenceEnded()
@@ -138,7 +137,6 @@ void AInteractionBase::DoLook(const FInputActionValue& Value)
 void AInteractionBase::DoControl(const FInputActionValue& Value)
 {
 	PlayerController->SetInputEnable(false);
-	Player->GetMesh()->SetPlayRate(0.0f);
 
 	PlayInteractionEndSequence();
 }
@@ -147,7 +145,7 @@ void AInteractionBase::PossessToPlayer()
 {
 	PlayerController->Possess(Player);
 	PlayerController->SetInputEnable(true);
-	Player->GetMesh()->SetPlayRate(1.0f);
+	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 
 	// ActorSequence가 종료된 이후 플레이어의 모습을 다시 활성화 합니다.
 	Player->SetActorHiddenInGame(false);
