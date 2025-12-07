@@ -22,6 +22,7 @@ class NOBODY_API AInteractionBase : public APawn, public IInteractable
 public:
 	AInteractionBase();
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	virtual void BeginPlay() override;
 	
 public:
 	virtual void Interact_Implementation() override;
@@ -45,9 +46,6 @@ protected:
 	
 	virtual void DoLook(const FInputActionValue& Value);
 	virtual void DoControl(const FInputActionValue& Value);
-
-private:
-	void PossessToPlayer();
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
@@ -71,6 +69,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	float MaxPitchAngle = 25.0f;
 	
+	UPROPERTY(EditAnywhere, Category = "변수|수치")
+	FVector LerpLocationValue = FVector::ZeroVector;
+	
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
 	
@@ -79,6 +80,11 @@ protected:
 	
 	EInteractionType InteractionType;
 	
+	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */
+	FVector EndSequenceLocation = FVector::ZeroVector;
+	FRotator EndSequenceRotation = FRotator::ZeroRotator;
+	
+	/** Pawn 빙의 시 조정 가능한 최대 각도 */
 	FRotator OriginRotation;
 	float CurrentYawOffset = 0.f;
 	float CurrentPitchOffset = 0.f;

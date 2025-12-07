@@ -11,3 +11,10 @@ ABed::ABed()
 	PillowMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PillowMesh"));
 	PillowMesh->SetupAttachment(BedMesh);
 }
+
+void ABed::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	EndSequenceLocation.Y += 11.2f;
+}

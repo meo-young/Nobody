@@ -66,6 +66,14 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	}
 }
 
+void APlayerCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	
+	FVector CameraLocation = CameraComponent->GetComponentLocation();
+	FRotator CameraRotation = CameraComponent->GetComponentRotation();
+}
+
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 {
 	const FVector2D MoveValue = InputActionValue.Get<FVector2D>();

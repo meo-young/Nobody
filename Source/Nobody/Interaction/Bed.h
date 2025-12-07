@@ -11,6 +11,7 @@ class NOBODY_API ABed : public AInteractionBase
 	
 public:
 	ABed();
+	virtual void BeginPlay() override;
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")

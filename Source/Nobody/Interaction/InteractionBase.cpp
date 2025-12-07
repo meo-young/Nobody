@@ -55,6 +55,21 @@ void AInteractionBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	}
 }
 
+void AInteractionBase::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	EndSequenceLocation = CameraComponent->GetComponentLocation();
+	EndSequenceLocation.Z = 352.150108f;
+	EndSequenceLocation += LerpLocationValue;
+	
+	/*LOG(TEXT("%s %s"), *GetName(), *EndSequenceLocation.ToString());
+	BP_OpenableDoor_C_0 X=-211.107 Y=-1460.629 Z=352.150
+	BP_OpenableDoor_C_1 X=-102.143 Y=-939.121 Z=352.150*/
+	
+	EndSequenceRotation = CameraComponent->GetComponentRotation();
+}
+
 void AInteractionBase::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
@@ -64,6 +79,7 @@ void AInteractionBase::Interact_Implementation()
 	
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	Player->GetMesh()->SetEnableAnimation(false);
 
 	// 액터 시퀀스를 재생합니다.
 	PlayInteractionStartSequence();
@@ -101,15 +117,17 @@ void AInteractionBase::OnEndActorSequenceEnded()
 	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
 	if (PlayerController)
 	{
-		PlayerController->SetViewTargetWithBlend(
-			Player,                   
-			0.5f,                   
-			VTBlend_Cubic
-		);
-	}
+		PlayerController->SetViewTarget(Player);
+		PlayerController->Possess(Player);
+		Player->Controller->SetControlRotation(EndSequenceRotation);
+		Player->GetMesh()->SetEnableAnimation(true);
+	
+		PlayerController->SetInputEnable(true);
+		InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 
-	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ThisClass::PossessToPlayer, 0.5f, false);
+		// ActorSequence가 종료된 이후 플레이어의 모습을 다시 활성화 합니다.
+		Player->SetActorHiddenInGame(false);
+	}
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)
@@ -139,14 +157,5 @@ void AInteractionBase::DoControl(const FInputActionValue& Value)
 	PlayerController->SetInputEnable(false);
 
 	PlayInteractionEndSequence();
-}
-
-void AInteractionBase::PossessToPlayer()
-{
-	PlayerController->Possess(Player);
-	PlayerController->SetInputEnable(true);
-	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-
-	// ActorSequence가 종료된 이후 플레이어의 모습을 다시 활성화 합니다.
-	Player->SetActorHiddenInGame(false);
+	Player->SetActorLocation(EndSequenceLocation);
 }

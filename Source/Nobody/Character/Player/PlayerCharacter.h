@@ -17,6 +17,7 @@ class NOBODY_API APlayerCharacter : public ACharacterBase
 public:
 	APlayerCharacter();
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	virtual void Tick(float DeltaSeconds) override;
 	
 protected:
 	void DoMove(const FInputActionValue& InputActionValue);
