@@ -62,11 +62,6 @@ void AInteractionBase::BeginPlay()
 	EndSequenceLocation = CameraComponent->GetComponentLocation();
 	EndSequenceLocation.Z = 352.150108f;
 	EndSequenceLocation += LerpLocationValue;
-	
-	/*LOG(TEXT("%s %s"), *GetName(), *EndSequenceLocation.ToString());
-	BP_OpenableDoor_C_0 X=-211.107 Y=-1460.629 Z=352.150
-	BP_OpenableDoor_C_1 X=-102.143 Y=-939.121 Z=352.150*/
-	
 	EndSequenceRotation = CameraComponent->GetComponentRotation();
 }
 
@@ -74,7 +69,6 @@ void AInteractionBase::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
 	
-	LOG(TEXT("상호작용을 수행합니다."));
 	InteractionZone->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
@@ -106,6 +100,10 @@ void AInteractionBase::OnStartActorSequenceEnded()
 	
 	// 카메라의 초기위치를 저장합니다.
 	OriginRotation = CameraComponent->GetRelativeRotation();
+	OriginRotation += CameraLerpValue;
+	
+	CameraComponent->SetRelativeRotation(OriginRotation);
+	
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
 

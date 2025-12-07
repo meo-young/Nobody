@@ -70,8 +70,8 @@ void APlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	
-	FVector CameraLocation = CameraComponent->GetComponentLocation();
-	FRotator CameraRotation = CameraComponent->GetComponentRotation();
+	/*FVector CameraLocation = CameraComponent->GetComponentLocation();
+	FRotator CameraRotation = CameraComponent->GetComponentRotation();*/
 }
 
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
