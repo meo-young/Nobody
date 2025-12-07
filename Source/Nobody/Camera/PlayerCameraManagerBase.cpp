@@ -2,6 +2,6 @@
 
 APlayerCameraManagerBase::APlayerCameraManagerBase()
 {
-	ViewPitchMax = 80.0f;
-	ViewPitchMin = -70.0f;
+	ViewPitchMax = 60.0f;
+	ViewPitchMin = -60.0f;
 }
