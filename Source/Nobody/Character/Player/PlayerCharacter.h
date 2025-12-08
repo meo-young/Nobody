@@ -9,6 +9,7 @@ class UCameraComponent;
 struct FInputActionValue;
 class UInputAction;
 class UInteractionComponent;
+class UEffectComponent;
 
 UCLASS()
 class NOBODY_API APlayerCharacter : public ACharacterBase
@@ -22,6 +23,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 public:
+	void SetEffectEnable(const bool bEnable);
 	void ExecuteDeathSequence();
 	
 protected:
@@ -41,6 +43,9 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UInteractionComponent> InteractionComponent;
+
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UEffectComponent> EffectComponent;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UCameraComponent> CameraComponent;

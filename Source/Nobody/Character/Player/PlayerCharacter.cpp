@@ -4,6 +4,7 @@
 #include "Nobody.h"
 #include "InputAction.h"
 #include "Camera/CameraComponent.h"
+#include "Component/EffectComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
 #include "PlayerController/PlayerControllerBase.h"
@@ -33,6 +34,7 @@ APlayerCharacter::APlayerCharacter()
 	CharacterMovementComponent->MaxStepHeight = 15.0f;
 	
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
+	EffectComponent = CreateDefaultSubobject<UEffectComponent>(TEXT("Effect Component"));
 	
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
 	CameraComponent->SetupAttachment(GetMesh(), FName("head"));
@@ -77,6 +79,11 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+}
+
+void APlayerCharacter::SetEffectEnable(const bool bEnable)
+{
+	EffectComponent->SetEffectEnable(bEnable);	
 }
 
 void APlayerCharacter::ExecuteDeathSequence()
