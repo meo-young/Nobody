@@ -1,5 +1,4 @@
 #include "Interaction/InteractionBase.h"
-
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Nobody.h"
@@ -59,77 +58,76 @@ void AInteractionBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	EndSequenceLocation = CameraComponent->GetComponentLocation();
-	EndSequenceLocation.Z = 352.150108f;
-	EndSequenceLocation += LerpLocationValue;
-	EndSequenceRotation = CameraComponent->GetComponentRotation();
+	// 플레이어의 목표 위치를 초기화합니다.
+	PlayerTargetLocation = CameraComponent->GetComponentLocation();
+	PlayerTargetLocation += LerpLocationValue;
+	PlayerTargetLocation.Z = 342.150107f;
+	
+	// 플레이어의 목표 회전 값을 초기화합니다.
+	PlayerTargetRotation = GetActorRotation();
+	PlayerTargetRotation.Yaw = -PlayerTargetRotation.Yaw;
+	
+	// 플레이어와 컨트롤러를 캐싱합니다.
+	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 }
 
 void AInteractionBase::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
 	
+	// 상호작용 가능 상태를 초기화합니다.
+	bIsInteractPossible = false;
+	
+	// 상호작용 콜리전을 비활성화합니다.
 	InteractionZone->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
-	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
-	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
-	Player->GetMesh()->SetEnableAnimation(false);
-
 	// 액터 시퀀스를 재생합니다.
 	PlayInteractionStartSequence();
 
 	// 액터 시퀀스가 재생하는 동안 플레이어 캐릭터를 숨깁니다.
 	Player->SetActorHiddenInGame(true);
-	PlayerController->SetInputEnable(false);
+	Player->GetMesh()->SetEnableAnimation(false);
 	
-	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
-	if (PlayerController)
-	{
-		PlayerController->SetViewTargetWithBlend(
-			this,                   
-			0.5f,                   
-			VTBlend_Cubic
-		);
-	}
+	// 카메라를 보간하고, 액터 시퀀스가 재생하는 동안 입력을 비활성화합니다.
+	PlayerController->SetInputEnable(false);
+	PlayerController->SetViewTargetWithBlend(this,0.5f);
 }
 
 void AInteractionBase::OnStartActorSequenceEnded()
 {
+	// 상호작용 상태를 활성화합니다.
+	bIsInteractPossible = true;
+	
 	// 플레이어 컨트롤러를 빙의시킵니다.
 	PlayerController->Possess(this);
+	PlayerController->SetInputEnable(true);
 	
 	// 카메라의 초기위치를 저장합니다.
 	OriginRotation = CameraComponent->GetRelativeRotation();
-	OriginRotation += CameraLerpValue;
-	
-	CameraComponent->SetRelativeRotation(OriginRotation);
-	
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
-
-	PlayerController->SetInputEnable(true);
 }
 
 void AInteractionBase::OnEndActorSequenceEnded()
 {
-	// 플레이어 카메라를 SequenceCameraComponent로 전환합니다.
-	if (PlayerController)
-	{
-		PlayerController->SetViewTarget(Player);
-		PlayerController->Possess(Player);
-		Player->Controller->SetControlRotation(EndSequenceRotation);
-		Player->GetMesh()->SetEnableAnimation(true);
+	// 플레이어 회전 값을 초기화하고, 입력이 활성화된 상태로 빙의합니다.
+	PlayerController->Possess(Player);
+	PlayerController->SetControlRotation(PlayerTargetRotation);
+	PlayerController->SetInputEnable(true);
 	
-		PlayerController->SetInputEnable(true);
-		InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-
-		// ActorSequence가 종료된 이후 플레이어의 모습을 다시 활성화 합니다.
-		Player->SetActorHiddenInGame(false);
-	}
+	// 플레이어의 모습을 활성화합니다.
+	Player->GetMesh()->SetEnableAnimation(true);
+	Player->SetActorHiddenInGame(false);
+	
+	// 상호작용 콜리전을 활성화합니다.
+	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)
 {
+	if (!bIsInteractPossible) return;
+	
 	// 마우스 입력으로부터 FVector2D 값을 추출합니다.
 	const FVector2D LookInput = Value.Get<FVector2D>();
 	const float YawInput = LookInput.X;
@@ -152,8 +150,20 @@ void AInteractionBase::DoLook(const FInputActionValue& Value)
 
 void AInteractionBase::DoControl(const FInputActionValue& Value)
 {
-	PlayerController->SetInputEnable(false);
+	if (!bIsInteractPossible) return;
 
+	// 상호작용 종료 시퀀스를 재생합니다.
 	PlayInteractionEndSequence();
-	Player->SetActorLocation(EndSequenceLocation);
+	
+	// 플레이어의 위치, 회전 값을 초기화합니다.
+	Player->SetActorLocation(PlayerTargetLocation);
+	Player->SetActorRotation(PlayerTargetRotation);
+	Player->GetCameraComponent()->SetWorldRotation(PlayerTargetRotation);
+	
+	// 입력을 비활성화하고, 카메라를 보간합니다.
+	PlayerController->SetInputEnable(false);
+	PlayerController->SetViewTargetWithBlend(Player, 1.3f);
+	
+	// 상호작용 가능 상태를 초기화합니다.
+	bIsInteractPossible = false;
 }

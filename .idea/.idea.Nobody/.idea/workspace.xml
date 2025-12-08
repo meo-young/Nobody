@@ -14,7 +14,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,6 +225,7 @@
       <workItem from="1764846122364" duration="2387000" />
       <workItem from="1764870042884" duration="2896000" />
       <workItem from="1765071697358" duration="12934000" />
+      <workItem from="1765158552183" duration="4165000" />
     </task>
     <servers />
   </component>

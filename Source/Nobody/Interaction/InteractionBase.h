@@ -72,9 +72,6 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "변수|수치")
 	FVector LerpLocationValue = FVector::ZeroVector;
 	
-	UPROPERTY(EditAnywhere, Category = "변수|수치")
-	FRotator CameraLerpValue = FRotator::ZeroRotator;
-	
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
 	
@@ -83,14 +80,18 @@ protected:
 	
 	EInteractionType InteractionType;
 	
+private:
 	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */
-	FVector EndSequenceLocation = FVector::ZeroVector;
-	FRotator EndSequenceRotation = FRotator::ZeroRotator;
+	FVector PlayerTargetLocation = FVector::ZeroVector;
+	FRotator PlayerTargetRotation = FRotator::ZeroRotator;
 	
 	/** Pawn 빙의 시 조정 가능한 최대 각도 */
 	FRotator OriginRotation;
 	float CurrentYawOffset = 0.f;
 	float CurrentPitchOffset = 0.f;
+	
+	/** 상호작용 중인 상태를 나타내는 변수 */
+	uint8 bIsInteractPossible : 1 = false;
 	
 public:
 	FORCEINLINE EInteractionType GetInteractionType() { return this->InteractionType; }

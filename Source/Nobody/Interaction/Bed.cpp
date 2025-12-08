@@ -15,6 +15,4 @@ ABed::ABed()
 void ABed::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	EndSequenceLocation.Y += 11.2f;
 }
