@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
+#include "PlayerController/PlayerControllerBase.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -66,12 +67,21 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	}
 }
 
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerController = Cast<APlayerControllerBase>(GetController());
+}
+
 void APlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	
-	/*FVector CameraLocation = CameraComponent->GetComponentLocation();
-	FRotator CameraRotation = CameraComponent->GetComponentRotation();*/
+}
+
+void APlayerCharacter::ExecuteDeathSequence()
+{
+	LOG(TEXT("죽음 연출"));
 }
 
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)

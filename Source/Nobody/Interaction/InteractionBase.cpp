@@ -66,6 +66,7 @@ void AInteractionBase::BeginPlay()
 	// 플레이어의 목표 회전 값을 초기화합니다.
 	PlayerTargetRotation = GetActorRotation();
 	PlayerTargetRotation.Yaw = -PlayerTargetRotation.Yaw;
+	PlayerTargetRotation += LerpRotationValue;
 	
 	// 플레이어와 컨트롤러를 캐싱합니다.
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));

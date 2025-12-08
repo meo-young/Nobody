@@ -71,6 +71,9 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "변수|수치")
 	FVector LerpLocationValue = FVector::ZeroVector;
+
+	UPROPERTY(EditAnywhere, Category = "변수|수치")
+	FRotator LerpRotationValue = FRotator::ZeroRotator;
 	
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
