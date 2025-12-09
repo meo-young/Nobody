@@ -45,6 +45,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	float EffectDownInterpTime = 4.0f;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
+	uint8 bIsEffectEnabled : 1 = false;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
 	TSubclassOf<UBlurWidget> BlurWidgetClass;
 
@@ -59,8 +62,6 @@ private:
 
 	FEffectIntensity CurrentEffectIntensity;
 	FEffectIntensity EffectMinIntensity;
-
-	uint8 bIsEffectEnabled : 1 = false;
 
 	float AccumulatedTime = 0.0f;
 

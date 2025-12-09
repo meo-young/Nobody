@@ -8,7 +8,9 @@
 #include "Components/ShapeComponent.h"
 #include "Components/SpotLightComponent.h"
 #include "Enum/EInteractType.h"
+#include "Enum/ESFX.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Library/SoundLibrary.h"
 #include "Pawn/SpotlightCamera.h"
 
 AOpenableDoor::AOpenableDoor()
@@ -43,6 +45,7 @@ void AOpenableDoor::DoControl(const FInputActionValue& Value)
 {
 	// 손전등을 활성화합니다.
 	SpotLightComponent->SetVisibility(false);
+	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Off, GetActorLocation());
 
 	Super::DoControl(Value);
 }
@@ -53,4 +56,5 @@ void AOpenableDoor::OnStartActorSequenceEnded()
 	
 	// 손전등을 활성화합니다.
 	SpotLightComponent->SetVisibility(true);
+	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
 }

@@ -32,8 +32,6 @@ void UEffectComponent::BeginPlay()
 	{
 		CameraComponent = Player->GetCameraComponent();
 	}
-	
-	bIsEffectEnabled = true;
 }
 
 void UEffectComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

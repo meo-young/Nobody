@@ -15,17 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/AS_Player_Walk_Forward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/AS_Player_Walk_Forward.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BS_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BS_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_B.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_LR.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_LR.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_RL.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_RL.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_BGM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_BGM.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Define/Define.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Define/Define.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/EBGM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/EBGM.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +244,7 @@
       <workItem from="1765071697358" duration="12934000" />
       <workItem from="1765158552183" duration="4165000" />
       <workItem from="1765166371633" duration="6200000" />
-      <workItem from="1765248035368" duration="2686000" />
+      <workItem from="1765248035368" duration="5414000" />
     </task>
     <servers />
   </component>
