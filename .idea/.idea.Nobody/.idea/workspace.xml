@@ -14,11 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Nobody/Enum/EBGM.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Nobody/Enum/EBGM.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Nobody/TableRowBase/SFXTableRowBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Nobody/TableRowBase/SFXTableRowBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/AS_Player_Walk_Forward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/AS_Player_Walk_Forward.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BS_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BS_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_B.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_LR.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_LR.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_RL.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/M_Neutral_Walk_Loop_RL.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Define/Define.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Define/Define.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +41,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Animation/Notify/AnimNotify_Footstep.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Camera/PlayerCameraManagerBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Camera/PlayerCameraManagerBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/CharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -239,7 +247,7 @@
       <workItem from="1765071697358" duration="12934000" />
       <workItem from="1765158552183" duration="4165000" />
       <workItem from="1765166371633" duration="6200000" />
-      <workItem from="1765248035368" duration="1456000" />
+      <workItem from="1765248035368" duration="2686000" />
     </task>
     <servers />
   </component>
