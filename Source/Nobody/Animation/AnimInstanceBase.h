@@ -13,8 +13,13 @@ class NOBODY_API UAnimInstanceBase : public UAnimInstance
 	GENERATED_BODY()
 
 public:
+	/** 변수를 초기화하고 컴포넌트를 캐싱하는 함수입니다. */
 	virtual void NativeInitializeAnimation() override;
+	
+	/** 매 프레임 업데이트를 수행하는 함수입니다. */
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+	
+	/** 스레드 안전한 상태로 매 프레임 업데이트를 수행하는 함수입니다. */
 	virtual void NativeThreadSafeUpdateAnimation(float DeltaSeconds) override;
 
 protected:

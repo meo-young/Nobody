@@ -27,8 +27,13 @@ public:
 	void ExecuteDeathSequence();
 	
 protected:
+	/** 이동에 대한 입력을 처리하는 함수입니다. */
 	void DoMove(const FInputActionValue& InputActionValue);
+	
+	/** 시점 회전에 대한 입력을 처리하는 함수입니다. */
 	void DoLook(const FInputActionValue& InputActionValue);
+	
+	/** 상호작용에 대한 입력을 처리하는 함수입니다. */
 	void DoInteract(const FInputActionValue& InputActionValue);
 
 protected:

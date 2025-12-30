@@ -25,6 +25,7 @@ public:
 	virtual void BeginPlay() override;
 	
 public:
+	/** 상호작용을 수행하는 함수입니다. */
 	virtual void Interact_Implementation() override;
 
 protected:
@@ -63,15 +64,19 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
 	TObjectPtr<UInputAction> ControlAction;
 	
+	/** Yaw에 대해 회전할 수 있는 최대 각도 변수입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	float MaxYawAngle = 45.0f;
 	
+	/** Pitch에 대해 회전할 수 있는 최대 각도 변수입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	float MaxPitchAngle = 25.0f;
 	
+	/** Sequence 종료 시 플레이어의 위치를 보간할 수치를 나타내는 변수입니다. */
 	UPROPERTY(EditAnywhere, Category = "변수|수치")
 	FVector LerpLocationValue = FVector::ZeroVector;
 
+	/** Sequence 종료 시 플레이어의 회전을 보간할 수치를 나타내는 변수입니다. */
 	UPROPERTY(EditAnywhere, Category = "변수|수치")
 	FRotator LerpRotationValue = FRotator::ZeroRotator;
 	
