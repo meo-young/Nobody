@@ -77,8 +77,6 @@ void AInteractionBase::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
 	
-	LOG(TEXT("상호작용"));
-	
 	// 상호작용 가능 상태를 초기화합니다.
 	bIsInteractPossible = false;
 	
