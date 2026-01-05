@@ -13,7 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="" />
+    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Footstep/SC_Footstep_Rug.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Footstep/SC_Footstep_Rug.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Animation/Notify/AnimNotify_Footstep.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Animation/Notify/AnimNotify_Footstep.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,6 +242,10 @@
       <workItem from="1765248035368" duration="8865000" />
       <workItem from="1765290792322" duration="2451000" />
       <workItem from="1767074080843" duration="2335000" />
+      <workItem from="1767153216097" duration="1567000" />
+      <workItem from="1767577833404" duration="1094000" />
+      <workItem from="1767578993362" duration="847000" />
+      <workItem from="1767580425527" duration="319000" />
     </task>
     <servers />
   </component>

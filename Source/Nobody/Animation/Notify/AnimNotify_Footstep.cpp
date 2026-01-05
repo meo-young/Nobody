@@ -50,11 +50,11 @@ void UAnimNotify_Footstep::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenc
 			switch (HitResult.PhysMaterial->SurfaceType)
 			{
 				case SURFACE_RUG:
-					USoundLibrary::PlaySFXInLocation(Owner, ESFX::Footstep_Rug, HitResult.ImpactPoint);
+					USoundLibrary::PlaySFXInLocation(Owner, ESFX::Footstep_Rug, HitResult.ImpactPoint - FVector(0.0f, 0.0f, 100.0f));
 					break;
 				
 				default:
-					USoundLibrary::PlaySFXInLocation(Owner, ESFX::Footstep_Rug, HitResult.ImpactPoint);
+					USoundLibrary::PlaySFXInLocation(Owner, ESFX::Footstep_Rug, HitResult.ImpactPoint - FVector(0.0f, 0.0f, 100.0f));
 					break;
 			}
 		}
