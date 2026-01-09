@@ -1,5 +1,8 @@
 #include "MainGameMode.h"
+
+#include "Nobody.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Manager/EventSpawnManager.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 AMainGameMode::AMainGameMode()
@@ -16,3 +19,42 @@ AMainGameMode::AMainGameMode()
 		PlayerControllerClass = BP_PlayerController.Class;
 	}
 }
+
+void AMainGameMode::PostInitProperties()
+{
+	Super::PostInitProperties(); 	
+	
+	CurrentStageNum = 0;
+}
+
+void AMainGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+	
+	EventSpawnManager = NewObject<UEventSpawnManager>(this);
+	EventSpawnManager->Init();
+}
+
+void AMainGameMode::InitGameState()
+{
+	Super::InitGameState();
+}
+
+void AMainGameMode::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+}
+
+void AMainGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void AMainGameMode::StartPlay()
+{
+	Super::StartPlay();
+	
+	EventSpawnManager->SpawnEvent(CurrentStageNum);
+}
+
+

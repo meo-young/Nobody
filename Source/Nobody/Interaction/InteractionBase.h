@@ -101,7 +101,15 @@ private:
 	/** 상호작용 중인 상태를 나타내는 변수 */
 	uint8 bIsInteractPossible : 1 = false;
 	
+	/** 이벤트가 활성화 됐음을 알리는 상태 변수 */
+	uint8 bIsEventActivated : 1 = false;
+	
 public:
+	/** 이벤트 활성화에 대한 Getter, Setter */
+	FORCEINLINE uint8 GetIsEventActivated() const { return bIsEventActivated; }
+	FORCEINLINE void SetEventActivated(const bool Value) { bIsEventActivated = Value; };
+	
+	/** 상호작용 Type에 대한 Getter */
 	FORCEINLINE EInteractionType GetInteractionType() { return this->InteractionType; }
 	
 };

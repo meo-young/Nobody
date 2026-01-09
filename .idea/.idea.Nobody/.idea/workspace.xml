@@ -15,8 +15,19 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Footstep/SC_Footstep_Rug.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Footstep/SC_Footstep_Rug.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Animation/Notify/AnimNotify_Footstep.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Animation/Notify/AnimNotify_Footstep.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/LevelSequence/LS_OpenDoor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Close.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Close.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Open.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Open.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Doorknob.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Doorknob.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_Off.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_Off.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_On.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_On.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +49,8 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Camera/PlayerCameraManagerBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/CharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/CharacterBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Enemy/Doll/Doll.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Enemy/Doll/Doll.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/EffectComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -59,6 +72,8 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Library/SoundLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Pawn/SpotlightCamera.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Pawn/SpotlightCamera.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/PlayerController/MainPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -245,7 +260,9 @@
       <workItem from="1767153216097" duration="1567000" />
       <workItem from="1767577833404" duration="1094000" />
       <workItem from="1767578993362" duration="847000" />
-      <workItem from="1767580425527" duration="319000" />
+      <workItem from="1767580425527" duration="5365000" />
+      <workItem from="1767663630541" duration="7525000" />
+      <workItem from="1767931819266" duration="2563000" />
     </task>
     <servers />
   </component>
