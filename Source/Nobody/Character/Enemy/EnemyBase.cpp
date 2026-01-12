@@ -61,7 +61,8 @@ void AEnemyBase::MoveToNextStep()
 	
 	if (CurrentStepIndex >= MaxStepIndex)
 	{
-		StopStepSystem();
+		LOG(TEXT("플레이어 사망"));
+		//StopStepSystem();
 	}
 	else
 	{

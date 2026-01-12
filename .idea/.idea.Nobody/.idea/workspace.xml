@@ -16,18 +16,8 @@
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/LevelSequence/LS_OpenDoor.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Close.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Close.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Open.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Door_Open.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Doorknob.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Door/SC_Doorknob.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_Off.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_Off.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_On.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Sound/Flash/SC_Flash_On.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +82,9 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -262,7 +255,14 @@
       <workItem from="1767578993362" duration="847000" />
       <workItem from="1767580425527" duration="5365000" />
       <workItem from="1767663630541" duration="7525000" />
-      <workItem from="1767931819266" duration="2563000" />
+      <workItem from="1767931819266" duration="3405000" />
+      <workItem from="1768030086816" duration="186000" />
+      <workItem from="1768030362585" duration="516000" />
+      <workItem from="1768031076965" duration="1316000" />
+      <workItem from="1768054824047" duration="166000" />
+      <workItem from="1768055078602" duration="113000" />
+      <workItem from="1768055320368" duration="478000" />
+      <workItem from="1768187209216" duration="673000" />
     </task>
     <servers />
   </component>

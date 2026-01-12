@@ -1,6 +1,5 @@
 #include "Manager/EventSpawnManager.h"
 #include "LevelSequencePlayer.h"
-#include "MovieSceneSequencePlaybackSettings.h"
 #include "Nobody.h"
 #include "Character/Enemy/EnemyBase.h"
 #include "Kismet/GameplayStatics.h"
