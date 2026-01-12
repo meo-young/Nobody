@@ -43,11 +43,33 @@ void AOpenableDoor::BeginPlay()
 
 void AOpenableDoor::DoControl(const FInputActionValue& Value)
 {
+	if (!bIsInteractPossible) return;
+	
 	// 손전등을 활성화합니다.
 	SpotLightComponent->SetVisibility(false);
 	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Off, GetActorLocation());
 
 	Super::DoControl(Value);
+}
+
+void AOpenableDoor::CheckIfEventActivated()
+{
+	Super::CheckIfEventActivated();
+	
+	if (GetIsEventActivated())
+	{
+		// @TODO : 지지직 하는 소리 추가 필요
+		SpotLightComponent->SetVisibility(false);
+	}
+	
+}
+
+void AOpenableDoor::InitEvent()
+{
+	// @TODO : 지지직 하는 소리 추가 필요
+	SpotLightComponent->SetVisibility(true);
+	
+	Super::InitEvent();
 }
 
 void AOpenableDoor::OnStartActorSequenceEnded()

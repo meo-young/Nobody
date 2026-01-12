@@ -27,11 +27,14 @@ void AEnemyBase::StartStepSystem()
 	LOG(TEXT("이벤트 시작"))
 }
 
-void AEnemyBase::StopStepSystem()
+void AEnemyBase::PauseStepSystem()
 {
 	// 스텝 타이머를 중단합니다.
 	GetWorldTimerManager().ClearTimer(StepTimerHandle);
-	
+}
+
+void AEnemyBase::StopStepSystem()
+{
 	// 캐릭터 위치를 초기화합니다.
 	SetActorTransform(FTransform(
 		FRotator(0.0f, 0.0f, 0.0f),

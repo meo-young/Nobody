@@ -13,11 +13,11 @@ struct FEnemyStepInfo
 	GENERATED_BODY()
 	
 	/** 재생할 애니메이션 시퀀스입니다. */
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	TObjectPtr<UAnimSequence> AnimationSequence;
     
 	/** 이동할 목표 Transform입니다. */
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	FTransform TargetTransform;
 };
 
@@ -32,6 +32,9 @@ public:
 public:
 	/** 스텝 시스템을 시작하는 함수입니다. */
 	virtual void StartStepSystem();
+	
+	/** 스텝 시스템을 일시정지 하는 함수입니다. */
+	void PauseStepSystem();
     
 	/** 스텝 시스템 중단하는 함수입니다. */
 	virtual void StopStepSystem();
@@ -55,7 +58,7 @@ protected:
 	TObjectPtr<AInteractionBase> InteractionObject;
 	
 	/** 스텝 정보 배열 */
-	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	UPROPERTY(EditAnywhere, Category = "변수")
 	TArray<FEnemyStepInfo> EnemyStepInfos;
     
 	/** 스텝 전환 간격 (초) */

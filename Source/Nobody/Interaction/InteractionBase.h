@@ -48,7 +48,10 @@ protected:
 	
 	/** 이벤트가 활성화된 상태인지 확인하는 함수입니ek. */
 	UFUNCTION(BlueprintCallable)
-	void CheckIfEventActivated();
+	virtual void CheckIfEventActivated();
+	
+	UFUNCTION()
+	virtual void InitEvent();
 	
 	virtual void DoLook(const FInputActionValue& Value);
 	virtual void DoControl(const FInputActionValue& Value);
@@ -96,6 +99,9 @@ protected:
 	
 	EInteractionType InteractionType;
 	
+	/** 상호작용 중인 상태를 나타내는 변수 */
+	uint8 bIsInteractPossible : 1 = false;
+	
 private:
 	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */
 	FVector PlayerTargetLocation = FVector::ZeroVector;
@@ -106,11 +112,11 @@ private:
 	float CurrentYawOffset = 0.f;
 	float CurrentPitchOffset = 0.f;
 	
-	/** 상호작용 중인 상태를 나타내는 변수 */
-	uint8 bIsInteractPossible : 1 = false;
-	
 	/** 이벤트가 활성화 됐음을 알리는 상태 변수 */
 	uint8 bIsEventActivated : 1 = false;
+	
+	/** 이벤트 초기화를 담당하는 타이머 핸들러 */
+	FTimerHandle InitHandle;
 	
 public:
 	/** 이벤트 활성화에 대한 Getter, Setter */

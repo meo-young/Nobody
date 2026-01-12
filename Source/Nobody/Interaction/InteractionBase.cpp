@@ -98,9 +98,6 @@ void AInteractionBase::Interact_Implementation()
 
 void AInteractionBase::OnStartActorSequenceEnded()
 {
-	// 상호작용 상태를 활성화합니다.
-	bIsInteractPossible = true;
-	
 	// 플레이어 컨트롤러를 빙의시킵니다.
 	PlayerController->Possess(this);
 	PlayerController->SetInputEnable(true);
@@ -128,10 +125,32 @@ void AInteractionBase::OnEndActorSequenceEnded()
 
 void AInteractionBase::CheckIfEventActivated()
 {
-	if (!bIsEventActivated) return;
+	if (bIsEventActivated)
+	{
+		LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
+		EventEnemy->PauseStepSystem();	
+		GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, 1.0f, false);
+	}
+	else
+	{
+		LOG(TEXT("이벤트가 활성화되지 않은 상태입니다"))
+		GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, 0.5f, false);
+	}
+}
+
+void AInteractionBase::InitEvent()
+{
+	if (bIsEventActivated)
+	{
+		EventEnemy->StopStepSystem();
+	}
 	
-	LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
-	EventEnemy->StopStepSystem();
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]()
+	{
+		// 상호작용 상태를 활성화합니다.
+		bIsInteractPossible = true;
+	}), 0.5f, false);
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)

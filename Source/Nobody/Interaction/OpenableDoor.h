@@ -19,6 +19,8 @@ public:
 protected:
 	virtual void OnStartActorSequenceEnded() override;
 	virtual void DoControl(const FInputActionValue& Value) override;	
+	virtual void CheckIfEventActivated() override;
+	virtual void InitEvent() override;
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
