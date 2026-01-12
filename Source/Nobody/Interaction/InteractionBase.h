@@ -5,6 +5,7 @@
 #include "Interface/Interactable.h"
 #include "InteractionBase.generated.h"
 
+class AEnemyBase;
 class APlayerControllerBase;
 class UInputMappingContext;
 struct FInputActionValue;
@@ -45,10 +46,17 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayInteractionEndSequence();
 	
+	/** 이벤트가 활성화된 상태인지 확인하는 함수입니ek. */
+	UFUNCTION(BlueprintCallable)
+	void CheckIfEventActivated();
+	
 	virtual void DoLook(const FInputActionValue& Value);
 	virtual void DoControl(const FInputActionValue& Value);
 	
 protected:
+	UPROPERTY(EditAnywhere, Category = "변수")
+	TObjectPtr<AEnemyBase> EventEnemy;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<USceneComponent> Root;
 	

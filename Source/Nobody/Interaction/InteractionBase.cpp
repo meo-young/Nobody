@@ -3,6 +3,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Nobody.h"
 #include "Camera/CameraComponent.h"
+#include "Character/Enemy/EnemyBase.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
@@ -123,6 +124,14 @@ void AInteractionBase::OnEndActorSequenceEnded()
 	
 	// 상호작용 콜리전을 활성화합니다.
 	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+}
+
+void AInteractionBase::CheckIfEventActivated()
+{
+	if (!bIsEventActivated) return;
+	
+	LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
+	EventEnemy->StopStepSystem();
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)
