@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "PlayerCharacter.generated.h"
 
+class UFootstepComponent;
 class APlayerControllerBase;
 class UCameraComponent;
 struct FInputActionValue;
@@ -49,6 +50,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UInteractionComponent> InteractionComponent;
 
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UFootstepComponent> FootstepComponent;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UEffectComponent> EffectComponent;
 	

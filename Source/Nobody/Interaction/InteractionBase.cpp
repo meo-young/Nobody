@@ -125,17 +125,21 @@ void AInteractionBase::OnEndActorSequenceEnded()
 
 void AInteractionBase::CheckIfEventActivated()
 {
+	float TimeDelay = 0.0f;
+	
 	if (bIsEventActivated)
 	{
 		LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
 		EventEnemy->PauseStepSystem();	
-		GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, 1.0f, false);
+		TimeDelay = 1.0f;
 	}
 	else
 	{
 		LOG(TEXT("이벤트가 활성화되지 않은 상태입니다"))
-		GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, 0.5f, false);
+		TimeDelay = 0.5f;
 	}
+	
+	GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, TimeDelay, false);
 }
 
 void AInteractionBase::InitEvent()

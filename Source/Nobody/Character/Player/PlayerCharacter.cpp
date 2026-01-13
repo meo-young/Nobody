@@ -5,6 +5,7 @@
 #include "InputAction.h"
 #include "Camera/CameraComponent.h"
 #include "Component/EffectComponent.h"
+#include "Component/FootstepComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
 #include "PlayerController/PlayerControllerBase.h"
@@ -34,6 +35,7 @@ APlayerCharacter::APlayerCharacter()
 	CharacterMovementComponent->MaxStepHeight = 15.0f;
 	
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
+	FootstepComponent = CreateDefaultSubobject<UFootstepComponent>(TEXT("Footstep Component"));
 	EffectComponent = CreateDefaultSubobject<UEffectComponent>(TEXT("Effect Component"));
 	
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
@@ -79,6 +81,28 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	
+	// 플레이어가 걷는 중이면 발걸음 소리를 재생합니다.
+	UCharacterMovementComponent* MovementComponent = GetCharacterMovement();
+	if (!IsValid(MovementComponent)) return;
+	
+	// 땅에 있는지 확인
+	const bool bIsOnGround = MovementComponent->IsMovingOnGround();
+    
+	// 현재 속도 확인 (2D 평면 속도)
+	const float CurrentSpeed = MovementComponent->Velocity.Size2D();
+    
+	// 걷는 중인지 판단
+	const bool bIsWalking = bIsOnGround && CurrentSpeed >= KINDA_SMALL_NUMBER;
+    
+	if (bIsWalking)
+	{
+		FootstepComponent->StartFootstep();
+	}
+	else
+	{
+		FootstepComponent->StopFootstep();
+	}
 }
 
 void APlayerCharacter::SetEffectEnable(const bool bEnable)
