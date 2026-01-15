@@ -69,6 +69,14 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	uint8 MaxStepIndex;
 	
+	/** 이벤트가 스폰될 때 재생되는 소리입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	TObjectPtr<USoundCue> EventSpawnSound;
+	
+	/** 이벤트가 스폰되는 위치입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	FVector EventSpawnLocation;
+	
 private:
 	/** 스텝 타이머입니다. */
 	FTimerHandle StepTimerHandle;

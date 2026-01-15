@@ -2,7 +2,9 @@
 #include "Nobody.h"
 #include "GameMode/MainGameMode.h"
 #include "Interaction/InteractionBase.h"
+#include "Kismet/GameplayStatics.h"
 #include "Manager/EventSpawnManager.h"
+#include "Sound/SoundCue.h"
 
 void AEnemyBase::BeginPlay()
 {
@@ -24,6 +26,10 @@ void AEnemyBase::StartStepSystem()
 	   true
 	);
 	
+	if (EventSpawnSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, EventSpawnSound, EventSpawnLocation);
+	}
 	LOG(TEXT("이벤트 시작"))
 }
 
