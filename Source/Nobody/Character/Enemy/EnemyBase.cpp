@@ -35,6 +35,11 @@ void AEnemyBase::StartStepSystem()
 
 void AEnemyBase::PauseStepSystem()
 {
+	if (EventPausedSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, EventPausedSound, EventSpawnLocation);
+	}
+	
 	// 스텝 타이머를 중단합니다.
 	GetWorldTimerManager().ClearTimer(StepTimerHandle);
 }

@@ -131,7 +131,7 @@ void AInteractionBase::CheckIfEventActivated()
 	{
 		LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
 		EventEnemy->PauseStepSystem();	
-		TimeDelay = 0.5f;
+		TimeDelay = 2.0f;
 	}
 	else
 	{

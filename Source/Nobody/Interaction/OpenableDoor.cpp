@@ -58,7 +58,7 @@ void AOpenableDoor::CheckIfEventActivated()
 	
 	if (GetIsEventActivated())
 	{
-		// @TODO : 지지직 하는 소리 추가 필요
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Hum, GetActorLocation());
 		SpotLightComponent->SetVisibility(false);
 	}
 	
@@ -66,7 +66,7 @@ void AOpenableDoor::CheckIfEventActivated()
 
 void AOpenableDoor::InitEvent()
 {
-	// @TODO : 지지직 하는 소리 추가 필요
+	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
 	SpotLightComponent->SetVisibility(true);
 	
 	Super::InitEvent();
