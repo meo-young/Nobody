@@ -131,12 +131,12 @@ void AInteractionBase::CheckIfEventActivated()
 	{
 		LOG(TEXT("이벤트가 활성화된 상태입니다. 이벤트를 초기화합니다."))
 		EventEnemy->PauseStepSystem();	
-		TimeDelay = 1.0f;
+		TimeDelay = 0.5f;
 	}
 	else
 	{
 		LOG(TEXT("이벤트가 활성화되지 않은 상태입니다"))
-		TimeDelay = 0.5f;
+		TimeDelay = 0.01f;
 	}
 	
 	GetWorldTimerManager().SetTimer(InitHandle, this, &ThisClass::InitEvent, TimeDelay, false);
@@ -154,7 +154,7 @@ void AInteractionBase::InitEvent()
 	{
 		// 상호작용 상태를 활성화합니다.
 		bIsInteractPossible = true;
-	}), 0.5f, false);
+	}), 0.25f, false);
 }
 
 void AInteractionBase::DoLook(const FInputActionValue& Value)
