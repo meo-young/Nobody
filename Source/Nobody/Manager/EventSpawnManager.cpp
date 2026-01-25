@@ -20,8 +20,12 @@ void UEventSpawnManager::Init()
 
 void UEventSpawnManager::SpawnEvent(const uint8 InCurrentLevel)
 {
-	if (Enemies.IsEmpty()) return;
-	
+	if (Enemies.IsEmpty())
+	{
+		LOG(TEXT("소환할 이벤트가 없습니다."))
+		return;
+	}
+		
 	const uint8 RandomNumber = FMath::RandRange(0, InCurrentLevel);
 	
 	Enemies[RandomNumber]->StartStepSystem();

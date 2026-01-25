@@ -3,6 +3,7 @@
 #include "GameMode/MainGameMode.h"
 #include "Interaction/InteractionBase.h"
 #include "Kismet/GameplayStatics.h"
+#include "Library/MathLibrary.h"
 #include "Manager/EventSpawnManager.h"
 #include "Sound/SoundCue.h"
 
@@ -30,7 +31,6 @@ void AEnemyBase::StartStepSystem()
 	{
 		UGameplayStatics::PlaySoundAtLocation(this, EventSpawnSound, EventSpawnLocation);
 	}
-	LOG(TEXT("이벤트 시작"))
 }
 
 void AEnemyBase::PauseStepSystem()
@@ -52,15 +52,8 @@ void AEnemyBase::StopStepSystem()
 		FVector(0.0f, 0.0f, -500.0f) 
 	));
 	
-	if (AMainGameMode* GameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode()))
-	{
-		if (UEventSpawnManager* EventSpawnManager = GameMode->GetEventSpawnManager())
-		{
-			EventSpawnManager->AddEnemy(this);
-		}
-	}
-	
-	LOG(TEXT("이벤트를 종료합니다"))
+	// RespawnDelay 경과 후 스폰 가능한 이벤트 리스트에 추가합니다.
+	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
 }
 
 void AEnemyBase::GoToStep(int32 StepIndex)
@@ -103,4 +96,15 @@ void AEnemyBase::MoveToStepTransform(uint8 InStepIndex)
 	
 	// 해당 Transform으로 이동시킵니다.
 	SetActorTransform(TargetTransform);
+}
+
+void AEnemyBase::AddToSpawnList()
+{
+	if (AMainGameMode* GameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode()))
+	{
+		if (UEventSpawnManager* EventSpawnManager = GameMode->GetEventSpawnManager())
+		{
+			EventSpawnManager->AddEnemy(this);
+		}
+	}
 }

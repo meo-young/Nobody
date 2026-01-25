@@ -1,5 +1,4 @@
 #include "Component/FootstepComponent.h"
-
 #include "Nobody.h"
 #include "Define/Define.h"
 #include "Enum/ESFX.h"
@@ -40,8 +39,6 @@ void UFootstepComponent::StartFootstep()
 		return;
 	}
 	
-	LOG(TEXT("걷는 함수 호출"))
-
 	// 0.5초마다 PlayFootstepSound 함수를 반복 호출
 	World->GetTimerManager().SetTimer(
 		FootstepTimerHandle,

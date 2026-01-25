@@ -2,6 +2,7 @@
 
 #include "Nobody.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Library/MathLibrary.h"
 #include "Manager/EventSpawnManager.h"
 #include "PlayerController/PlayerControllerBase.h"
 
@@ -35,6 +36,13 @@ void AMainGameMode::InitGame(const FString& MapName, const FString& Options, FSt
 	EventSpawnManager->Init();
 }
 
+void AMainGameMode::StartStage()
+{
+	EventSpawnManager->SpawnEvent(CurrentStageNum);
+	
+	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
+}
+
 void AMainGameMode::InitGameState()
 {
 	Super::InitGameState();
@@ -54,7 +62,7 @@ void AMainGameMode::StartPlay()
 {
 	Super::StartPlay();
 	
-	EventSpawnManager->SpawnEvent(CurrentStageNum);
+	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
 }
 
 

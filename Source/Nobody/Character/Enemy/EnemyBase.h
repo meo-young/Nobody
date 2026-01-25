@@ -52,6 +52,9 @@ protected:
 	/** 스텝에 해당하는 위치로 이동시키는 함수입니다. */
 	void MoveToStepTransform(uint8 InStepIndex);
 	
+	/** 스폰 가능한 이벤트 목록에 추가하는 함수입니다. */
+	void AddToSpawnList();
+	
 protected:
 	/** 이벤트가 발생하는 오브젝트에 대한 변수입니다. */
 	UPROPERTY(EditInstanceOnly, Category = "변수")
@@ -69,6 +72,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	uint8 MaxStepIndex;
 	
+	/** 리스폰까지 걸리는 지연 시간입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	float RespawnDelay = 30.0f;
+	
 	/** 이벤트가 스폰될 때 재생되는 소리입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	TObjectPtr<USoundCue> EventSpawnSound;
@@ -84,6 +91,9 @@ protected:
 private:
 	/** 스텝 타이머입니다. */
 	FTimerHandle StepTimerHandle;
+	
+	/** 리스폰 시간을 측정하는 타이머입니다. */
+	FTimerHandle RespawnTimerHandle;
 	
 	/** 현재 스텝 인덱스입니다. */
 	uint8 CurrentStepIndex;
