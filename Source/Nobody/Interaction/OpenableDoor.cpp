@@ -66,8 +66,11 @@ void AOpenableDoor::CheckIfEventActivated()
 
 void AOpenableDoor::InitEvent()
 {
-	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
-	SpotLightComponent->SetVisibility(true);
+	if (GetIsEventActivated())
+	{
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
+		SpotLightComponent->SetVisibility(true);	
+	}
 	
 	Super::InitEvent();
 }

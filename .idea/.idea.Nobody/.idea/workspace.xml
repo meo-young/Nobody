@@ -15,12 +15,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Component/FootstepComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Component/FootstepComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Material/Body/MI_Cursed_Doll_Eye_R.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Material/Body/MI_Cursed_Doll_Eye_R.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Material/Hair/MI_Cursed_Doll_Hair.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Material/Hair/MI_Cursed_Doll_Hair.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +269,7 @@
       <workItem from="1768271007401" duration="7154000" />
       <workItem from="1768377981363" duration="568000" />
       <workItem from="1768446909865" duration="5179000" />
-      <workItem from="1769316427823" duration="4647000" />
+      <workItem from="1769316427823" duration="5394000" />
     </task>
     <servers />
   </component>
