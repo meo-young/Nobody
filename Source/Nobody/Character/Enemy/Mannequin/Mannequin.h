@@ -2,10 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "Character/Enemy/EnemyBase.h"
-#include "Doll.generated.h"
+#include "Mannequin.generated.h"
 
 UCLASS()
-class NOBODY_API ADoll : public AEnemyBase
+class NOBODY_API AMannequin : public AEnemyBase
 {
 	GENERATED_BODY()
 	

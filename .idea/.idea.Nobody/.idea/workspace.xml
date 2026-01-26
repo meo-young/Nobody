@@ -13,13 +13,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/Unreal_Project/Nobody" value="366uMB4KqIhvLCWrHyWmt54MUb2" />
+    </persistenceIdMap>
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
@@ -266,6 +269,7 @@
       <workItem from="1768377981363" duration="568000" />
       <workItem from="1768446909865" duration="5179000" />
       <workItem from="1769316427823" duration="9185000" />
+      <workItem from="1769397959816" duration="827000" />
     </task>
     <servers />
   </component>

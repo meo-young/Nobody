@@ -31,6 +31,8 @@ void AEnemyBase::StartStepSystem()
 	{
 		UGameplayStatics::PlaySoundAtLocation(this, EventSpawnSound, EventSpawnLocation);
 	}
+	
+	InteractionObject->SetEventActivated(true);
 }
 
 void AEnemyBase::PauseStepSystem()
@@ -54,6 +56,8 @@ void AEnemyBase::StopStepSystem()
 	
 	// RespawnDelay 경과 후 스폰 가능한 이벤트 리스트에 추가합니다.
 	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
+	
+	InteractionObject->SetEventActivated(false);
 }
 
 void AEnemyBase::GoToStep(int32 StepIndex)

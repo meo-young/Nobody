@@ -31,13 +31,13 @@ public:
 	
 public:
 	/** 스텝 시스템을 시작하는 함수입니다. */
-	virtual void StartStepSystem();
+	void StartStepSystem();
 	
 	/** 스텝 시스템을 일시정지 하는 함수입니다. */
 	void PauseStepSystem();
     
 	/** 스텝 시스템 중단하는 함수입니다. */
-	virtual void StopStepSystem();
+	void StopStepSystem();
     
 protected:
 	/** 특정 스텝으로 이동시키는 함수입니다. */
