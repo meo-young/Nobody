@@ -14,6 +14,7 @@ void UEventSpawnManager::Init()
 		if (AEnemyBase* Enemy = Cast<AEnemyBase>(Actor))
 		{
 			Enemies.Add(Enemy);
+			LOG(TEXT("Enemy Name : %s"), *Enemy->GetName());
 		}
 	}
 }

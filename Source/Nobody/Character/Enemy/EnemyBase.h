@@ -68,10 +68,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	float StepInterval = 4.0f;
 	
-	/** 최대 스텝 수입니다. */
-	UPROPERTY(EditDefaultsOnly, Category = "변수")
-	uint8 MaxStepIndex;
-	
 	/** 리스폰까지 걸리는 지연 시간입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	float RespawnDelay = 30.0f;
@@ -97,5 +93,8 @@ private:
 	
 	/** 현재 스텝 인덱스입니다. */
 	uint8 CurrentStepIndex;
+	
+	/** 최대 스텝 수입니다. */
+	uint8 MaxStepIndex;
 	
 };
