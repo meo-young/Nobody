@@ -94,6 +94,10 @@ void AInteractionBase::Interact_Implementation()
 	// 카메라를 보간하고, 액터 시퀀스가 재생하는 동안 입력을 비활성화합니다.
 	PlayerController->SetInputEnable(false);
 	PlayerController->SetViewTargetWithBlend(this,0.5f);
+	
+	// 이벤트 스폰 타이머를 일시정지하고 상호작용 중임을 나타냅니다.
+	EventEnemy->PauseSpawnSystem();
+	EventEnemy->bIsInteracting = true;
 }
 
 void AInteractionBase::OnStartActorSequenceEnded()
@@ -121,6 +125,10 @@ void AInteractionBase::OnEndActorSequenceEnded()
 	
 	// 상호작용 콜리전을 활성화합니다.
 	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	
+	// 상호작용시 이벤트 활성화까지 남은 시간을 확인하고, 타이머를 재가동합니다.
+	EventEnemy->ResetRespawnTimer();
+	EventEnemy->bIsInteracting = false;
 }
 
 void AInteractionBase::CheckIfEventActivated()

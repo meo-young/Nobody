@@ -38,6 +38,12 @@ public:
     
 	/** 스텝 시스템 중단하는 함수입니다. */
 	void StopStepSystem();
+	
+	/** 이벤트 스폰 시스템을 일시정지하는 함수입니다. 상호작용 시 호출됩니다. */
+	void PauseSpawnSystem();
+	
+	/** Respawn 타이머를 재가동 하는 함수입니다. 상호작용이 끝날 때 호출됩니다. */
+	void ResetRespawnTimer();
     
 protected:
 	/** 특정 스텝으로 이동시키는 함수입니다. */
@@ -54,6 +60,10 @@ protected:
 	
 	/** 스폰 가능한 이벤트 목록에 추가하는 함수입니다. */
 	void AddToSpawnList();
+	
+public:
+	/** 플레이어와 상호작용 중인지를 나타내는 변수입니다. */
+	uint8 bIsInteracting : 1 = false;
 	
 protected:
 	/** 이벤트가 발생하는 오브젝트에 대한 변수입니다. */
@@ -85,6 +95,12 @@ protected:
 	FVector EventSpawnLocation;
 	
 private:
+	/** Respawn 타이머를 재가동할 때 남은 시간을 저장하는 변수입니다. */
+	float ResetTime = 10.0f;
+	
+	/** Respawn까지 남은 시간을 저장하는 변수입니다. */
+	float RemainingRespawnTime = 0.0f;
+	
 	/** 스텝 타이머입니다. */
 	FTimerHandle StepTimerHandle;
 	

@@ -6,7 +6,7 @@
 
 void UEventSpawnManager::Init()
 {
-	TArray<AActor*> FoundActors;
+	/*TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemyBase::StaticClass(), FoundActors);
 	
 	for (AActor* Actor : FoundActors)
@@ -16,7 +16,7 @@ void UEventSpawnManager::Init()
 			Enemies.Add(Enemy);
 			LOG(TEXT("Enemy Name : %s"), *Enemy->GetName());
 		}
-	}
+	}*/
 }
 
 void UEventSpawnManager::SpawnEvent(const uint8 InCurrentLevel)
@@ -27,7 +27,7 @@ void UEventSpawnManager::SpawnEvent(const uint8 InCurrentLevel)
 		return;
 	}
 		
-	const uint8 RandomNumber = FMath::RandRange(0, InCurrentLevel);
+	const uint8 RandomNumber = FMath::RandRange(0, Enemies.Num()-1);
 	
 	Enemies[RandomNumber]->StartStepSystem();
 	Enemies.RemoveAt(RandomNumber);

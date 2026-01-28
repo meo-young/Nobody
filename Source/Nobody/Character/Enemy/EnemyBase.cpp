@@ -10,10 +10,20 @@
 void AEnemyBase::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	// RespawnDelay 경과 후 스폰 가능한 이벤트 리스트에 추가합니다.
+	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
 }
 
 void AEnemyBase::StartStepSystem()
 {
+	if (bIsInteracting)
+	{
+		LOG(TEXT("상호작용 중입니다."))
+		GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
+		return;
+	}
+	
 	CurrentStepIndex = 0;
 	MaxStepIndex = EnemyStepInfos.Num();
     
@@ -58,6 +68,24 @@ void AEnemyBase::StopStepSystem()
 	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
 	
 	InteractionObject->SetEventActivated(false);
+}
+
+void AEnemyBase::PauseSpawnSystem()
+{
+	// 이벤트 스폰까지 남은 시간을 받아옵니다.
+	RemainingRespawnTime = GetWorldTimerManager().GetTimerRemaining(RespawnTimerHandle);
+	GetWorldTimerManager().ClearTimer(RespawnTimerHandle);
+	
+	LOG(TEXT("이벤트 스폰까지 %f 남았습니다."), RemainingRespawnTime)
+}
+
+void AEnemyBase::ResetRespawnTimer()
+{
+	// 이벤트 스폰까지 남은 시간이 ResetTime보다 클 경우에만 해당 시간으로 타이머를 가동합니다.
+	const float ActivatedTimerDelay = FMath::Max(RemainingRespawnTime, ResetTime);
+	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, ActivatedTimerDelay, false);
+	
+	LOG(TEXT("%f로 타이머 초기화합니다"), ActivatedTimerDelay);
 }
 
 void AEnemyBase::GoToStep(int32 StepIndex)
