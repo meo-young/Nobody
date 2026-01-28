@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Sound/SoundCue.h"
 #include "SFXTableRowBase.generated.h"
 
 enum class ESFX : uint8;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Sound/SoundCue.h"
 #include "BGMTableRowBase.generated.h"
 
 enum class EBGM : uint8;

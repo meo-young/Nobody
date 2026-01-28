@@ -10,10 +10,7 @@ UCLASS()
 class NOBODY_API AMainGameMode : public ABaseGameMode
 {
 	GENERATED_BODY()
-	
-public:
-	AMainGameMode();
-	
+
 public:
 	virtual void PostInitProperties() override;
 	virtual void PostInitializeComponents() override;

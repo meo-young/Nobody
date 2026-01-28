@@ -15,12 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_OpenableDoor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player_.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Core/GM_Main.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Core/GM_Main.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Mannequin/BP_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Mannequin/BP_Mannequin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/TableRowBase/BGMTableRowBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/TableRowBase/BGMTableRowBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/TableRowBase/SFXTableRowBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/TableRowBase/SFXTableRowBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +283,7 @@
       <workItem from="1769316427823" duration="9185000" />
       <workItem from="1769397959816" duration="3818000" />
       <workItem from="1769569455331" duration="2151000" />
-      <workItem from="1769572160328" duration="2514000" />
+      <workItem from="1769572160328" duration="6200000" />
     </task>
     <servers />
   </component>
