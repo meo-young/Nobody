@@ -20,6 +20,9 @@ public:
 	virtual void Deinitialize() override;
 
 public:
+	/** 사운드 서브시스템을 초기화하는 함수입니다. */
+	void Init();
+	
 	/** 특정 위치에서 SFX를 재생하는 함수입니다. */
 	UFUNCTION(BlueprintCallable)
 	void PlaySFXInLocation(ESFX SFXType, const FVector& Location);

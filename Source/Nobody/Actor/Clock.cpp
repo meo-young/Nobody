@@ -1,5 +1,4 @@
 #include "Actor/Clock.h"
-
 #include "Nobody.h"
 
 AClock::AClock()

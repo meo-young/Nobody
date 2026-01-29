@@ -13,9 +13,9 @@ class NOBODY_API APlayerControllerBase : public APlayerController
 	GENERATED_BODY()
 	
 public:
-	APlayerControllerBase();
 	virtual void SetupInputComponent() override;
 	virtual void PostInitializeComponents() override;
+	virtual void OnPossess(APawn* InPawn) override;
 	virtual void BeginPlay() override;
 
 public:

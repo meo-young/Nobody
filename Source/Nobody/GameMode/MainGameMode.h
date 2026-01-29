@@ -12,6 +12,7 @@ class NOBODY_API AMainGameMode : public ABaseGameMode
 	GENERATED_BODY()
 
 public:
+	AMainGameMode();
 	virtual void PostInitProperties() override;
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;

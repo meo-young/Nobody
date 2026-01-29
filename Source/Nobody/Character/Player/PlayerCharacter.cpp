@@ -12,24 +12,6 @@
 
 APlayerCharacter::APlayerCharacter()
 {
-	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Move(TEXT("/Game/_Nobody/Input/IA_Move"));
-	if (IA_Move.Succeeded())
-	{
-		MoveAction = IA_Move.Object;
-	}
-	
-	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Look(TEXT("/Game/_Nobody/Input/IA_Look"));
-	if (IA_Look.Succeeded())
-	{
-		LookAction = IA_Look.Object;
-	}
-	
-	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Interact(TEXT("/Game/_Nobody/Input/IA_Interact"));
-	if (IA_Interact.Succeeded())
-	{
-		InteractAction = IA_Interact.Object;
-	}
-	
 	UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement();
 	CharacterMovementComponent->MaxWalkSpeed = 100.0f;
 	CharacterMovementComponent->MaxStepHeight = 15.0f;

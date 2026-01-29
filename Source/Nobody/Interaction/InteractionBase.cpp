@@ -12,18 +12,6 @@
 
 AInteractionBase::AInteractionBase()
 {
-	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Look(TEXT("/Game/_Nobody/Input/IA_Look"));
-	if (IA_Look.Succeeded())
-	{
-		LookAction = IA_Look.Object;	
-	}
-
-	static ConstructorHelpers::FObjectFinder<UInputAction> IA_Control(TEXT("/Game/_Nobody/Input/IA_Control"));
-	if (IA_Control.Succeeded())
-	{
-		ControlAction = IA_Control.Object;
-	}
-	
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	SetRootComponent(Root);
 	

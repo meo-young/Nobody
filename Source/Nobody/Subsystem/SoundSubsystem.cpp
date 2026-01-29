@@ -1,34 +1,100 @@
 #include "Subsystem/SoundSubsystem.h"
+#include "Nobody.h"
 #include "TableRowBase/BGMTableRowBase.h"
 #include "TableRowBase/SFXTableRowBase.h"
 #include "Enum/EBGM.h"
 #include "Enum/ESFX.h"
 #include "Components/AudioComponent.h"
-#include "Engine/AssetManager.h"
-#include "Engine/StreamableManager.h"
 #include "Sound/SoundCue.h"
 
 USoundSubsystem::USoundSubsystem()
 {
-	// SFX 데이터테이블을 로드합니다.
-	static ConstructorHelpers::FObjectFinder<UDataTable> SFXDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_SFX.DT_SFX"));
+	/*// SFX 데이터테이블을 로드합니다.
+	static ConstructorHelpers::FObjectFinder<UDataTable> SFXDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_SFX"));
 	if (SFXDataTableObj.Succeeded())
 	{
 		SFXDataTable = SFXDataTableObj.Object;
 	}
 
 	// BGM 데이터테이블을 로드합니다.
-	static ConstructorHelpers::FObjectFinder<UDataTable> BGMDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_BGM.DT_BGM"));
+	static ConstructorHelpers::FObjectFinder<UDataTable> BGMDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_BGM"));
 	if (BGMDataTableObj.Succeeded())
 	{
 		BGMDataTable = BGMDataTableObj.Object;
-	}
+	}*/
 }
 
 void USoundSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+	
+	SFXDataTable = LoadObject<UDataTable>(nullptr, TEXT("/Game/_Nobody/DataTable/DT_SFX"));
+	BGMDataTable = LoadObject<UDataTable>(nullptr, TEXT("/Game/_Nobody/DataTable/DT_BGM"));
+}
 
+void USoundSubsystem::Deinitialize()
+{
+	// BGM 오디오 컴포넌트를 정리합니다.
+	if (IsValid(BGMAudioComponent))
+	{
+		if (BGMAudioComponent->IsPlaying())
+		{
+			BGMAudioComponent->Stop();
+		}
+		
+		// 컴포넌트 등록을 해제합니다.
+		if (BGMAudioComponent->IsRegistered())
+		{
+			BGMAudioComponent->UnregisterComponent();
+		}
+		
+		BGMAudioComponent = nullptr;
+	}
+	
+	// 풀의 모든 오디오 컴포넌트를 정리합니다.
+	UAudioComponent* AC = nullptr;
+	while (SFXQueues.Dequeue(AC))
+	{
+		if (IsValid(AC))
+		{
+			if (AC->IsPlaying())
+			{
+				AC->Stop();
+			}
+			
+			// 컴포넌트 등록을 해제합니다.
+			if (AC->IsRegistered())
+			{
+				AC->UnregisterComponent();
+			}
+		}
+	}
+	
+	// 배열에 있는 모든 컴포넌트도 정리합니다.
+	for (UAudioComponent* Component : GCPreventionArray)
+	{
+		if (IsValid(Component))
+		{
+			if (Component->IsPlaying())
+			{
+				Component->Stop();
+			}
+			
+			if (Component->IsRegistered())
+			{
+				Component->UnregisterComponent();
+			}
+		}
+	}
+	
+	SFXQueues.Empty();
+	GCPreventionArray.Empty();
+
+	Super::Deinitialize();
+}
+
+void USoundSubsystem::Init()
+{
 	// 오디오 컴포넌트를 등록합니다.
 	RegisterSFXComponent();
 	RegisterBGMComponent();
@@ -38,33 +104,35 @@ void USoundSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	BGMDataTable->GetAllRows("BGM", BGMTableRows);
 }
 
-void USoundSubsystem::Deinitialize()
-{
-	SFXQueues.Empty();
-
-	Super::Deinitialize();
-}
-
 void USoundSubsystem::PlaySFXInLocation(ESFX SFXType, const FVector& Location)
 {
 	// 유효한 SFXType인지 확인합니다.
-	if (!SFXTableRows.IsValidIndex(static_cast<int32>(SFXType))) return;
+	if (!SFXTableRows.IsValidIndex(static_cast<int32>(SFXType)))
+	{
+		LOG(TEXT("USoundSubsystem: Invalid SFX Type %d"), static_cast<int32>(SFXType));
+		return;
+	}
 
-	// 비동기 로드를 사용하여 사운드를 로드하고 재생합니다.
-	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-	Streamable.RequestAsyncLoad(SFXTableRows[static_cast<int32>(SFXType)]->Sound.ToSoftObjectPath(),
-	[this, SFXType, Location]()
-		{
-			if (USoundCue* LoadedSound = SFXTableRows[static_cast<int32>(SFXType)]->Sound.Get())
-			{
-				if (UAudioComponent* AC = GetPooledAudioComponent())
-				{
-					AC->SetSound(LoadedSound);
-					AC->SetWorldLocation(Location);
-					AC->Play();
-				}	
-			}
-		});
+	// 동기 로드를 사용하여 사운드를 로드합니다.
+	USoundCue* LoadedSound = SFXTableRows[static_cast<int32>(SFXType)]->Sound.LoadSynchronous();
+	if (!IsValid(LoadedSound))
+	{
+		LOG(TEXT("USoundSubsystem: Failed to load SFX %d"), static_cast<int32>(SFXType));
+		return;
+	}
+
+	// 풀에서 오디오 컴포넌트를 가져옵니다.
+	UAudioComponent* AC = GetPooledAudioComponent();
+	if (!IsValid(AC))
+	{
+		LOG(TEXT("USoundSubsystem: Failed to get audio component"));
+		return;
+	}
+
+	// 사운드를 설정하고 재생합니다.
+	AC->SetSound(LoadedSound);
+	AC->SetWorldLocation(Location);
+	AC->Play();
 }
 
 void USoundSubsystem::PlaySFX2D(ESFX SFXType)
@@ -75,24 +143,35 @@ void USoundSubsystem::PlaySFX2D(ESFX SFXType)
 void USoundSubsystem::PlayBGM(EBGM BGMType)
 {
 	// 유효한 BGMType인지 확인합니다.
-	if (!BGMAudioComponent || !BGMTableRows.IsValidIndex(static_cast<int32>(BGMType))) return;
-	
-	// 비동기 로드를 사용하여 사운드를 로드하고 재생합니다.
-	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-	Streamable.RequestAsyncLoad(BGMTableRows[static_cast<int32>(BGMType)]->Sound.ToSoftObjectPath(),
-	[this, BGMType]()
-		{
-			if (USoundCue* LoadedSound = BGMTableRows[static_cast<int32>(BGMType)]->Sound.Get())
-			{
-				if (BGMAudioComponent->IsPlaying())
-				{
-					BGMAudioComponent->Stop();
-				}
+	if (!BGMAudioComponent)
+	{
+		LOG(TEXT("USoundSubsystem: BGM AudioComponent is invalid"));
+		return;
+	}
 
-				BGMAudioComponent->SetSound(LoadedSound);
-				BGMAudioComponent->Play();	
-			}
-		});
+	if (!BGMTableRows.IsValidIndex(static_cast<int32>(BGMType)))
+	{
+		LOG(TEXT("USoundSubsystem: Invalid BGM Type %d"), static_cast<int32>(BGMType));
+		return;
+	}
+	
+	// 동기 로드를 사용하여 사운드를 로드합니다.
+	USoundCue* LoadedSound = BGMTableRows[static_cast<int32>(BGMType)]->Sound.LoadSynchronous();
+	if (!IsValid(LoadedSound))
+	{
+		LOG(TEXT("USoundSubsystem: Failed to load BGM %d"), static_cast<int32>(BGMType));
+		return;
+	}
+
+	// 기존 BGM이 재생 중이면 정지합니다.
+	if (BGMAudioComponent->IsPlaying())
+	{
+		BGMAudioComponent->Stop();
+	}
+
+	// 사운드를 설정하고 재생합니다.
+	BGMAudioComponent->SetSound(LoadedSound);
+	BGMAudioComponent->Play();
 }
 
 void USoundSubsystem::StopBGM()

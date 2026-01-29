@@ -6,6 +6,7 @@
 
 class UEventSpawnManager;
 class AInteractionBase;
+class USoundCue;
 
 USTRUCT()
 struct FEnemyStepInfo

@@ -9,4 +9,7 @@ class NOBODY_API ABaseGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	virtual void BeginPlay() override;
+	
 };

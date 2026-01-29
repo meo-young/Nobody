@@ -5,19 +5,20 @@
 #include "Manager/EventSpawnManager.h"
 #include "PlayerController/PlayerControllerBase.h"
 
+AMainGameMode::AMainGameMode()
+{
+	DefaultPawnClass = APlayerCharacter::StaticClass();
+	PlayerControllerClass = APlayerControllerBase::StaticClass();
+}
+
 void AMainGameMode::PostInitProperties()
 {
 	Super::PostInitProperties(); 	
-	
-	CurrentStageNum = 0;
 }
 
 void AMainGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
-	
-	EventSpawnManager = NewObject<UEventSpawnManager>(this);
-	EventSpawnManager->Init();
 }
 
 void AMainGameMode::StartStage()
@@ -40,6 +41,11 @@ void AMainGameMode::PostInitializeComponents()
 void AMainGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	CurrentStageNum = 0;
+	
+	EventSpawnManager = NewObject<UEventSpawnManager>(this);
+	EventSpawnManager->Init();
 }
 
 void AMainGameMode::StartPlay()

@@ -5,27 +5,6 @@
 #include "Camera/PlayerCameraManagerBase.h"
 #include "UI/Crosshair/CrosshairWidget.h"
 
-APlayerControllerBase::APlayerControllerBase()
-{
-	static ConstructorHelpers::FObjectFinder<UInputMappingContext> IMC_Player(TEXT("/Game/_Nobody/Input/IMC_Player"));
-	if (IMC_Player.Succeeded())
-	{
-		MappingContext = IMC_Player.Object;
-	}
-	
-	static ConstructorHelpers::FClassFinder<APlayerCameraManagerBase> BP_PlayerCameraManager(TEXT("/Game/_Nobody/Blueprint/Camera/BP_PlayerCameraManager"));
-	if (BP_PlayerCameraManager.Succeeded())
-	{
-		PlayerCameraManagerClass = BP_PlayerCameraManager.Class;
-	}
-	
-	static ConstructorHelpers::FClassFinder<UCrosshairWidget> WBP_Crosshair(TEXT("/Game/_Nobody/UI/WBP_Crosshair"));
-	if (WBP_Crosshair.Succeeded())
-	{
-		CrosshairWidgetClass = WBP_Crosshair.Class;
-	}
-}
-
 void APlayerControllerBase::SetupInputComponent()
 {
 	Super::SetupInputComponent();
@@ -45,11 +24,18 @@ void APlayerControllerBase::PostInitializeComponents()
 	Super::PostInitializeComponents();
 }
 
+void APlayerControllerBase::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+	
+	CreateWidgetInstance();
+}
+
 void APlayerControllerBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	CreateWidgetInstance();
+	//CreateWidgetInstance();
 }
 
 void APlayerControllerBase::SetInputEnable(const bool InEnable)

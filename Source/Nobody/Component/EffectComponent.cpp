@@ -7,12 +7,6 @@
 UEffectComponent::UEffectComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-	
-	static ConstructorHelpers::FClassFinder<UBlurWidget> WBP_Blur(TEXT("/Game/_Nobody/UI/WBP_Blur"));
-	if (WBP_Blur.Succeeded())
-	{
-		BlurWidgetClass = WBP_Blur.Class;
-	}
 }
 
 void UEffectComponent::BeginPlay()
