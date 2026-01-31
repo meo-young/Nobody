@@ -31,6 +31,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|텍스처")
 	TObjectPtr<UTexture2D> HideTexture;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|텍스처")
+	TObjectPtr<UTexture2D> SoundTexture;
+	
 	UPROPERTY()
 	TArray<TObjectPtr<UTexture2D>> TextureSet;
 	

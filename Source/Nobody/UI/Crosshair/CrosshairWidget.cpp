@@ -11,6 +11,7 @@ void UCrosshairWidget::NativePreConstruct()
 	TextureSet.Emplace(NoneTexture);
 	TextureSet.Emplace(InspectTexture);
 	TextureSet.Emplace(HideTexture);
+	TextureSet.Emplace(SoundTexture);
 }
 
 void UCrosshairWidget::SetCrosshair(EInteractionType InteractionType)

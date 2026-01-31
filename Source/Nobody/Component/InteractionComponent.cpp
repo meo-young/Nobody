@@ -1,5 +1,6 @@
 #include "Component/InteractionComponent.h"
 #include "Nobody.h"
+#include "Actor/FamilyDoll.h"
 #include "Camera/CameraComponent.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Define/Define.h"
@@ -57,6 +58,11 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 		if (AInteractionBase* InteractionBase = Cast<AInteractionBase>(HitActor))
 		{
 			CrosshairWidget->SetCrosshair(InteractionBase->GetInteractionType());
+		}
+		
+		if (AFamilyDoll* FamilyDoll = Cast<AFamilyDoll>(HitActor))
+		{
+			CrosshairWidget->SetCrosshair(EInteractionType::Sound);
 		}
 	}
 	

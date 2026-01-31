@@ -34,6 +34,9 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UCrosshairWidget> CrosshairWidgetInstance;
 	
+private:
+	uint8 bActivated : 1 = false;
+	
 public:
 	FORCEINLINE UCrosshairWidget* GetCrosshairWidget() const { return CrosshairWidgetInstance; }
 	

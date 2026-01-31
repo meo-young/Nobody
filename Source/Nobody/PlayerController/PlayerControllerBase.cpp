@@ -28,14 +28,17 @@ void APlayerControllerBase::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 	
+	if (bActivated)
+	{
+		return;
+	}
+	
 	CreateWidgetInstance();
 }
 
 void APlayerControllerBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	//CreateWidgetInstance();
 }
 
 void APlayerControllerBase::SetInputEnable(const bool InEnable)
@@ -58,6 +61,8 @@ void APlayerControllerBase::SetInputEnable(const bool InEnable)
 
 void APlayerControllerBase::CreateWidgetInstance()
 {
+	bActivated = true;
+	
 	if (CrosshairWidgetClass)
 	{
 		if (CrosshairWidgetInstance = CreateWidget<UCrosshairWidget>(this, CrosshairWidgetClass))

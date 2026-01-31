@@ -67,6 +67,9 @@ protected:
 	void AddToSpawnList();
 	
 public:
+	/** 이벤트가 활성화되어 있는지를 나타내는 변수입니다. */
+	uint8 bIsEventActive : 1 = false;
+	
 	/** 플레이어와 상호작용 중인지를 나타내는 변수입니다. */
 	uint8 bIsInteracting : 1 = false;
 	

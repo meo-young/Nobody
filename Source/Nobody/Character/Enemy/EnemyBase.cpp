@@ -27,6 +27,8 @@ void AEnemyBase::StartStepSystem()
 	
 	CurrentStepIndex = 0;
 	MaxStepIndex = EnemyStepInfos.Num();
+	
+	bIsEventActive = true;
     
 	GoToStep(CurrentStepIndex);
     
@@ -52,6 +54,8 @@ void AEnemyBase::PauseStepSystem()
 	{
 		USoundLibrary::PlaySFXInLocation(this, EventPausedSound, EventSpawnLocation);
 	}
+	
+	bIsEventActive = false;
 	
 	// 스텝 타이머를 중단합니다.
 	GetWorldTimerManager().ClearTimer(StepTimerHandle);
