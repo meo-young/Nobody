@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "EnemyBase.generated.h"
 
+class UScareSFXComponent;
 class UEventSpawnManager;
 class AInteractionBase;
 class USoundCue;
@@ -45,6 +46,9 @@ public:
 	
 	/** Respawn 타이머를 재가동 하는 함수입니다. 상호작용이 끝날 때 호출됩니다. */
 	void ResetRespawnTimer();
+	
+	/** 무서운 소리를 랜덤으로 재생하는 함수입니다. 재생한 소리는 배열에서 제거됩니다. */
+	void PlayRandomScareSound();
     
 protected:
 	/** 특정 스텝으로 이동시키는 함수입니다. */
@@ -90,6 +94,10 @@ protected:
 	/** 이벤트가 걸렸을 때 재생되는 소리입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	TObjectPtr<USoundCue> EventPausedSound;
+	
+	/** 무서운 소리 배열입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	TArray<TObjectPtr<USoundCue>> ScareSounds;
 	
 	/** 이벤트가 스폰되는 위치입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")

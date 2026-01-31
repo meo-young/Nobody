@@ -11,11 +11,27 @@ void USoundLibrary::PlaySFXInLocation(const UObject* WorldContextObject, ESFX SF
 	}
 }
 
+void USoundLibrary::PlaySFXInLocation(const UObject* WorldContextObject, USoundCue* SoundCue, const FVector& Location)
+{
+	if (USoundSubsystem* SoundSubsystem = GetSoundSubsystem(WorldContextObject))
+	{
+		SoundSubsystem->PlaySFXInLocation(SoundCue, Location);
+	}
+}
+
 void USoundLibrary::PlaySFX2D(const UObject* WorldContextObject, ESFX SFXType)
 {
 	if (USoundSubsystem* SoundSubsystem = GetSoundSubsystem(WorldContextObject))
 	{
 		SoundSubsystem->PlaySFX2D(SFXType);
+	}
+}
+
+void USoundLibrary::PlaySFX2D(const UObject* WorldContextObject, USoundCue* SoundCue)
+{
+	if (USoundSubsystem* SoundSubsystem = GetSoundSubsystem(WorldContextObject))
+	{
+		SoundSubsystem->PlaySFX2D(SoundCue);
 	}
 }
 

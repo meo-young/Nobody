@@ -4,6 +4,7 @@
 #include "Interaction/InteractionBase.h"
 #include "Kismet/GameplayStatics.h"
 #include "Library/MathLibrary.h"
+#include "Library/SoundLibrary.h"
 #include "Manager/EventSpawnManager.h"
 #include "Sound/SoundCue.h"
 
@@ -39,7 +40,7 @@ void AEnemyBase::StartStepSystem()
 	
 	if (EventSpawnSound)
 	{
-		UGameplayStatics::PlaySoundAtLocation(this, EventSpawnSound, EventSpawnLocation);
+		USoundLibrary::PlaySFXInLocation(this, EventSpawnSound, EventSpawnLocation);
 	}
 	
 	InteractionObject->SetEventActivated(true);
@@ -49,7 +50,7 @@ void AEnemyBase::PauseStepSystem()
 {
 	if (EventPausedSound)
 	{
-		UGameplayStatics::PlaySoundAtLocation(this, EventPausedSound, EventSpawnLocation);
+		USoundLibrary::PlaySFXInLocation(this, EventPausedSound, EventSpawnLocation);
 	}
 	
 	// 스텝 타이머를 중단합니다.
@@ -86,6 +87,22 @@ void AEnemyBase::ResetRespawnTimer()
 	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, ActivatedTimerDelay, false);
 	
 	LOG(TEXT("%f로 타이머 초기화합니다"), ActivatedTimerDelay);
+}
+
+void AEnemyBase::PlayRandomScareSound()
+{
+	if (ScareSounds.IsEmpty())
+	{
+		return;
+	}
+	
+	// 배열에서 랜덤으로 소리를 선택합니다.
+	const int32 RandomIndex = FMath::RandRange(0, ScareSounds.Num() - 1);
+	USoundCue* SelectedSound = ScareSounds[RandomIndex];
+	
+	// 선택한 소리를 재생한 후 배열에서 제거합니다.
+	USoundLibrary::PlaySFXInLocation(GetOwner(), SelectedSound, EventSpawnLocation);
+	ScareSounds.RemoveAt(RandomIndex);
 }
 
 void AEnemyBase::GoToStep(int32 StepIndex)

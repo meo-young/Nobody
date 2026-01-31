@@ -135,9 +135,30 @@ void USoundSubsystem::PlaySFXInLocation(ESFX SFXType, const FVector& Location)
 	AC->Play();
 }
 
+void USoundSubsystem::PlaySFXInLocation(USoundCue* InSound, const FVector& Location)
+{
+	// 풀에서 오디오 컴포넌트를 가져옵니다.
+	UAudioComponent* AC = GetPooledAudioComponent();
+	if (!IsValid(AC))
+	{
+		LOG(TEXT("USoundSubsystem: Failed to get audio component"));
+		return;
+	}
+
+	// 사운드를 설정하고 재생합니다.
+	AC->SetSound(InSound);
+	AC->SetWorldLocation(Location);
+	AC->Play();
+}
+
 void USoundSubsystem::PlaySFX2D(ESFX SFXType)
 {
 	PlaySFXInLocation(SFXType, FVector::ZeroVector);
+}
+
+void USoundSubsystem::PlaySFX2D(USoundCue* InSound)
+{
+	PlaySFXInLocation(InSound, FVector::ZeroVector);
 }
 
 void USoundSubsystem::PlayBGM(EBGM BGMType)

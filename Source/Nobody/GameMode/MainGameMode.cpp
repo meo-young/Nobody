@@ -45,7 +45,6 @@ void AMainGameMode::BeginPlay()
 	CurrentStageNum = 0;
 	
 	EventSpawnManager = NewObject<UEventSpawnManager>(this);
-	EventSpawnManager->Init();
 }
 
 void AMainGameMode::StartPlay()

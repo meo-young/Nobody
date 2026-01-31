@@ -26,11 +26,13 @@ public:
 	/** 특정 위치에서 SFX를 재생하는 함수입니다. */
 	UFUNCTION(BlueprintCallable)
 	void PlaySFXInLocation(ESFX SFXType, const FVector& Location);
+	void PlaySFXInLocation(USoundCue* InSound, const FVector& Location);
 
 	/** 위치와 관계없이 제자리에서 SFX를 재생하는 함수입니다. */
 	UFUNCTION(BlueprintCallable)
 	void PlaySFX2D(ESFX SFXType);
-
+	void PlaySFX2D(USoundCue* InSound);
+	
 	/** BGM을 재생하는 함수입니다. */
 	UFUNCTION(BlueprintCallable)
 	void PlayBGM(EBGM BGMType);

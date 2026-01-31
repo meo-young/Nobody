@@ -4,21 +4,6 @@
 #include "Character/Enemy/EnemyBase.h"
 #include "Kismet/GameplayStatics.h"
 
-void UEventSpawnManager::Init()
-{
-	/*TArray<AActor*> FoundActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemyBase::StaticClass(), FoundActors);
-	
-	for (AActor* Actor : FoundActors)
-	{
-		if (AEnemyBase* Enemy = Cast<AEnemyBase>(Actor))
-		{
-			Enemies.Add(Enemy);
-			LOG(TEXT("Enemy Name : %s"), *Enemy->GetName());
-		}
-	}*/
-}
-
 void UEventSpawnManager::SpawnEvent(const uint8 InCurrentLevel)
 {
 	if (Enemies.IsEmpty())
