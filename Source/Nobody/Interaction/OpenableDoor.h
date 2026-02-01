@@ -16,6 +16,9 @@ public:
 	AOpenableDoor();
 	virtual void BeginPlay() override;
 	
+public:
+	bool HasPlayScarySound();
+	
 protected:
 	virtual void OnStartActorSequenceEnded() override;
 	virtual void DoControl(const FInputActionValue& Value) override;	
@@ -34,5 +37,13 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<USpotLightComponent> SpotLightComponent;
+	
+	/** 일정 간격마다 재생할 무서운 소리 변수입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수|소리")
+	TArray<TObjectPtr<USoundCue>> ScarySounds;
+	
+	/** 무서운 소리 재생 위치 오프셋 변수입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
+	FVector ScarySoundLocation = FVector::ZeroVector;
 	
 };

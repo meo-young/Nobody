@@ -3,6 +3,7 @@
 #include "Character/Player/PlayerCharacter.h"
 #include "Library/MathLibrary.h"
 #include "Manager/EventSpawnManager.h"
+#include "Manager/ScareSoundManager.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 AMainGameMode::AMainGameMode()
@@ -36,21 +37,23 @@ void AMainGameMode::InitGameState()
 void AMainGameMode::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
+	
+	CurrentStageNum = 0;
+	
+	EventSpawnManager = NewObject<UEventSpawnManager>(this);
+	ScareSoundManager = NewObject<UScareSoundManager>(this);
 }
 
 void AMainGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	CurrentStageNum = 0;
-	
-	EventSpawnManager = NewObject<UEventSpawnManager>(this);
 }
 
 void AMainGameMode::StartPlay()
 {
 	Super::StartPlay();
 	
+	ScareSoundManager->StartSpawnSoundTimer();
 	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
 }
 

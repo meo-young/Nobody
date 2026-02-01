@@ -4,6 +4,7 @@
 #include "GameMode/BaseGameMode.h"
 #include "MainGameMode.generated.h"
 
+class UScareSoundManager;
 class UEventSpawnManager;
 
 UCLASS()
@@ -32,11 +33,15 @@ private:
 	UPROPERTY()
 	TObjectPtr<UEventSpawnManager> EventSpawnManager;
 	
+	UPROPERTY()
+	TObjectPtr<UScareSoundManager> ScareSoundManager;
+	
 private:
 	uint8 CurrentStageNum = 0;
 	FTimerHandle EventSpawnTimerHandle;
 	
 public:
 	FORCEINLINE UEventSpawnManager* GetEventSpawnManager() const { return EventSpawnManager; }
+	FORCEINLINE UScareSoundManager* GetScareSoundManager() const { return ScareSoundManager; }
 	
 };

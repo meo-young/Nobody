@@ -90,10 +90,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	float RespawnDelay = 30.0f;
 	
-	/** 이벤트가 스폰될 때 재생되는 소리입니다. */
-	UPROPERTY(EditDefaultsOnly, Category = "변수")
-	TObjectPtr<USoundCue> EventSpawnSound;
-	
 	/** 이벤트가 걸렸을 때 재생되는 소리입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	TObjectPtr<USoundCue> EventPausedSound;

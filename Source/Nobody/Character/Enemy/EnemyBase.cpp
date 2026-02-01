@@ -40,11 +40,6 @@ void AEnemyBase::StartStepSystem()
 	   true
 	);
 	
-	if (EventSpawnSound)
-	{
-		USoundLibrary::PlaySFXInLocation(this, EventSpawnSound, EventSpawnLocation);
-	}
-	
 	InteractionObject->SetEventActivated(true);
 }
 

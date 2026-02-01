@@ -100,7 +100,7 @@ protected:
 	EInteractionType InteractionType;
 	
 	/** 상호작용 중인 상태를 나타내는 변수 */
-	uint8 bIsInteractPossible : 1 = false;
+	uint8 bIsInteractPossible : 1 = true;
 	
 private:
 	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */

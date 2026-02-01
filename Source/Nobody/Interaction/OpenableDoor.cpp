@@ -9,7 +9,9 @@
 #include "Enum/EInteractType.h"
 #include "Enum/ESFX.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameMode/MainGameMode.h"
 #include "Library/SoundLibrary.h"
+#include "Manager/ScareSoundManager.h"
 #include "Pawn/SpotlightCamera.h"
 
 AOpenableDoor::AOpenableDoor()
@@ -38,6 +40,38 @@ AOpenableDoor::AOpenableDoor()
 void AOpenableDoor::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	if (AMainGameMode* GameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode()))
+	{
+		if (UScareSoundManager* ScareSoundManager = GameMode->GetScareSoundManager())
+		{
+			ScareSoundManager->AddDoor(this);
+		}
+	}
+}
+
+bool AOpenableDoor::HasPlayScarySound()
+{
+	if (!bIsInteractPossible)
+	{
+		return false;
+	}
+	
+	if (ScarySounds.IsEmpty())
+	{
+		return false;
+	}
+	
+	// 랜덤으로 무서운 소리를 재생한 후 배열에서 제외합니다.
+	uint8 RandomIndex = FMath::RandRange(0, ScarySounds.Num() - 1);
+	USoundCue* RandomSound = ScarySounds[RandomIndex];
+	USoundLibrary::PlaySFXInLocation(this, RandomSound, ScarySoundLocation);
+	
+	ScarySounds.RemoveAt(RandomIndex);
+	
+	LOG(TEXT("Scare Sound 재생합니다"))
+	
+	return true;
 }
 
 void AOpenableDoor::DoControl(const FInputActionValue& Value)
