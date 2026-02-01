@@ -27,6 +27,6 @@ private:
 	
 	FTimerHandle ScareSoundTimerHandle;
 	
-	float ScareSoundInterval = 10.0f;
+	float ScareSoundInterval = 120.0f;
 	
 };

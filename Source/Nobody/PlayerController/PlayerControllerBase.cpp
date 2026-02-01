@@ -4,6 +4,7 @@
 #include "InputMappingContext.h"
 #include "Camera/PlayerCameraManagerBase.h"
 #include "UI/Crosshair/CrosshairWidget.h"
+#include "UI/Dialogue/DialogueWidget.h"
 
 void APlayerControllerBase::SetupInputComponent()
 {
@@ -68,6 +69,14 @@ void APlayerControllerBase::CreateWidgetInstance()
 		if (CrosshairWidgetInstance = CreateWidget<UCrosshairWidget>(this, CrosshairWidgetClass))
 		{
 			CrosshairWidgetInstance->AddToViewport();
+		}
+	}
+	
+	if (DialogueWidgetClass)
+	{
+		if (DialogueWidgetInstance = CreateWidget<UDialogueWidget>(this, DialogueWidgetClass))
+		{
+			DialogueWidgetInstance->AddToViewport();
 		}
 	}
 }
