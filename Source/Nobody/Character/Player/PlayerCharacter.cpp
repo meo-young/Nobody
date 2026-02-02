@@ -8,6 +8,7 @@
 #include "Component/FootstepComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
+#include "Component/VoiceComponent.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 APlayerCharacter::APlayerCharacter()
@@ -19,6 +20,7 @@ APlayerCharacter::APlayerCharacter()
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	FootstepComponent = CreateDefaultSubobject<UFootstepComponent>(TEXT("Footstep Component"));
 	EffectComponent = CreateDefaultSubobject<UEffectComponent>(TEXT("Effect Component"));
+	VoiceComponent = CreateDefaultSubobject<UVoiceComponent>(TEXT("Voice Component"));
 	
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
 	CameraComponent->SetupAttachment(GetMesh(), FName("head"));

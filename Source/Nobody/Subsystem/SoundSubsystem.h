@@ -15,7 +15,6 @@ class NOBODY_API USoundSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 	
 public:
-	USoundSubsystem();
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 

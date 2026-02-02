@@ -7,23 +7,6 @@
 #include "Components/AudioComponent.h"
 #include "Sound/SoundCue.h"
 
-USoundSubsystem::USoundSubsystem()
-{
-	/*// SFX 데이터테이블을 로드합니다.
-	static ConstructorHelpers::FObjectFinder<UDataTable> SFXDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_SFX"));
-	if (SFXDataTableObj.Succeeded())
-	{
-		SFXDataTable = SFXDataTableObj.Object;
-	}
-
-	// BGM 데이터테이블을 로드합니다.
-	static ConstructorHelpers::FObjectFinder<UDataTable> BGMDataTableObj(TEXT("/Game/_Nobody/DataTable/DT_BGM"));
-	if (BGMDataTableObj.Succeeded())
-	{
-		BGMDataTable = BGMDataTableObj.Object;
-	}*/
-}
-
 void USoundSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);

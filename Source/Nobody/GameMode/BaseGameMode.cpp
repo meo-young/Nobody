@@ -1,4 +1,6 @@
 #include "BaseGameMode.h"
+
+#include "Subsystem/DialogueSubsystem.h"
 #include "Subsystem/SoundSubsystem.h"
 
 void ABaseGameMode::BeginPlay()
@@ -10,4 +12,8 @@ void ABaseGameMode::BeginPlay()
 		SoundSubsystem->Init();
 	}
 	
+	if (UDialogueSubsystem* DialogueSubsystem = GetGameInstance()->GetSubsystem<UDialogueSubsystem>())
+	{
+		DialogueSubsystem->Init();
+	}
 }

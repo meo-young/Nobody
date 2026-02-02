@@ -15,8 +15,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Dialogue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Dialogue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/EVoice.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/EVoice.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/BaseGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/BaseGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +67,8 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/FootstepComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/VoiceComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Component/VoiceComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Define/Define.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Define/Define.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Enum/EBGM.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -73,6 +84,7 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Interface/Interactable.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Library/DialogueLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Library/SoundLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Manager/EventSpawnManager.h" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +94,8 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Pawn/SpotlightCamera.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/PlayerController/MainPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/PlayerController/MainPlayerController.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Subsystem/DialogueSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Subsystem/DialogueSubsystem.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Subsystem/SoundSubsystem.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/TableRowBase/BGMTableRowBase.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -290,7 +304,8 @@
       <workItem from="1769572160328" duration="8993000" />
       <workItem from="1769658383819" duration="5657000" />
       <workItem from="1769819248968" duration="12998000" />
-      <workItem from="1769917302683" duration="7690000" />
+      <workItem from="1769917302683" duration="9801000" />
+      <workItem from="1770000770830" duration="3409000" />
     </task>
     <servers />
   </component>

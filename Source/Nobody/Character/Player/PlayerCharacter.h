@@ -11,6 +11,7 @@ struct FInputActionValue;
 class UInputAction;
 class UInteractionComponent;
 class UEffectComponent;
+class UVoiceComponent;
 
 UCLASS()
 class NOBODY_API APlayerCharacter : public ACharacterBase
@@ -52,6 +53,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UFootstepComponent> FootstepComponent;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UVoiceComponent> VoiceComponent;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UEffectComponent> EffectComponent;
