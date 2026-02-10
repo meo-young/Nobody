@@ -6,6 +6,7 @@
 
 class USpotLightComponent;
 class USpringArmComponent;
+class USoundCue;
 
 UCLASS()
 class NOBODY_API AOpenableDoor : public AInteractionBase

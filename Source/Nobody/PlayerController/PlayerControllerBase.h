@@ -4,6 +4,7 @@
 #include "GameFramework/PlayerController.h"
 #include "PlayerControllerBase.generated.h"
 
+class UManualWidget;
 class UDialogueWidget;
 class UCrosshairWidget;
 class UInputMappingContext;
@@ -41,11 +42,18 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UDialogueWidget> DialogueWidgetInstance;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
+	TSubclassOf<UManualWidget> ManualWidgetClass;
+	
+	UPROPERTY()
+	TObjectPtr<UManualWidget> ManualWidgetInstance;
+	
 private:
 	uint8 bActivated : 1 = false;
 	
 public:
 	FORCEINLINE UCrosshairWidget* GetCrosshairWidget() const { return CrosshairWidgetInstance; }
 	FORCEINLINE UDialogueWidget* GetDialogueWidget() const { return DialogueWidgetInstance; }
-	
+	FORCEINLINE UManualWidget* GetManualWidget() const { return ManualWidgetInstance; }
+
 };

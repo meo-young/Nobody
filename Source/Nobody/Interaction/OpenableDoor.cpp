@@ -12,7 +12,9 @@
 #include "GameMode/MainGameMode.h"
 #include "Library/SoundLibrary.h"
 #include "Manager/ScareSoundManager.h"
-#include "Pawn/SpotlightCamera.h"
+#include "PlayerController/PlayerControllerBase.h"
+#include "UI/Manual/ManualWidget.h"
+#include "Sound/SoundCue.h"
 
 AOpenableDoor::AOpenableDoor()
 {
@@ -106,6 +108,9 @@ void AOpenableDoor::InitEvent()
 	}
 	
 	Super::InitEvent();
+	
+	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
+	PlayerController->GetManualWidget()->ShowWidget();
 }
 
 void AOpenableDoor::OnStartActorSequenceEnded()

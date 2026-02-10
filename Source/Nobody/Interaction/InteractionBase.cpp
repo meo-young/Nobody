@@ -5,10 +5,13 @@
 #include "Camera/CameraComponent.h"
 #include "Character/Enemy/EnemyBase.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Component/VoiceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
+#include "Enum/EVoiceType.h"
 #include "Kismet/GameplayStatics.h"
 #include "PlayerController/PlayerControllerBase.h"
+#include "UI/Manual/ManualWidget.h"
 
 AInteractionBase::AInteractionBase()
 {
@@ -138,6 +141,7 @@ void AInteractionBase::CheckIfEventActivated()
 	else
 	{
 		LOG(TEXT("이벤트가 활성화되지 않은 상태입니다"))
+		//Player->GetVoiceComponent()->PlayVoiceWithDelay(EVoiceType::EmptyDoor, 0.5f);
 		TimeDelay = 0.01f;
 	}
 	
@@ -150,6 +154,8 @@ void AInteractionBase::InitEvent()
 	{
 		EventEnemy->StopStepSystem();
 	}
+	
+	PlayerController->GetManualWidget()->ClearAllActions();
 	
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]()
@@ -186,6 +192,8 @@ void AInteractionBase::DoLook(const FInputActionValue& Value)
 void AInteractionBase::DoControl(const FInputActionValue& Value)
 {
 	if (!bIsInteractPossible) return;
+	
+	PlayerController->GetManualWidget()->HideWidget();
 
 	// 상호작용 종료 시퀀스를 재생합니다.
 	PlayInteractionEndSequence();

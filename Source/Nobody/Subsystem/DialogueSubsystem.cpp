@@ -27,8 +27,6 @@ void UDialogueSubsystem::Init()
 		LOG(TEXT("Voice TableRows 추출 성공"))
 		DialogueDataTable->GetAllRows("Voice", DialogueTableRows);
 	}
-	
-	ShowDialogue(EVoice::Scare);
 }
 
 void UDialogueSubsystem::ShowDialogue(EVoice InVoice)

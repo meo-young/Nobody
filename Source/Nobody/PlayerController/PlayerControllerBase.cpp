@@ -5,6 +5,7 @@
 #include "Camera/PlayerCameraManagerBase.h"
 #include "UI/Crosshair/CrosshairWidget.h"
 #include "UI/Dialogue/DialogueWidget.h"
+#include "UI/Manual/ManualWidget.h"
 
 void APlayerControllerBase::SetupInputComponent()
 {
@@ -77,6 +78,14 @@ void APlayerControllerBase::CreateWidgetInstance()
 		if (DialogueWidgetInstance = CreateWidget<UDialogueWidget>(this, DialogueWidgetClass))
 		{
 			DialogueWidgetInstance->AddToViewport();
+		}
+	}
+	
+	if (ManualWidgetClass)
+	{
+		if (ManualWidgetInstance = CreateWidget<UManualWidget>(this, ManualWidgetClass))
+		{
+			ManualWidgetInstance->AddToViewport();
 		}
 	}
 }

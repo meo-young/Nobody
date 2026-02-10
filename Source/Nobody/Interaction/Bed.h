@@ -18,6 +18,7 @@ public:
 
 protected:
 	virtual void OnEndActorSequenceEnded() override;
+	virtual void InitEvent() override;
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")

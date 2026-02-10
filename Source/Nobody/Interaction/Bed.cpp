@@ -2,6 +2,8 @@
 
 #include "Character/Player/PlayerCharacter.h"
 #include "Enum/EInteractType.h"
+#include "PlayerController/PlayerControllerBase.h"
+#include "UI/Manual/ManualWidget.h"
 
 ABed::ABed()
 {
@@ -31,4 +33,13 @@ void ABed::OnEndActorSequenceEnded()
 	Super::OnEndActorSequenceEnded();
 
 	Player->SetEffectEnable(true);
+}
+
+void ABed::InitEvent()
+{
+	Super::InitEvent();
+	
+	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("재생하기"));
+	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
+	PlayerController->GetManualWidget()->ShowWidget();
 }
