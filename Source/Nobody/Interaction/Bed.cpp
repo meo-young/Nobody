@@ -1,5 +1,4 @@
 #include "Interaction/Bed.h"
-
 #include "Character/Player/PlayerCharacter.h"
 #include "Enum/EInteractType.h"
 #include "PlayerController/PlayerControllerBase.h"
