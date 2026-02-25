@@ -7,6 +7,7 @@
 #include "Enum/EInteractType.h"
 #include "Interaction/InteractionBase.h"
 #include "Interface/Interactable.h"
+#include "Kismet/GameplayStatics.h"
 #include "PlayerController/PlayerControllerBase.h"
 #include "UI/Crosshair/CrosshairWidget.h"
 
@@ -19,14 +20,16 @@ void UInteractionComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (APlayerCharacter* Player = Cast<APlayerCharacter>(GetOwner()))
+	LOG(TEXT("InteractionComponent 초기화"))
+	
+	if (UCameraComponent* Camera = GetOwner()->FindComponentByClass<UCameraComponent>())
 	{
-		CameraComponent = Player->GetCameraComponent();	
-		
-		if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(Player->GetController()))
-		{
-			CrosshairWidget = PlayerController->GetCrosshairWidget();
-		}
+		CameraComponent = Camera;
+	}
+	
+	if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
+	{
+		CrosshairWidget = PlayerController->GetCrosshairWidget();
 	}
 	
 	CollisionParams.AddIgnoredActor(GetOwner());
@@ -55,18 +58,13 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	// 상호작용 물체가 있는 경우 Crosshair의 이미지를 변경합니다.
 	if (AActor* HitActor = HitResult.GetActor())
 	{
-		if (AInteractionBase* InteractionBase = Cast<AInteractionBase>(HitActor))
+		if (IInteractable* Interactable = Cast<IInteractable>(HitActor))
 		{
-			CrosshairWidget->SetCrosshair(InteractionBase->GetInteractionType());
-		}
-		
-		if (AFamilyDoll* FamilyDoll = Cast<AFamilyDoll>(HitActor))
-		{
-			CrosshairWidget->SetCrosshair(EInteractionType::Sound);
+			CrosshairWidget->SetCrosshair(Interactable->GetInteractionType());
 		}
 	}
 	
-	//DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.5f);
+	DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.5f);
 }
 
 void UInteractionComponent::ExecuteInteractIfPossible()
@@ -78,5 +76,11 @@ void UInteractionComponent::ExecuteInteractIfPossible()
 			IInteractable::Execute_Interact(HitActor);
 		}
 	}
+}
+
+void UInteractionComponent::SetTickEnabled(const bool bEnable)
+{
+	// Tick 활성화 여부를 설정합니다.
+	PrimaryComponentTick.SetTickFunctionEnable(bEnable);
 }
 

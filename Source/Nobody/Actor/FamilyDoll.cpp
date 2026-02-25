@@ -42,6 +42,11 @@ void AFamilyDoll::Interact_Implementation()
 	}
 }
 
+EInteractionType AFamilyDoll::GetInteractionType()
+{
+	return InteractionType;
+}
+
 void AFamilyDoll::PlayDollSound()
 {
 	if (DollSounds.IsEmpty())

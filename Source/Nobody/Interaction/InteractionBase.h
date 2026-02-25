@@ -28,6 +28,8 @@ public:
 public:
 	/** 상호작용을 수행하는 함수입니다. */
 	virtual void Interact_Implementation() override;
+	
+	virtual EInteractionType GetInteractionType() override;
 
 protected:
 	/** 시작 ActorSequence의 끝부분에 Trigger로 호출되는 이벤트입니다. */
@@ -122,8 +124,5 @@ public:
 	/** 이벤트 활성화에 대한 Getter, Setter */
 	FORCEINLINE uint8 GetIsEventActivated() const { return bIsEventActivated; }
 	FORCEINLINE void SetEventActivated(const bool Value) { bIsEventActivated = Value; };
-	
-	/** 상호작용 Type에 대한 Getter */
-	FORCEINLINE EInteractionType GetInteractionType() { return this->InteractionType; }
 	
 };

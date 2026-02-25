@@ -20,6 +20,8 @@ public:
 	/** 상호작용을 수행하는 함수입니다. */
 	virtual void Interact_Implementation() override;
 	
+	virtual EInteractionType GetInteractionType() override;
+	
 protected:
 	/** 인형에 맞는 소리를 재생하는 함수입니다. */
 	void PlayDollSound();
@@ -56,9 +58,5 @@ protected:
 	
 private:
 	FTimerHandle CollisionTimerHandle;
-	
-public:
-	/** 상호작용 Type에 대한 Getter */
-	FORCEINLINE EInteractionType GetInteractionType() { return this->InteractionType; }
 
 };

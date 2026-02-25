@@ -1,5 +1,6 @@
 #pragma once
 
+UENUM()
 enum EInteractionType : uint8
 {
 	None = 0,

@@ -19,4 +19,7 @@ class NOBODY_API IInteractable
 public:
 	UFUNCTION(BlueprintNativeEvent)
 	void Interact();
+	
+	virtual EInteractionType GetInteractionType() = 0;
 };
+

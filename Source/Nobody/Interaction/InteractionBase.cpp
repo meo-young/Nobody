@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Character/Enemy/EnemyBase.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Component/InteractionComponent.h"
 #include "Component/VoiceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
@@ -94,6 +95,11 @@ void AInteractionBase::Interact_Implementation()
 	}
 }
 
+EInteractionType AInteractionBase::GetInteractionType()
+{
+	return InteractionType;
+}
+
 void AInteractionBase::OnStartActorSequenceEnded()
 {
 	// 플레이어 컨트롤러를 빙의시킵니다.
@@ -104,6 +110,12 @@ void AInteractionBase::OnStartActorSequenceEnded()
 	OriginRotation = CameraComponent->GetRelativeRotation();
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
+	
+	// PlayerCharacter의 InteractionComponent Tick을 비활성화합니다.
+	if (UInteractionComponent* PlayerInteractionComp = Player->FindComponentByClass<UInteractionComponent>())
+	{
+		PlayerInteractionComp->SetTickEnabled(false);
+	}
 }
 
 void AInteractionBase::OnEndActorSequenceEnded()
@@ -125,6 +137,12 @@ void AInteractionBase::OnEndActorSequenceEnded()
 	{
 		EventEnemy->ResetRespawnTimer();
 		EventEnemy->bIsInteracting = false;	
+	}
+	
+	// PlayerCharacter의 InteractionComponent Tick을 다시 활성화합니다.
+	if (UInteractionComponent* PlayerInteractionComp = Player->FindComponentByClass<UInteractionComponent>())
+	{
+		PlayerInteractionComp->SetTickEnabled(true);
 	}
 }
 

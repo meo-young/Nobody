@@ -65,6 +65,8 @@ void APlayerControllerBase::CreateWidgetInstance()
 {
 	bActivated = true;
 	
+	LOG(TEXT("위젯이 생성됐습니다"))
+	
 	if (CrosshairWidgetClass)
 	{
 		if (CrosshairWidgetInstance = CreateWidget<UCrosshairWidget>(this, CrosshairWidgetClass))

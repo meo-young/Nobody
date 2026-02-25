@@ -15,11 +15,21 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Dad.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Dad.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Sister.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Sister.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Bed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Bed.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Chair.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Chair.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/EInteractType.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/EInteractType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Chair.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Chair.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Chair.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Chair.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/InteractionBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interface/Interactable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interface/Interactable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interface/Interactable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interface/Interactable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,6 +334,7 @@
       <workItem from="1771726881047" duration="7435000" />
       <workItem from="1771856838994" duration="2172000" />
       <workItem from="1771897752585" duration="4614000" />
+      <workItem from="1771983448457" duration="4678000" />
     </task>
     <servers />
   </component>
