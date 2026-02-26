@@ -38,7 +38,6 @@ void ABed::InitEvent()
 {
 	Super::InitEvent();
 	
-	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("재생하기"));
 	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
 	PlayerController->GetManualWidget()->ShowWidget();
 }

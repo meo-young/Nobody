@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "PlayerCharacter.generated.h"
 
+class USpotLightComponent;
 class UFootstepComponent;
 class APlayerControllerBase;
 class UCameraComponent;
@@ -27,6 +28,7 @@ public:
 public:
 	void SetEffectEnable(const bool bEnable);
 	void ExecuteDeathSequence();
+	void ShowDeadJumpScare();
 	
 protected:
 	/** 이동에 대한 입력을 처리하는 함수입니다. */
@@ -37,8 +39,18 @@ protected:
 	
 	/** 상호작용에 대한 입력을 처리하는 함수입니다. */
 	void DoInteract(const FInputActionValue& InputActionValue);
+	
+private:
+	/** 캐릭터의 초기 설정을 담당하는 함수입니다. */
+	void InitCharacterSetting();
 
 protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USkeletalMeshComponent> DollJumpScareMesh;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USpotLightComponent> JumpScareLight;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
 	TObjectPtr<UInputAction> MoveAction;
 	

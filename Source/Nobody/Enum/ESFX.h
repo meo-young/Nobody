@@ -9,5 +9,8 @@ enum class ESFX	: uint8
 	Door_Close = 3,
 	Flash_On = 4,
 	Flash_Off = 5,
-	Flash_Hum = 6
+	Flash_Hum = 6,
+	Chair_On = 7,
+	Chair_Off = 8,
+	Chair_Sit = 9
 };

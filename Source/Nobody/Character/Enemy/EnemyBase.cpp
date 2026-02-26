@@ -1,5 +1,6 @@
 #include "Character/Enemy/EnemyBase.h"
 #include "Nobody.h"
+#include "Character/Player/PlayerCharacter.h"
 #include "GameMode/MainGameMode.h"
 #include "Interaction/InteractionBase.h"
 #include "Kismet/GameplayStatics.h"
@@ -11,6 +12,8 @@
 void AEnemyBase::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 	
 	// RespawnDelay 경과 후 스폰 가능한 이벤트 리스트에 추가합니다.
 	GetWorldTimerManager().SetTimer(RespawnTimerHandle, this, &AEnemyBase::AddToSpawnList, UMathLibrary::GetRandomInRange(RespawnDelay), false);
@@ -117,7 +120,9 @@ void AEnemyBase::MoveToNextStep()
 	if (CurrentStepIndex >= MaxStepIndex)
 	{
 		LOG(TEXT("플레이어 사망"));
-		//StopStepSystem();
+		PlayerCharacter->ShowDeadJumpScare();
+		StopStepSystem();
+		
 	}
 	else
 	{

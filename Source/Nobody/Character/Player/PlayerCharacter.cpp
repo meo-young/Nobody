@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
 #include "Component/VoiceComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 APlayerCharacter::APlayerCharacter()
@@ -30,6 +31,12 @@ APlayerCharacter::APlayerCharacter()
 	CameraComponent->bEnableFirstPersonScale = true;
 	CameraComponent->FirstPersonFieldOfView = 70.0f;
 	CameraComponent->FirstPersonScale = 0.6f;
+	
+	DollJumpScareMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Doll JumpScare Mesh"));
+	DollJumpScareMesh->SetupAttachment(CameraComponent);
+	
+	JumpScareLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("JumpScare Light"));
+	JumpScareLight->SetupAttachment(CameraComponent);
 }
 
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -60,6 +67,9 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerController = Cast<APlayerControllerBase>(GetController());
+	
+	InitCharacterSetting();
+	//ShowDeadJumpScare();
 }
 
 void APlayerCharacter::Tick(float DeltaSeconds)
@@ -99,6 +109,14 @@ void APlayerCharacter::ExecuteDeathSequence()
 	LOG(TEXT("죽음 연출"));
 }
 
+void APlayerCharacter::ShowDeadJumpScare()
+{
+	DollJumpScareMesh->SetVisibility(true);
+	JumpScareLight->SetVisibility(true);
+	PlayerController->SetInputEnable(false);
+	SetActorLocation(FVector(-1309.795158f, 2436.616586f, 219.575262f));
+}
+
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 {
 	const FVector2D MoveValue = InputActionValue.Get<FVector2D>();
@@ -135,4 +153,11 @@ void APlayerCharacter::DoLook(const FInputActionValue& InputActionValue)
 void APlayerCharacter::DoInteract(const FInputActionValue& InputActionValue)
 {
 	InteractionComponent->ExecuteInteractIfPossible();
+}
+
+void APlayerCharacter::InitCharacterSetting()
+{
+	JumpScareLight->SetVisibility(false);
+	DollJumpScareMesh->SetVisibility(false);
+	PlayerController->SetInputEnable(true);
 }

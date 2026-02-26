@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "EnemyBase.generated.h"
 
+class APlayerCharacter;
 class UScareSFXComponent;
 class UEventSpawnManager;
 class AInteractionBase;
@@ -103,6 +104,10 @@ protected:
 	FVector EventSpawnLocation;
 	
 private:
+	/** 플레이어 캐릭터에 대한 캐싱 변수입니다. */
+	UPROPERTY()
+	TObjectPtr<APlayerCharacter> PlayerCharacter;
+	
 	/** Respawn 타이머를 재가동할 때 남은 시간을 저장하는 변수입니다. */
 	float ResetTime = 10.0f;
 	
