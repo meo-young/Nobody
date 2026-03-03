@@ -18,7 +18,8 @@ public class Nobody : ModuleRules
 			"UMG",
 			"AIModule",
 			"LevelSequence",
-			"MovieScene"
+			"MovieScene",
+			"SkeletalMerging"
 		});
 
 		PublicIncludePaths.AddRange(new string[] { "Nobody" });

@@ -15,23 +15,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ClockUI/Material/M_AnalogClock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ClockUI/Material/M_AnalogClock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SKM_Cursed_Doll.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SKM_Cursed_Doll.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SeparatedMesh/SKM_Body.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SeparatedMesh/SKM_Body.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/BP_Doll.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Dad.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Dad.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Sister.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Family/BP_Sister.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Bed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Bed.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Chair.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Interaction/BP_Chair.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/DataTable/DT_SFX.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/Ghost_Idle_Standing_HeadShake.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/Ghost_Idle_Standing_HeadShake.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Mesh/Swing/lambert1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Mesh/Swing/lambert1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Blur.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Blur.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Enum/ESFX.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Nobody.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Nobody.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,23 +140,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ 프로젝트.Nobody.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ 프로젝트.Nobody.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.anthropic.code.plugin.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ 프로젝트.Nobody">
     <configuration name="Nobody" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -337,7 +331,8 @@
       <workItem from="1771856838994" duration="2172000" />
       <workItem from="1771897752585" duration="4614000" />
       <workItem from="1771983448457" duration="9474000" />
-      <workItem from="1772073650784" duration="6124000" />
+      <workItem from="1772073650784" duration="7478000" />
+      <workItem from="1772518098199" duration="10063000" />
     </task>
     <servers />
   </component>
@@ -348,6 +343,10 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

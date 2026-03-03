@@ -3,6 +3,7 @@
 #include "EnhancedInputComponent.h"
 #include "Nobody.h"
 #include "InputAction.h"
+#include "SkeletalMeshMerge.h"
 #include "Camera/CameraComponent.h"
 #include "Component/EffectComponent.h"
 #include "Component/FootstepComponent.h"
@@ -10,6 +11,7 @@
 #include "Component/InteractionComponent.h"
 #include "Component/VoiceComponent.h"
 #include "Components/SpotLightComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 APlayerCharacter::APlayerCharacter()
@@ -23,10 +25,15 @@ APlayerCharacter::APlayerCharacter()
 	EffectComponent = CreateDefaultSubobject<UEffectComponent>(TEXT("Effect Component"));
 	VoiceComponent = CreateDefaultSubobject<UVoiceComponent>(TEXT("Voice Component"));
 	
-	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
-	CameraComponent->SetupAttachment(GetMesh(), FName("head"));
-	CameraComponent->SetRelativeLocationAndRotation(FVector(-2.8f, 5.89f, 0.0f), FRotator(0.0f, 90.0f, -90.0f));
-	CameraComponent->bUsePawnControlRotation = true;
+	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Camera Boom"));
+	SpringArmComponent->SetupAttachment(GetMesh(), FName("head"));
+	SpringArmComponent->SetRelativeLocationAndRotation(FVector(-2.8f, 5.89f, 0.0f), FRotator(0.0f, 90.0f, -90.0f));
+	SpringArmComponent->TargetArmLength = 0.0f;
+	SpringArmComponent->bUsePawnControlRotation = true;
+	
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Follow Camera"));
+	CameraComponent->SetupAttachment(SpringArmComponent, USpringArmComponent::SocketName);
+	CameraComponent->bUsePawnControlRotation = false;
 	CameraComponent->bEnableFirstPersonFieldOfView = true;
 	CameraComponent->bEnableFirstPersonScale = true;
 	CameraComponent->FirstPersonFieldOfView = 70.0f;
@@ -34,7 +41,10 @@ APlayerCharacter::APlayerCharacter()
 	
 	DollJumpScareMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Doll JumpScare Mesh"));
 	DollJumpScareMesh->SetupAttachment(CameraComponent);
-	
+
+	DollClothMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Doll Cloth Mesh"));
+	DollClothMesh->SetupAttachment(DollJumpScareMesh);
+
 	JumpScareLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("JumpScare Light"));
 	JumpScareLight->SetupAttachment(CameraComponent);
 }
@@ -68,8 +78,9 @@ void APlayerCharacter::BeginPlay()
 
 	PlayerController = Cast<APlayerControllerBase>(GetController());
 	
+	MergeAndApplyMeshes();
+	
 	InitCharacterSetting();
-	//ShowDeadJumpScare();
 }
 
 void APlayerCharacter::Tick(float DeltaSeconds)
@@ -106,12 +117,24 @@ void APlayerCharacter::SetEffectEnable(const bool bEnable)
 
 void APlayerCharacter::ExecuteDeathSequence()
 {
-	LOG(TEXT("죽음 연출"));
+	ShowDeadJumpScare();
+	ShowDeadJumpScare_Implementation();
 }
 
-void APlayerCharacter::ShowDeadJumpScare()
+void APlayerCharacter::ShowDeadJumpScare_Implementation()
 {
+	// 메시에 모프 타겟이 실제로 존재하는지 확인
+	if (USkeletalMesh* SkelMesh = DollJumpScareMesh->GetSkeletalMeshAsset())
+	{
+		for (const auto& MT : SkelMesh->GetMorphTargets())
+		{
+			LOG(TEXT("MorphTarget 존재: %s"), *MT->GetName());
+		}
+	}
+
+	
 	DollJumpScareMesh->SetVisibility(true);
+	DollClothMesh->SetVisibility(true);
 	JumpScareLight->SetVisibility(true);
 	PlayerController->SetInputEnable(false);
 	SetActorLocation(FVector(-1309.795158f, 2436.616586f, 219.575262f));
@@ -159,5 +182,30 @@ void APlayerCharacter::InitCharacterSetting()
 {
 	JumpScareLight->SetVisibility(false);
 	DollJumpScareMesh->SetVisibility(false);
+	DollClothMesh->SetVisibility(false);
 	PlayerController->SetInputEnable(true);
+}
+
+void APlayerCharacter::MergeAndApplyMeshes()
+{
+	if (DollMeshesToMerge.IsEmpty()) return;
+
+	USkeletalMesh* MergedMesh = NewObject<USkeletalMesh>(
+		GetTransientPackage(), NAME_None, RF_Transient
+	);
+
+	TArray<FSkelMeshMergeSectionMapping> EmptySectionMappings;
+	FSkeletalMeshMerge Merger(MergedMesh, DollMeshesToMerge, EmptySectionMappings, 0);
+
+	if (Merger.DoMerge())
+	{
+		// 병합 결과는 DollClothMesh에 적용, DollJumpScareMesh(SKM_Body)는 건드리지 않음
+		DollClothMesh->SetSkeletalMesh(MergedMesh);
+		// SKM_Body의 포즈를 따라감
+		DollClothMesh->SetLeaderPoseComponent(DollJumpScareMesh);
+	}
+	else
+	{
+		LOG(TEXT("Skeletal Mesh 병합 실패"));
+	}
 }

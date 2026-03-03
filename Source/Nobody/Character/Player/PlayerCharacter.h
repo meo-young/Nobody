@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "PlayerCharacter.generated.h"
 
+class USpringArmComponent;
 class USpotLightComponent;
 class UFootstepComponent;
 class APlayerControllerBase;
@@ -28,7 +29,6 @@ public:
 public:
 	void SetEffectEnable(const bool bEnable);
 	void ExecuteDeathSequence();
-	void ShowDeadJumpScare();
 	
 protected:
 	/** 이동에 대한 입력을 처리하는 함수입니다. */
@@ -40,9 +40,16 @@ protected:
 	/** 상호작용에 대한 입력을 처리하는 함수입니다. */
 	void DoInteract(const FInputActionValue& InputActionValue);
 	
+	UFUNCTION(BlueprintNativeEvent)
+	void ShowDeadJumpScare();
+	
+	void ShowDeadJumpScare_Implementation();
+	
 private:
 	/** 캐릭터의 초기 설정을 담당하는 함수입니다. */
 	void InitCharacterSetting();
+	
+	void MergeAndApplyMeshes();
 
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
@@ -72,8 +79,19 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UEffectComponent> EffectComponent;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "변수|컴포넌트")
 	TObjectPtr<UCameraComponent> CameraComponent;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "변수|컴포넌트")
+	TObjectPtr<USpringArmComponent> SpringArmComponent;
+	
+	// SKM_Dress, SKM_Boots 등 Body를 제외한 나머지 메시 할당
+	UPROPERTY(EditDefaultsOnly, Category = "변수|메시")
+	TArray<TObjectPtr<USkeletalMesh>> DollMeshesToMerge;
+
+	// 병합된 의상 메시를 담는 컴포넌트 (DollJumpScareMesh를 Leader로 따라감)
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<USkeletalMeshComponent> DollClothMesh;
 
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
