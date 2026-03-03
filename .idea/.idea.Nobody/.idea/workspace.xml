@@ -15,16 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SKM_Cursed_Doll.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SKM_Cursed_Doll.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SeparatedMesh/SKM_Body.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cursed_Doll/Mesh/SeparatedMesh/SKM_Body.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/Ghost_Idle_Standing_HeadShake.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Doll/Ghost_Idle_Standing_HeadShake.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Blur.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/UI/WBP_Blur.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Enemy/EnemyBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Nobody.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Nobody.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +325,7 @@
       <workItem from="1771897752585" duration="4614000" />
       <workItem from="1771983448457" duration="9474000" />
       <workItem from="1772073650784" duration="7478000" />
-      <workItem from="1772518098199" duration="10063000" />
+      <workItem from="1772518098199" duration="10819000" />
     </task>
     <servers />
   </component>

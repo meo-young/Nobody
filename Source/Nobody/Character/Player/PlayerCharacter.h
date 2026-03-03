@@ -92,6 +92,11 @@ protected:
 	// 병합된 의상 메시를 담는 컴포넌트 (DollJumpScareMesh를 Leader로 따라감)
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<USkeletalMeshComponent> DollClothMesh;
+	
+	// CameraBoom의 CameraRotationLagSpeed와 동일한 값으로 설정
+	UPROPERTY(EditDefaultsOnly, Category = "변수")
+	float RotationLagSpeed = 15.0f;
+
 
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;

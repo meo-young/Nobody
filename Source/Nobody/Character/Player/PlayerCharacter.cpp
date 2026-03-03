@@ -28,6 +28,8 @@ APlayerCharacter::APlayerCharacter()
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Camera Boom"));
 	SpringArmComponent->SetupAttachment(GetMesh(), FName("head"));
 	SpringArmComponent->SetRelativeLocationAndRotation(FVector(-2.8f, 5.89f, 0.0f), FRotator(0.0f, 90.0f, -90.0f));
+	SpringArmComponent->CameraRotationLagSpeed = 15.0f;
+	SpringArmComponent->bEnableCameraRotationLag = true;
 	SpringArmComponent->TargetArmLength = 0.0f;
 	SpringArmComponent->bUsePawnControlRotation = true;
 	
@@ -38,6 +40,8 @@ APlayerCharacter::APlayerCharacter()
 	CameraComponent->bEnableFirstPersonScale = true;
 	CameraComponent->FirstPersonFieldOfView = 70.0f;
 	CameraComponent->FirstPersonScale = 0.6f;
+	
+	bUseControllerRotationYaw = false;
 	
 	DollJumpScareMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Doll JumpScare Mesh"));
 	DollJumpScareMesh->SetupAttachment(CameraComponent);
@@ -85,7 +89,14 @@ void APlayerCharacter::BeginPlay()
 
 void APlayerCharacter::Tick(float DeltaSeconds)
 {
+	
 	Super::Tick(DeltaSeconds);
+	
+	// 캐릭터 Yaw를 카메라 Lag 속도에 맞춰 보간
+	const FRotator TargetRotation = FRotator(0.f, GetControlRotation().Yaw, 0.f);
+	const FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, RotationLagSpeed);
+	SetActorRotation(NewRotation);
+
 	
 	// 플레이어가 걷는 중이면 발걸음 소리를 재생합니다.
 	UCharacterMovementComponent* MovementComponent = GetCharacterMovement();
