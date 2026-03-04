@@ -28,7 +28,7 @@ APlayerCharacter::APlayerCharacter()
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Camera Boom"));
 	SpringArmComponent->SetupAttachment(GetMesh(), FName("head"));
 	SpringArmComponent->SetRelativeLocationAndRotation(FVector(-2.8f, 5.89f, 0.0f), FRotator(0.0f, 90.0f, -90.0f));
-	SpringArmComponent->CameraRotationLagSpeed = 15.0f;
+	SpringArmComponent->CameraRotationLagSpeed = 17.0f;
 	SpringArmComponent->bEnableCameraRotationLag = true;
 	SpringArmComponent->TargetArmLength = 0.0f;
 	SpringArmComponent->bUsePawnControlRotation = true;
@@ -48,6 +48,9 @@ APlayerCharacter::APlayerCharacter()
 
 	DollClothMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Doll Cloth Mesh"));
 	DollClothMesh->SetupAttachment(DollJumpScareMesh);
+	
+	MannequinJumpScareMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mannequin JumpScare Mesh"));
+	MannequinJumpScareMesh->SetupAttachment(CameraComponent);
 
 	JumpScareLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("JumpScare Light"));
 	JumpScareLight->SetupAttachment(CameraComponent);
@@ -83,13 +86,11 @@ void APlayerCharacter::BeginPlay()
 	PlayerController = Cast<APlayerControllerBase>(GetController());
 	
 	MergeAndApplyMeshes();
-	
 	InitCharacterSetting();
 }
 
 void APlayerCharacter::Tick(float DeltaSeconds)
 {
-	
 	Super::Tick(DeltaSeconds);
 	
 	// 캐릭터 Yaw를 카메라 Lag 속도에 맞춰 보간
@@ -126,26 +127,26 @@ void APlayerCharacter::SetEffectEnable(const bool bEnable)
 	EffectComponent->SetEffectEnable(bEnable);	
 }
 
-void APlayerCharacter::ExecuteDeathSequence()
+void APlayerCharacter::ExecuteDeathSequence(EJumpScareType JumpScareType)
 {
-	ShowDeadJumpScare();
-	ShowDeadJumpScare_Implementation();
+	ShowDeadJumpScare(JumpScareType);
+	ShowDeadJumpScare_Implementation(JumpScareType);
 }
 
-void APlayerCharacter::ShowDeadJumpScare_Implementation()
+void APlayerCharacter::ShowDeadJumpScare_Implementation(EJumpScareType JumpScareType)
 {
-	// 메시에 모프 타겟이 실제로 존재하는지 확인
-	if (USkeletalMesh* SkelMesh = DollJumpScareMesh->GetSkeletalMeshAsset())
+	switch (JumpScareType)
 	{
-		for (const auto& MT : SkelMesh->GetMorphTargets())
-		{
-			LOG(TEXT("MorphTarget 존재: %s"), *MT->GetName());
-		}
+		case EJumpScareType::Doll:
+			DollJumpScareMesh->SetVisibility(true);
+			DollClothMesh->SetVisibility(true);
+			break;
+		
+		case EJumpScareType::Mannequin:
+			MannequinJumpScareMesh->SetVisibility(true);
+			break;
 	}
 
-	
-	DollJumpScareMesh->SetVisibility(true);
-	DollClothMesh->SetVisibility(true);
 	JumpScareLight->SetVisibility(true);
 	PlayerController->SetInputEnable(false);
 	SetActorLocation(FVector(-1309.795158f, 2436.616586f, 219.575262f));
@@ -191,6 +192,7 @@ void APlayerCharacter::DoInteract(const FInputActionValue& InputActionValue)
 
 void APlayerCharacter::InitCharacterSetting()
 {
+	MannequinJumpScareMesh->SetVisibility(false);
 	JumpScareLight->SetVisibility(false);
 	DollJumpScareMesh->SetVisibility(false);
 	DollClothMesh->SetVisibility(false);

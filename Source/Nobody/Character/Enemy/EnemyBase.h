@@ -4,6 +4,7 @@
 #include "Character/CharacterBase.h"
 #include "EnemyBase.generated.h"
 
+enum class EJumpScareType : uint8;
 class APlayerCharacter;
 class UScareSFXComponent;
 class UEventSpawnManager;
@@ -102,6 +103,9 @@ protected:
 	/** 이벤트가 스폰되는 위치입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	FVector EventSpawnLocation;
+	
+	/** 현재 점프 스케어 타입입니다. */
+	EJumpScareType CurrentJumpScareType;
 	
 private:
 	/** 플레이어 캐릭터에 대한 캐싱 변수입니다. */

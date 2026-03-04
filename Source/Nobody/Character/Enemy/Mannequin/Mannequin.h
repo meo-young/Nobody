@@ -9,4 +9,7 @@ class NOBODY_API AMannequin : public AEnemyBase
 {
 	GENERATED_BODY()
 	
+public:
+	AMannequin();
+	
 };

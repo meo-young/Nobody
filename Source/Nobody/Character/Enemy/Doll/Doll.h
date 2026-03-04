@@ -9,4 +9,7 @@ class NOBODY_API ADoll : public AEnemyBase
 {
 	GENERATED_BODY()
 	
+public:
+	ADoll();
+	
 };

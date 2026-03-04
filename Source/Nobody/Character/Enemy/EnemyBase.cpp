@@ -120,7 +120,7 @@ void AEnemyBase::MoveToNextStep()
 	if (CurrentStepIndex >= MaxStepIndex)
 	{
 		LOG(TEXT("플레이어 사망"));
-		PlayerCharacter->ExecuteDeathSequence();
+		PlayerCharacter->ExecuteDeathSequence(CurrentJumpScareType);
 		StopStepSystem();
 		
 	}

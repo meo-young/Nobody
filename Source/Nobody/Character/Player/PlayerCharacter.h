@@ -15,6 +15,13 @@ class UInteractionComponent;
 class UEffectComponent;
 class UVoiceComponent;
 
+UENUM(BlueprintType)
+enum class EJumpScareType : uint8
+{
+	Doll = 0,
+	Mannequin = 1
+};
+
 UCLASS()
 class NOBODY_API APlayerCharacter : public ACharacterBase
 {
@@ -28,7 +35,7 @@ public:
 
 public:
 	void SetEffectEnable(const bool bEnable);
-	void ExecuteDeathSequence();
+	void ExecuteDeathSequence(EJumpScareType JumpScareType);
 	
 protected:
 	/** 이동에 대한 입력을 처리하는 함수입니다. */
@@ -41,9 +48,9 @@ protected:
 	void DoInteract(const FInputActionValue& InputActionValue);
 	
 	UFUNCTION(BlueprintNativeEvent)
-	void ShowDeadJumpScare();
+	void ShowDeadJumpScare(EJumpScareType JumpScareType);
 	
-	void ShowDeadJumpScare_Implementation();
+	void ShowDeadJumpScare_Implementation(EJumpScareType JumpScareType);
 	
 private:
 	/** 캐릭터의 초기 설정을 담당하는 함수입니다. */
@@ -54,6 +61,9 @@ private:
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USkeletalMeshComponent> DollJumpScareMesh;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USkeletalMeshComponent> MannequinJumpScareMesh;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USpotLightComponent> JumpScareLight;
@@ -95,7 +105,7 @@ protected:
 	
 	// CameraBoom의 CameraRotationLagSpeed와 동일한 값으로 설정
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
-	float RotationLagSpeed = 15.0f;
+	float RotationLagSpeed = 17.0f;
 
 
 	UPROPERTY()
