@@ -9,6 +9,7 @@
 #include "Component/VoiceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Enum/EVoiceType.h"
 #include "Kismet/GameplayStatics.h"
 #include "PlayerController/PlayerControllerBase.h"
@@ -218,8 +219,9 @@ void AInteractionBase::DoControl(const FInputActionValue& Value)
 	
 	// 플레이어의 위치, 회전 값을 초기화합니다.
 	Player->SetActorLocation(PlayerTargetLocation);
+	PlayerController->SetControlRotation(PlayerTargetRotation);
 	Player->SetActorRotation(PlayerTargetRotation);
-	Player->GetCameraComponent()->SetWorldRotation(PlayerTargetRotation);
+	//Player->GetSpringArm()->SetWorldRotation(PlayerTargetRotation);
 	
 	// 입력을 비활성화하고, 카메라를 보간합니다.
 	PlayerController->SetInputEnable(false);

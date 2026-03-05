@@ -93,11 +93,13 @@ void APlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	
-	// 캐릭터 Yaw를 카메라 Lag 속도에 맞춰 보간
-	const FRotator TargetRotation = FRotator(0.f, GetControlRotation().Yaw, 0.f);
-	const FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, RotationLagSpeed);
-	SetActorRotation(NewRotation);
-
+	if (IsPlayerControlled())
+	{
+		// 캐릭터 Yaw를 카메라 Lag 속도에 맞춰 보간
+		const FRotator TargetRotation = FRotator(0.f, GetControlRotation().Yaw, 0.f);
+		const FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, RotationLagSpeed);
+		SetActorRotation(NewRotation);
+	}
 	
 	// 플레이어가 걷는 중이면 발걸음 소리를 재생합니다.
 	UCharacterMovementComponent* MovementComponent = GetCharacterMovement();

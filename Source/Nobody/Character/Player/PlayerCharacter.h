@@ -114,5 +114,6 @@ protected:
 public:
 	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	FORCEINLINE UVoiceComponent* GetVoiceComponent() const { return VoiceComponent; }
+	FORCEINLINE USpringArmComponent* GetSpringArm() const { return SpringArmComponent; }
 	
 };
