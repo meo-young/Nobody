@@ -59,6 +59,7 @@ private:
 	void MergeAndApplyMeshes();
 
 protected:
+#pragma region Component
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USkeletalMeshComponent> DollJumpScareMesh;
 	
@@ -67,15 +68,6 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USpotLightComponent> JumpScareLight;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
-	TObjectPtr<UInputAction> MoveAction;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
-	TObjectPtr<UInputAction> LookAction;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
-	TObjectPtr<UInputAction> InteractAction;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UInteractionComponent> InteractionComponent;
@@ -102,11 +94,25 @@ protected:
 	// 병합된 의상 메시를 담는 컴포넌트 (DollJumpScareMesh를 Leader로 따라감)
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<USkeletalMeshComponent> DollClothMesh;
+#pragma endregion
+	
+	
+#pragma region Input
+	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
+	TObjectPtr<UInputAction> MoveAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
+	TObjectPtr<UInputAction> LookAction;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
+	TObjectPtr<UInputAction> InteractAction;
+#pragma endregion
 	
 	// CameraBoom의 CameraRotationLagSpeed와 동일한 값으로 설정
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	float RotationLagSpeed = 17.0f;
 
+	uint8 bIsHiding : 1 = false;
 
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
@@ -115,5 +121,7 @@ public:
 	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	FORCEINLINE UVoiceComponent* GetVoiceComponent() const { return VoiceComponent; }
 	FORCEINLINE USpringArmComponent* GetSpringArm() const { return SpringArmComponent; }
+	FORCEINLINE void SetIsHiding(const bool bHiding) { bIsHiding = bHiding; }
+	FORCEINLINE bool GetIsHiding() const { return bIsHiding; }
 	
 };

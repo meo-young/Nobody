@@ -25,6 +25,7 @@ void ABed::Interact_Implementation()
 	Super::Interact_Implementation();
 
 	Player->SetEffectEnable(false);
+	Player->SetIsHiding(true);
 }
 
 void ABed::OnEndActorSequenceEnded()
@@ -32,6 +33,7 @@ void ABed::OnEndActorSequenceEnded()
 	Super::OnEndActorSequenceEnded();
 
 	Player->SetEffectEnable(true);
+	Player->SetIsHiding(false);
 }
 
 void ABed::InitEvent()
