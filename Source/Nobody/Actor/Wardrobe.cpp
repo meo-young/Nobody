@@ -28,7 +28,7 @@ void AWardrobe::BeginPlay()
 	Super::BeginPlay();
 	
 	OriginalLocation = WardrobeDoorHandleMesh->GetComponentLocation();
-	TargetLocation = OriginalLocation + FVector(0.0f, 68.0f, 0.0f);
+	TargetLocation = OriginalLocation + FVector(0.0f, 67.0f, 0.0f);
 	
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 }

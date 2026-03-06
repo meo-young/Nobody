@@ -21,6 +21,14 @@ public:
 	virtual void InitGameState() override;
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	
+public:
+	/** 현재 스테이지를 종료하는 함수입니다. */
+	void StopStage();
+	
+	/** 현재 스테이지를 재시작하는 함수입니다. */
+	UFUNCTION(BlueprintCallable)
+	void RestartStage();
+	
 protected:
 	/** 현재 스테이지를 시작하는 함수입니다. */
 	void StartStage();

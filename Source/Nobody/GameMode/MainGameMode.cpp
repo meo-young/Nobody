@@ -1,6 +1,7 @@
 #include "MainGameMode.h"
 #include "Nobody.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Kismet/GameplayStatics.h"
 #include "Library/MathLibrary.h"
 #include "Manager/EventSpawnManager.h"
 #include "Manager/ScareSoundManager.h"
@@ -27,6 +28,17 @@ void AMainGameMode::StartStage()
 	EventSpawnManager->SpawnEvent(CurrentStageNum);
 	
 	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
+}
+
+void AMainGameMode::StopStage()
+{
+	GetWorldTimerManager().ClearTimer(EventSpawnTimerHandle);
+}
+
+void AMainGameMode::RestartStage()
+{
+	StopStage();
+	UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this, true)));
 }
 
 void AMainGameMode::InitGameState()

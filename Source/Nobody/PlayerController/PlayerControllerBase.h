@@ -4,6 +4,7 @@
 #include "GameFramework/PlayerController.h"
 #include "PlayerControllerBase.generated.h"
 
+class UFadeWidget;
 class UManualWidget;
 class UDialogueWidget;
 class UCrosshairWidget;
@@ -25,7 +26,7 @@ public:
 	
 private:
 	void CreateWidgetInstance();
-	
+
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")
 	TObjectPtr<UInputMappingContext> MappingContext;
@@ -33,20 +34,26 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
 	TSubclassOf<UCrosshairWidget> CrosshairWidgetClass;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UCrosshairWidget> CrosshairWidgetInstance;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
 	TSubclassOf<UDialogueWidget> DialogueWidgetClass;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UDialogueWidget> DialogueWidgetInstance;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
 	TSubclassOf<UManualWidget> ManualWidgetClass;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UManualWidget> ManualWidgetInstance;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|UI")
+	TSubclassOf<UFadeWidget> FadeWidgetClass;
+	
+	UPROPERTY(BlueprintReadOnly)
+	TObjectPtr<UFadeWidget> FadeWidgetInstance;
 	
 private:
 	uint8 bActivated : 1 = false;
@@ -55,5 +62,5 @@ public:
 	FORCEINLINE UCrosshairWidget* GetCrosshairWidget() const { return CrosshairWidgetInstance; }
 	FORCEINLINE UDialogueWidget* GetDialogueWidget() const { return DialogueWidgetInstance; }
 	FORCEINLINE UManualWidget* GetManualWidget() const { return ManualWidgetInstance; }
-
+	FORCEINLINE UFadeWidget* GetFadeWidget() const { return FadeWidgetInstance; }	
 };

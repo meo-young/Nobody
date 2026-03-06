@@ -6,6 +6,7 @@
 #include "UI/Crosshair/CrosshairWidget.h"
 #include "UI/Dialogue/DialogueWidget.h"
 #include "UI/Manual/ManualWidget.h"
+#include "UI/FadeWidget.h"
 
 void APlayerControllerBase::SetupInputComponent()
 {
@@ -88,6 +89,14 @@ void APlayerControllerBase::CreateWidgetInstance()
 		if (ManualWidgetInstance = CreateWidget<UManualWidget>(this, ManualWidgetClass))
 		{
 			ManualWidgetInstance->AddToViewport();
+		}
+	}
+	
+	if (FadeWidgetClass)
+	{
+		if (FadeWidgetInstance = CreateWidget<UFadeWidget>(this, FadeWidgetClass))
+		{
+			FadeWidgetInstance->AddToViewport();
 		}
 	}
 }

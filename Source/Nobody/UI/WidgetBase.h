@@ -15,11 +15,11 @@ public:
 
 public:
 	/** 위젯을 페이드 인하여 표시하는 함수입니다. */
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ShowWidget();
 
 	/** 위젯을 페이드 아웃하여 숨기는 함수입니다. */
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void HideWidget();
 
 private:

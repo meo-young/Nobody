@@ -12,6 +12,7 @@
 #include "Component/VoiceComponent.h"
 #include "Components/SpotLightComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameMode/MainGameMode.h"
 #include "PlayerController/PlayerControllerBase.h"
 
 APlayerCharacter::APlayerCharacter()
@@ -131,6 +132,12 @@ void APlayerCharacter::SetEffectEnable(const bool bEnable)
 
 void APlayerCharacter::ExecuteDeathSequence(EJumpScareType JumpScareType)
 {
+	AMainGameMode* MainGameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode());
+	if (MainGameMode)
+	{
+		MainGameMode->StopStage();
+	}
+	
 	ShowDeadJumpScare(JumpScareType);
 	ShowDeadJumpScare_Implementation(JumpScareType);
 }

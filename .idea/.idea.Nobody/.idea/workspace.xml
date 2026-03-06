@@ -14,10 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Actor/Wardrobe/BP_Wardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Actor/Wardrobe/BP_Wardrobe.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Character/Player/BP_Player2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/PlayerController/BP_MainPlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/PlayerController/BP_MainPlayerController.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/Bed.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Actor/Wardrobe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Actor/Wardrobe.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Character/Player/PlayerCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +125,8 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Crosshair/CrosshairWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Dialogue/DialogueWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/FadeWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/FadeWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/Manual/ManualWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/TitleWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/TitleWidget.h" root0="FORCE_HIGHLIGHTING" />
@@ -329,6 +339,7 @@
       <workItem from="1772073650784" duration="7478000" />
       <workItem from="1772518098199" duration="11400000" />
       <workItem from="1772709310335" duration="6397000" />
+      <workItem from="1772780948656" duration="3196000" />
     </task>
     <servers />
   </component>
