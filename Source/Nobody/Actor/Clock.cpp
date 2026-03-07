@@ -1,5 +1,7 @@
 #include "Actor/Clock.h"
 #include "Nobody.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundCue.h"
 
 AClock::AClock()
 {
@@ -8,6 +10,9 @@ AClock::AClock()
 	
 	ClockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Clock Mesh"));
 	ClockMesh->SetupAttachment(Root);
+	
+	AudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("Audio Component"));
+	AudioComponent->SetupAttachment(Root);
 }
 
 void AClock::BeginPlay()
@@ -20,11 +25,14 @@ void AClock::BeginPlay()
 void AClock::ActivateTimer()
 {
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &ThisClass::CountTime, TimeInterval, true);
+	AudioComponent->SetSound(ClockSound);
+	AudioComponent->Play();
 }
 
 void AClock::PauseTimer()
 {
 	GetWorldTimerManager().ClearTimer(TimerHandle);
+	AudioComponent->Stop();
 }
 
 void AClock::CountTime()

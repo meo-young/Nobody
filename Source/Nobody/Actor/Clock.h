@@ -27,8 +27,14 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UStaticMeshComponent> ClockMesh;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "변수|컴포넌트")
+	TObjectPtr<UAudioComponent> AudioComponent;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|사운드")
+	TObjectPtr<USoundCue> ClockSound;
+	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
-	uint8 TimeInterval = 4;
+	uint8 TimeInterval = 3;
 	
 	UPROPERTY(BlueprintReadOnly)
 	FString CurrentTimeAsString;
