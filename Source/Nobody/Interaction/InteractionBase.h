@@ -68,7 +68,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UBoxComponent> InteractionZone;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "변수|컴포넌트")
 	TObjectPtr<UCameraComponent> CameraComponent;
 
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")

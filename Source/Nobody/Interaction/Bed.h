@@ -23,8 +23,12 @@ protected:
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UStaticMeshComponent> BedMesh;
-	
+
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UStaticMeshComponent> PillowMesh;
-	
+
+	/** 플레이어가 침대 오른쪽에서 상호작용했는지 나타내는 변수 */
+	UPROPERTY(BlueprintReadOnly, Category = "변수")
+	bool bIsRightSide = false;
+
 };

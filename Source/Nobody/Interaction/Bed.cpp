@@ -1,4 +1,6 @@
 #include "Interaction/Bed.h"
+
+#include "Nobody.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Enum/EInteractType.h"
 #include "PlayerController/PlayerControllerBase.h"
@@ -22,6 +24,12 @@ void ABed::BeginPlay()
 
 void ABed::Interact_Implementation()
 {
+	// 플레이어가 침대의 오른쪽에서 상호작용했는지 판별합니다.
+	const FVector ToPlayer = Player->GetActorLocation() - GetActorLocation();
+	bIsRightSide = FVector::DotProduct(ToPlayer, GetActorRightVector()) > 0.f;
+	
+	LOG(TEXT(" Player %s"), bIsRightSide ? TEXT("오른쪽") : TEXT("왼쪽"));
+
 	Super::Interact_Implementation();
 
 	Player->SetEffectEnable(false);
