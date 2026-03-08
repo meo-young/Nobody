@@ -5,8 +5,10 @@
 #include "Interface/Interactable.h"
 #include "DrawHandle.generated.h"
 
+class UChildActorComponent;
 class UInteractionComponent;
 class ADraw;
+class ABattery;
 class APlayerCharacter;
 class APlayerControllerBase;
 struct FInputActionValue;
@@ -65,6 +67,14 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
 	TObjectPtr<UInteractionComponent> InteractionComponent;
+
+	/** 서랍 내부에 스폰될 Battery의 ChildActorComponent입니다. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "컴포넌트")
+	TObjectPtr<UChildActorComponent> BatteryComponent;
+
+	/** 0~1 사이 값. 이 확률로 서랍에 Battery가 스폰됩니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
+	float BatterySpawnChance = 0.5f;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "컴포넌트")
 	TObjectPtr<UBoxComponent> InteractionZone;

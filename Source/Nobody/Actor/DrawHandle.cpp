@@ -1,5 +1,6 @@
 #include "Actor/DrawHandle.h"
 
+#include "Actor/Battery.h"
 #include "EnhancedInputComponent.h"
 #include "Interaction/Draw.h"
 #include "Nobody.h"
@@ -31,17 +32,27 @@ ADrawHandle::ADrawHandle()
 	CameraComponent->SetupAttachment(Root);
 	
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("InteractionComponent"));
-	
+
+	BatteryComponent = CreateDefaultSubobject<UChildActorComponent>(TEXT("BatteryComponent"));
+	BatteryComponent->SetChildActorClass(ABattery::StaticClass());
+	BatteryComponent->SetupAttachment(HandleMesh);
+
 	InteractionType = EInteractionType::Inspect;
 }
 
 void ADrawHandle::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	OwnerDraw = Cast<ADraw>(GetAttachParentActor());
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+
+	// 확률에 따라 Battery를 제거합니다.
+	if (FMath::FRand() > BatterySpawnChance)
+	{
+		BatteryComponent->DestroyChildActor();
+	}
 }
 
 void ADrawHandle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -109,6 +120,12 @@ void ADrawHandle::OnStartActorSequenceEnded()
 	PlayerController->GetManualWidget()->ShowWidget();
 	
 	InteractionComponent->SetTickEnabled(true);
+
+	// Battery가 있으면 상호작용 존을 활성화합니다.
+	if (ABattery* Battery = Cast<ABattery>(BatteryComponent->GetChildActor()))
+	{
+		Battery->EnableInteraction();
+	}
 }
 
 void ADrawHandle::OnEndActorSequenceEnded()
@@ -164,6 +181,12 @@ void ADrawHandle::DoLook(const FInputActionValue& InputActionValue)
 void ADrawHandle::DoBack(const FInputActionValue& InputActionValue)
 {
 	if (!bIsInteractPossible) return;
+	
+	// Battery 상호작용 존을 비활성화합니다.
+	if (ABattery* Battery = Cast<ABattery>(BatteryComponent->GetChildActor()))
+	{
+		Battery->DisableInteraction();
+	}
 
 	LOG(TEXT("뒤로 가기"));
 	PlayInteractionEndSequence();
