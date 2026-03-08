@@ -5,6 +5,7 @@
 #include "Nobody.h"
 #include "Camera/CameraComponent.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Component/InteractionComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
 #include "Enum/EInteractType.h"
@@ -29,6 +30,8 @@ ADrawHandle::ADrawHandle()
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	CameraComponent->SetupAttachment(Root);
 	
+	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("InteractionComponent"));
+	
 	InteractionType = EInteractionType::Inspect;
 }
 
@@ -36,6 +39,7 @@ void ADrawHandle::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	OwnerDraw = Cast<ADraw>(GetAttachParentActor());
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 }
@@ -89,6 +93,8 @@ void ADrawHandle::DisableInteraction()
 
 void ADrawHandle::OnStartActorSequenceEnded()
 {
+	bIsInteractPossible = true;
+	
 	PlayerController->Possess(this);
 	PlayerController->SetInputEnable(true);
 	
@@ -101,6 +107,8 @@ void ADrawHandle::OnStartActorSequenceEnded()
 	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("가져가기"));
 	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
 	PlayerController->GetManualWidget()->ShowWidget();
+	
+	InteractionComponent->SetTickEnabled(true);
 }
 
 void ADrawHandle::OnEndActorSequenceEnded()
@@ -109,26 +117,30 @@ void ADrawHandle::OnEndActorSequenceEnded()
 	EnableInteraction();
 
 	// 부모인 ADraw로 컨트롤러를 복귀시킵니다.
-	if (ADraw* OwnerDraw = Cast<ADraw>(GetAttachParentActor()))
-	{
-		PlayerController->Possess(OwnerDraw);
-		PlayerController->SetInputEnable(true);
-	}
+	PlayerController->Possess(OwnerDraw);
+	PlayerController->SetInputEnable(true);
 	
 	PlayerController->GetManualWidget()->ClearAllActions();
 	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("열어보기"));
 	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
 	PlayerController->GetManualWidget()->ShowWidget();
+	
+	InteractionComponent->SetTickEnabled(false);
+	
+	OwnerDraw->SetInteractionEnabled(true);
 }
 
 void ADrawHandle::DoInteract(const FInputActionValue& InputActionValue)
 {
-	LOG(TEXT("Interaction with Draw Handle"));
+	if (!bIsInteractPossible) return;
 	
+	InteractionComponent->ExecuteInteractIfPossible();
 }
 
 void ADrawHandle::DoLook(const FInputActionValue& InputActionValue)
 {
+	if (!bIsInteractPossible) return;
+
 	// 마우스 입력으로부터 FVector2D 값을 추출합니다.
 	const FVector2D LookInput = InputActionValue.Get<FVector2D>();
 	const float YawInput = LookInput.X;
@@ -151,11 +163,16 @@ void ADrawHandle::DoLook(const FInputActionValue& InputActionValue)
 
 void ADrawHandle::DoBack(const FInputActionValue& InputActionValue)
 {
+	if (!bIsInteractPossible) return;
+
 	LOG(TEXT("뒤로 가기"));
 	PlayInteractionEndSequence();
+	
+	OwnerDraw->InitCameraRotation();
 	
 	PlayerController->GetManualWidget()->HideWidget();
 	PlayerController->SetInputEnable(false);
 	PlayerController->SetViewTargetWithBlend(GetAttachParentActor(), 0.5f);
-
+	
+	bIsInteractPossible = false;
 }

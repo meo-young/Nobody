@@ -116,15 +116,15 @@ protected:
 	/** 상호작용 중인 상태를 나타내는 변수 */
 	uint8 bIsInteractPossible : 1 = true;
 	
-private:
-	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */
-	FVector PlayerTargetLocation = FVector::ZeroVector;
-	FRotator PlayerTargetRotation = FRotator::ZeroRotator;
-	
 	/** Pawn 빙의 시 조정 가능한 최대 각도 */
 	FRotator OriginRotation;
 	float CurrentYawOffset = 0.f;
 	float CurrentPitchOffset = 0.f;
+	
+private:
+	/** ActorSequence 종료 시 초기화 할 플레이어 위치 및 회전 값 */
+	FVector PlayerTargetLocation = FVector::ZeroVector;
+	FRotator PlayerTargetRotation = FRotator::ZeroRotator;
 	
 	/** 이벤트가 활성화 됐음을 알리는 상태 변수 */
 	uint8 bIsEventActivated : 1 = false;
@@ -137,5 +137,6 @@ public:
 	FORCEINLINE uint8 GetIsEventActivated() const { return bIsEventActivated; }
 	FORCEINLINE void SetEventActivated(const bool Value) { bIsEventActivated = Value; };
 	FORCEINLINE UCameraComponent* GetInteractionCamera() const { return CameraComponent; }
+	FORCEINLINE void SetInteractionEnabled(const bool Value) { bIsInteractPossible = Value; }
 	
 };

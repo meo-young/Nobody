@@ -5,6 +5,7 @@
 #include "Interface/Interactable.h"
 #include "DrawHandle.generated.h"
 
+class UInteractionComponent;
 class ADraw;
 class APlayerCharacter;
 class APlayerControllerBase;
@@ -62,6 +63,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "컴포넌트")
 	TObjectPtr<UCameraComponent> CameraComponent;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
+	TObjectPtr<UInteractionComponent> InteractionComponent;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "컴포넌트")
 	TObjectPtr<UBoxComponent> InteractionZone;
 	
@@ -91,9 +95,14 @@ private:
 	UPROPERTY()
 	TObjectPtr<APlayerCharacter> Player;
 	
+	UPROPERTY()
+	TObjectPtr<ADraw> OwnerDraw;
+	
 	/** Pawn 빙의 시 조정 가능한 최대 각도 */
 	FRotator OriginRotation;
 	float CurrentYawOffset = 0.f;
 	float CurrentPitchOffset = 0.f;
+	
+	uint8 bIsInteractPossible : 1 = false;
 
 };

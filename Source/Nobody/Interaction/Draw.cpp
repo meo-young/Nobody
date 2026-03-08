@@ -3,6 +3,7 @@
 #include "Actor/DrawHandle.h"
 #include "EnhancedInputComponent.h"
 #include "Nobody.h"
+#include "Camera/CameraComponent.h"
 #include "Component/InteractionComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
@@ -56,6 +57,8 @@ void ADraw::Interact_Implementation()
 {
 	Super::Interact_Implementation();
 	
+	bIsInteractPossible = false;
+	
 	LOG(TEXT("콜리전 활성화"))
 
 	// 빙의 시 각 서랍 핸들의 상호작용 존을 활성화합니다.
@@ -75,6 +78,13 @@ void ADraw::Interact_Implementation()
 	EnableHandle(DrawHandleComponent3);
 }
 
+void ADraw::InitCameraRotation()
+{
+	CameraComponent->SetRelativeRotation(OriginRotation);
+	CurrentYawOffset = 0.f;
+	CurrentPitchOffset = 0.f;
+}
+
 void ADraw::OnStartActorSequenceEnded()
 {
 	Super::OnStartActorSequenceEnded();
@@ -84,13 +94,15 @@ void ADraw::OnStartActorSequenceEnded()
 
 void ADraw::OnEndActorSequenceEnded()
 {
-	Super::OnEndActorSequenceEnded();
-	
 	InteractionComponent->SetTickEnabled(false);
+	
+	Super::OnEndActorSequenceEnded();
 }
 
 void ADraw::DoInteract(const FInputActionValue& InputActionValue)
 {
+	bIsInteractPossible = false;
+	
 	InteractionComponent->ExecuteInteractIfPossible();
 	
 	LOG(TEXT("마우스 좌클릭"))

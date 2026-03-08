@@ -19,6 +19,7 @@ public:
 	
 public:
 	virtual void Interact_Implementation() override;
+	void InitCameraRotation();
 	
 protected:
 	virtual void OnStartActorSequenceEnded() override;

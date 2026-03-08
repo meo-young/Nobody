@@ -52,6 +52,9 @@ void AInteractionBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	OriginRotation = CameraComponent->GetRelativeRotation();
+
+	
 	// 플레이어의 목표 위치를 초기화합니다.
 	PlayerTargetLocation = CameraComponent->GetComponentLocation();
 	PlayerTargetLocation += LerpLocationValue;
@@ -121,7 +124,6 @@ void AInteractionBase::OnStartActorSequenceEnded()
 	PlayerController->SetInputEnable(true);
 	
 	// 카메라의 초기위치를 저장합니다.
-	OriginRotation = CameraComponent->GetRelativeRotation();
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
 	
