@@ -58,6 +58,8 @@ void APlayerControllerBase::SetInputEnable(const bool InEnable)
 
 void APlayerControllerBase::CreateWidgetInstance()
 {
+	if (bActivated) return;
+	
 	bActivated = true;
 	
 	LOG(TEXT("위젯이 생성됐습니다"))
@@ -93,4 +95,11 @@ void APlayerControllerBase::CreateWidgetInstance()
 			FadeWidgetInstance->AddToViewport();
 		}
 	}
+}
+
+void APlayerControllerBase::RemoveWidgetInstance()
+{
+	CrosshairWidgetInstance->HideWidget();
+	DialogueWidgetInstance->HideWidget();
+	ManualWidgetInstance->HideWidget();
 }

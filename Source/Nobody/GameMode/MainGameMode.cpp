@@ -44,6 +44,11 @@ void AMainGameMode::StopStage()
 {
 	GetWorldTimerManager().ClearTimer(EventSpawnTimerHandle);
 	EventSpawnManager->StopEvent();
+	
+	if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
+	{
+		PlayerController->RemoveWidgetInstance();
+	}
 }
 
 void AMainGameMode::RestartStage()

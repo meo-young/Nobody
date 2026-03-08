@@ -4,6 +4,10 @@
 #include "GameFramework/Actor.h"
 #include "Clock.generated.h"
 
+class ULevelSequencePlayer;
+class ULevelSequence;
+class USoundCue;
+
 UCLASS()
 class NOBODY_API AClock : public AActor
 {
@@ -36,10 +40,16 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	uint8 TimeInterval = 3;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "변수|시퀀스")
+	TObjectPtr<ULevelSequence> TimeUpSequence;
+	
 	UPROPERTY(BlueprintReadOnly)
 	FString CurrentTimeAsString;
 	
 private:
+	UPROPERTY()
+	TObjectPtr<ULevelSequencePlayer> TimeUpSequenceActor;
+	
 	FTimerHandle TimerHandle;
 	int32 CurrentTime = 0;
 

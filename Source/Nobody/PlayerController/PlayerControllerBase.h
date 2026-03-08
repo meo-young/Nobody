@@ -26,6 +26,8 @@ public:
 	void SetInputEnable(const bool InEnable);
 	
 	void CreateWidgetInstance();
+	
+	void RemoveWidgetInstance();
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|입력")

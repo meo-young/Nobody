@@ -96,6 +96,19 @@ void AInteractionBase::Interact_Implementation()
 	}
 }
 
+void AInteractionBase::ForceCancel()
+{
+	// 진행 중인 타이머를 정리합니다.
+	GetWorldTimerManager().ClearTimer(InitHandle);
+
+	// 적 이벤트 상태를 복구합니다.
+	if (EventEnemy)
+	{
+		EventEnemy->ResetRespawnTimer();
+		EventEnemy->bIsInteracting = false;
+	}
+}
+
 EInteractionType AInteractionBase::GetInteractionType()
 {
 	return InteractionType;
@@ -221,7 +234,6 @@ void AInteractionBase::DoControl(const FInputActionValue& Value)
 	Player->SetActorLocation(PlayerTargetLocation);
 	PlayerController->SetControlRotation(PlayerTargetRotation);
 	Player->SetActorRotation(PlayerTargetRotation);
-	//Player->GetSpringArm()->SetWorldRotation(PlayerTargetRotation);
 	
 	// 입력을 비활성화하고, 카메라를 보간합니다.
 	PlayerController->SetInputEnable(false);

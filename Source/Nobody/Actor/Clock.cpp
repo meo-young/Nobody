@@ -1,6 +1,8 @@
 #include "Actor/Clock.h"
+#include "LevelSequencePlayer.h"
 #include "Nobody.h"
 #include "Components/AudioComponent.h"
+#include "GameMode/MainGameMode.h"
 #include "Sound/SoundCue.h"
 
 AClock::AClock()
@@ -18,6 +20,9 @@ AClock::AClock()
 void AClock::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	ALevelSequenceActor* OutActor;
+	TimeUpSequenceActor = ULevelSequencePlayer::CreateLevelSequencePlayer(GetWorld(), TimeUpSequence, FMovieSceneSequencePlaybackSettings(), OutActor);
 	
 	ActivateTimer();
 }
@@ -42,9 +47,14 @@ void AClock::CountTime()
 	const int32 Hour = CurrentTime / 60;
 	const int32 Minute = CurrentTime % 60;
 	
-	if (CurrentTime % 60 == 0)
+	if (CurrentTime / 30 >= 1)
 	{
-		LOG(TEXT("1시간 경과"));
+		PauseTimer();
+		if (AMainGameMode* GameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode()))
+		{
+			GameMode->StopStage();
+			TimeUpSequenceActor->Play();
+		}
 	}
 	
 	CurrentTimeAsString = FString::Printf(TEXT("%02d:%02d"), Hour, Minute);

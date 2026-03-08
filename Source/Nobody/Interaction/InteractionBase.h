@@ -28,7 +28,10 @@ public:
 public:
 	/** 상호작용을 수행하는 함수입니다. */
 	virtual void Interact_Implementation() override;
-	
+
+	/** 시퀀스 없이 상호작용 상태를 강제 종료합니다. 사망 처리 등에 사용합니다. */
+	virtual void ForceCancel();
+
 	virtual EInteractionType GetInteractionType() override;
 
 protected:

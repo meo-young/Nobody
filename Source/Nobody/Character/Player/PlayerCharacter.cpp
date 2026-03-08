@@ -9,11 +9,14 @@
 #include "Component/FootstepComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/InteractionComponent.h"
+#include "Interaction/InteractionBase.h"
 #include "Component/VoiceComponent.h"
 #include "Components/SpotLightComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameMode/MainGameMode.h"
 #include "PlayerController/PlayerControllerBase.h"
+#include "UI/Crosshair/CrosshairWidget.h"
+#include "UI/Manual/ManualWidget.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -133,12 +136,25 @@ void APlayerCharacter::SetEffectEnable(const bool bEnable)
 
 void APlayerCharacter::ExecuteDeathSequence(EJumpScareType JumpScareType)
 {
+	// InteractionBase 빙의 중이라면 상호작용을 취소하고 PlayerCharacter로 복귀합니다.
+	if (PlayerController && PlayerController->GetPawn() != this)
+	{
+		if (AInteractionBase* Interaction = Cast<AInteractionBase>(PlayerController->GetPawn()))
+		{
+			Interaction->ForceCancel();
+		}
+		
+		PlayerController->Possess(this);
+		SetActorHiddenInGame(false);
+		GetMesh()->SetEnableAnimation(true);
+	}
+
 	AMainGameMode* MainGameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode());
 	if (MainGameMode)
 	{
 		MainGameMode->StopStage();
 	}
-	
+
 	ShowDeadJumpScare(JumpScareType);
 	ShowDeadJumpScare_Implementation(JumpScareType);
 }

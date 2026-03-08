@@ -15,6 +15,7 @@ public:
 
 public:
 	virtual void Interact_Implementation() override;
+	virtual void ForceCancel() override;
 
 protected:
 	virtual void OnEndActorSequenceEnded() override;

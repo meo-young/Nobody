@@ -36,6 +36,14 @@ void ABed::Interact_Implementation()
 	Player->SetIsHiding(true);
 }
 
+void ABed::ForceCancel()
+{
+	Super::ForceCancel();
+
+	Player->SetEffectEnable(true);
+	Player->SetIsHiding(false);
+}
+
 void ABed::OnEndActorSequenceEnded()
 {
 	Super::OnEndActorSequenceEnded();
