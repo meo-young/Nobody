@@ -185,7 +185,7 @@ void APlayerCharacter::ShowDeadJumpScare_Implementation(EJumpScareType JumpScare
 
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 {
-	if (!bIsInputEnabled) return;
+	if (!bIsInputEnabled || !Controller) return;
 		
 	const FVector2D MoveValue = InputActionValue.Get<FVector2D>();
 	

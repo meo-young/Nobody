@@ -28,8 +28,6 @@ void ABed::Interact_Implementation()
 	const FVector ToPlayer = Player->GetActorLocation() - GetActorLocation();
 	bIsRightSide = FVector::DotProduct(ToPlayer, GetActorRightVector()) > 0.f;
 	
-	LOG(TEXT(" Player %s"), bIsRightSide ? TEXT("오른쪽") : TEXT("왼쪽"));
-
 	Super::Interact_Implementation();
 
 	Player->SetEffectEnable(false);

@@ -47,7 +47,7 @@ void AClock::CountTime()
 	const int32 Hour = CurrentTime / 60;
 	const int32 Minute = CurrentTime % 60;
 	
-	if (CurrentTime / 30 >= 1)
+	if (CurrentTime / 60 >= 6)
 	{
 		PauseTimer();
 		if (AMainGameMode* GameMode = Cast<AMainGameMode>(GetWorld()->GetAuthGameMode()))

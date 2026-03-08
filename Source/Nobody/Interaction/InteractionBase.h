@@ -96,6 +96,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "변수|수치")
 	FRotator LerpRotationValue = FRotator::ZeroRotator;
 	
+	/** Pawn 빙의 시 플레이어가 제어권을 얻기까지의 지연 시간을 나타내는 변수입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
+	float StartPossessDelay = 0.5f;
+	
+	/** Pawn 빙의 시 플레이어가 제어권을 얻기까지의 지연 시간을 나타내는 변수입니다. */
+	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
+	float EndPossessDelay = 1.3f;
+	
+	
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
 	
@@ -127,5 +136,6 @@ public:
 	/** 이벤트 활성화에 대한 Getter, Setter */
 	FORCEINLINE uint8 GetIsEventActivated() const { return bIsEventActivated; }
 	FORCEINLINE void SetEventActivated(const bool Value) { bIsEventActivated = Value; };
+	FORCEINLINE UCameraComponent* GetInteractionCamera() const { return CameraComponent; }
 	
 };

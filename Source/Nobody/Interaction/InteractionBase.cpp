@@ -86,7 +86,7 @@ void AInteractionBase::Interact_Implementation()
 	
 	// 카메라를 보간하고, 액터 시퀀스가 재생하는 동안 입력을 비활성화합니다.
 	PlayerController->SetInputEnable(false);
-	PlayerController->SetViewTargetWithBlend(this,0.5f);
+	PlayerController->SetViewTargetWithBlend(this,StartPossessDelay);
 	
 	// 이벤트 스폰 타이머를 일시정지하고 상호작용 중임을 나타냅니다.
 	if (EventEnemy)
@@ -184,7 +184,10 @@ void AInteractionBase::InitEvent()
 {
 	if (bIsEventActivated)
 	{
-		EventEnemy->StopStepSystem();
+		if (EventEnemy)
+		{
+			EventEnemy->StopStepSystem();
+		}
 	}
 	
 	PlayerController->GetManualWidget()->ClearAllActions();
@@ -237,7 +240,7 @@ void AInteractionBase::DoControl(const FInputActionValue& Value)
 	
 	// 입력을 비활성화하고, 카메라를 보간합니다.
 	PlayerController->SetInputEnable(false);
-	PlayerController->SetViewTargetWithBlend(Player, 1.3f);
+	PlayerController->SetViewTargetWithBlend(Player, EndPossessDelay);
 	
 	// 상호작용 가능 상태를 초기화합니다.
 	bIsInteractPossible = false;
