@@ -10,6 +10,7 @@
 #include "Enum/EInteractType.h"
 #include "Kismet/GameplayStatics.h"
 #include "PlayerController/PlayerControllerBase.h"
+#include "UI/Manual/ManualWidget.h"
 
 ADrawHandle::ADrawHandle()
 {
@@ -94,6 +95,12 @@ void ADrawHandle::OnStartActorSequenceEnded()
 	OriginRotation = CameraComponent->GetRelativeRotation();
 	CurrentYawOffset = 0.f;
 	CurrentPitchOffset = 0.f;
+	
+	
+	PlayerController->GetManualWidget()->ClearAllActions();
+	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("가져가기"));
+	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
+	PlayerController->GetManualWidget()->ShowWidget();
 }
 
 void ADrawHandle::OnEndActorSequenceEnded()
@@ -107,6 +114,11 @@ void ADrawHandle::OnEndActorSequenceEnded()
 		PlayerController->Possess(OwnerDraw);
 		PlayerController->SetInputEnable(true);
 	}
+	
+	PlayerController->GetManualWidget()->ClearAllActions();
+	PlayerController->GetManualWidget()->SetLeftClickAction(TEXT("열어보기"));
+	PlayerController->GetManualWidget()->SetRightClickAction(TEXT("물러서기"));
+	PlayerController->GetManualWidget()->ShowWidget();
 }
 
 void ADrawHandle::DoInteract(const FInputActionValue& InputActionValue)
@@ -142,6 +154,7 @@ void ADrawHandle::DoBack(const FInputActionValue& InputActionValue)
 	LOG(TEXT("뒤로 가기"));
 	PlayInteractionEndSequence();
 	
+	PlayerController->GetManualWidget()->HideWidget();
 	PlayerController->SetInputEnable(false);
 	PlayerController->SetViewTargetWithBlend(GetAttachParentActor(), 0.5f);
 

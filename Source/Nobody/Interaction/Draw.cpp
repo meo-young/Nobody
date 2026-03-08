@@ -94,6 +94,7 @@ void ADraw::DoInteract(const FInputActionValue& InputActionValue)
 	InteractionComponent->ExecuteInteractIfPossible();
 	
 	LOG(TEXT("마우스 좌클릭"))
+	PlayerController->GetManualWidget()->HideWidget();
 }
 
 void ADraw::DoControl(const FInputActionValue& Value)
