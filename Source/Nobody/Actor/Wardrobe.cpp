@@ -2,6 +2,7 @@
 
 #include "Nobody.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Interaction/Bed.h"
 #include "Kismet/GameplayStatics.h"
 
 AWardrobe::AWardrobe()
@@ -27,14 +28,36 @@ AWardrobe::AWardrobe()
 void AWardrobe::BeginPlay()
 {
 	Super::BeginPlay();
-
-	OriginalLocation = WardrobeDoorHandleMesh->GetComponentLocation();
-
+	
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+}
+
+void AWardrobe::StartEvent()
+{
+	bEventActive = true;
+	bEventCleared = false;
+	HidingAccumulatedTime = 0.0f;
+
+	PlayEventSequence();
+}
+
+void AWardrobe::OnEventSequenceEnded()
+{
+	if (!bEventActive) return;
+
+	bEventActive = false;
+
+	if (bEventCleared)
+	{
+		LOG(TEXT("이벤트 클리어"));
+		StopEventSequence();
+		return;
+	}
+
+	LOG(TEXT("이벤트 실패 - DeadSequence 재생"));
 	if (Player)
 	{
-		bWasHiding = Player->GetIsHiding();
-		ScheduleNextStep();
+		Player->ExecuteDeathSequence(JumpScareType);
 	}
 }
 
@@ -44,103 +67,22 @@ void AWardrobe::Tick(float DeltaTime)
 
 	if (!Player) return;
 
-	// 숨기 상태 변화를 감지합니다.
-	const bool bCurrentlyHiding = Player->GetIsHiding();
-	if (bCurrentlyHiding != bWasHiding)
+	// 이벤트 진행 중이면 Bed 은신 시간을 누적합니다.
+	if (bEventActive && !bEventCleared)
 	{
-		bWasHiding = bCurrentlyHiding;
-
-		// 진행 중인 단계 타이머를 취소합니다.
-		GetWorldTimerManager().ClearTimer(StageTimerHandle);
-
-		// 이동 중이 아닌 경우 즉시 다음 스텝을 스케줄합니다.
-		// 이동 중이라면 이동 완료 후 ScheduleNextStep이 호출됩니다.
-		if (!bIsMoving)
+		if (Player->GetIsHiding())
 		{
-			ScheduleNextStep();
-		}
-	}
-
-	// 문을 목표 위치로 보간 이동합니다.
-	if (bIsMoving)
-	{
-		const FVector Target = GetStageLocation(CurrentStage);
-		const FVector Current = WardrobeDoorHandleMesh->GetComponentLocation();
-
-		if (Current.Equals(Target, 0.5f))
-		{
-			WardrobeDoorHandleMesh->SetWorldLocation(Target);
-			bIsMoving = false;
-			ScheduleNextStep();
+			HidingAccumulatedTime += DeltaTime;
+			if (HidingAccumulatedTime >= RequiredHidingDuration)
+			{
+				bEventCleared = true;
+				OnEventSequenceEnded();
+			}
 		}
 		else
 		{
-			const FVector NewLocation = FMath::VInterpConstantTo(Current, Target, DeltaTime, MoveSpeed);
-			WardrobeDoorHandleMesh->SetWorldLocation(NewLocation);
+			// 은신 해제 시 누적 시간 초기화 (연속 2초 요구)
+			HidingAccumulatedTime = 0.0f;
 		}
 	}
-}
-
-FVector AWardrobe::GetStageLocation(int32 Stage) const
-{
-	if (Stage <= 0) return OriginalLocation;
-
-	float TotalOffset = 0.f;
-	for (int32 i = 0; i < Stage && i < StageOffsets.Num(); i++)
-	{
-		TotalOffset += StageOffsets[i];
-	}
-	return OriginalLocation + FVector(0.f, TotalOffset, 0.f);
-}
-
-void AWardrobe::ScheduleNextStep()
-{
-	if (!Player) return;
-
-	const bool bIsHiding = Player->GetIsHiding();
-
-	if (bIsHiding)
-	{
-		// 숨은 상태: 단계가 남아있으면 역단계 타이머를 스케줄합니다.
-		if (CurrentStage > 0)
-		{
-			GetWorldTimerManager().SetTimer(
-				StageTimerHandle, this, &AWardrobe::RetreatStage, ClosingStageDelay, false);
-		}
-		else
-		{
-			LOG(TEXT("모두 닫힘"));
-		}
-	}
-	else
-	{
-		// 노출 상태: 최대 단계 미만이면 다음 열기 타이머를 스케줄합니다.
-		if (CurrentStage < MaxStage)
-		{
-			const float Delay = OpeningDelays.IsValidIndex(CurrentStage)
-				? OpeningDelays[CurrentStage] : 1.f;
-			GetWorldTimerManager().SetTimer(
-				StageTimerHandle, this, &AWardrobe::AdvanceStage, Delay, false);
-		}
-		else
-		{
-			LOG(TEXT("모두 열림"));
-		}
-	}
-}
-
-void AWardrobe::AdvanceStage()
-{
-	if (CurrentStage >= MaxStage) return;
-
-	CurrentStage++;
-	bIsMoving = true;
-}
-
-void AWardrobe::RetreatStage()
-{
-	if (CurrentStage <= 0) return;
-
-	CurrentStage--;
-	bIsMoving = true;
 }

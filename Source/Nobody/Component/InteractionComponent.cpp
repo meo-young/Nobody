@@ -27,11 +27,6 @@ void UInteractionComponent::BeginPlay()
 		CameraComponent = Camera;
 	}
 	
-	if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
-	{
-		CrosshairWidget = PlayerController->GetCrosshairWidget();
-	}
-	
 	CollisionParams.AddIgnoredActor(GetOwner());
 }
 
@@ -45,6 +40,14 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 		return;
 	}
 	
+	if (!CrosshairWidget)
+	{
+		if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
+		{
+			CrosshairWidget = PlayerController->GetCrosshairWidget();
+		}	
+	}
+	
 	// 카메라의 위치 기준으로 상호작용이 가능한 물체가 있는지 LineTrace를 수행합니다.
 	const FVector StartLocation = CameraComponent->GetComponentLocation();
 	const FVector EndLocation = StartLocation + CameraComponent->GetForwardVector() * InteractionDistance;
@@ -52,15 +55,20 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	
 	
 	// 우선 Crosshair의 이미지를 "기본"으로 설정합니다. 
-	CrosshairWidget->SetCrosshair(EInteractionType::None);
-	
+	if (CrosshairWidget)
+	{
+		CrosshairWidget->SetCrosshair(EInteractionType::None);
+	}
 	
 	// 상호작용 물체가 있는 경우 Crosshair의 이미지를 변경합니다.
 	if (AActor* HitActor = HitResult.GetActor())
 	{
 		if (IInteractable* Interactable = Cast<IInteractable>(HitActor))
 		{
-			CrosshairWidget->SetCrosshair(Interactable->GetInteractionType());
+			if (CrosshairWidget)
+			{
+				CrosshairWidget->SetCrosshair(Interactable->GetInteractionType());
+			}
 		}
 	}
 	

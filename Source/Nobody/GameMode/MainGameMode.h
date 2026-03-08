@@ -29,8 +29,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RestartStage();
 	
-protected:
 	/** 현재 스테이지를 시작하는 함수입니다. */
+	UFUNCTION(BlueprintCallable)
 	void StartStage();
 	
 protected:

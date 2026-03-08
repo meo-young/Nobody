@@ -36,6 +36,7 @@ public:
 public:
 	void SetEffectEnable(const bool bEnable);
 	void ExecuteDeathSequence(EJumpScareType JumpScareType);
+	void SetInputEnable(const bool bEnable);
 	
 protected:
 	/** 이동에 대한 입력을 처리하는 함수입니다. */
@@ -116,6 +117,9 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<APlayerControllerBase> PlayerController;
+	
+private:
+	uint8 bIsInputEnabled : 1 = false;
 	
 public:
 	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }

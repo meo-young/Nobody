@@ -30,13 +30,6 @@ void APlayerControllerBase::PostInitializeComponents()
 void APlayerControllerBase::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	
-	if (bActivated)
-	{
-		return;
-	}
-	
-	CreateWidgetInstance();
 }
 
 void APlayerControllerBase::BeginPlay()
@@ -50,6 +43,7 @@ void APlayerControllerBase::SetInputEnable(const bool InEnable)
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 		{
+
 			if (InEnable)
 			{
 				Subsystem->AddMappingContext(MappingContext, 0);

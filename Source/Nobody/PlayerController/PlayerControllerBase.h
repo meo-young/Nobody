@@ -22,9 +22,9 @@ public:
 	virtual void BeginPlay() override;
 
 public:
+	UFUNCTION(BlueprintCallable)
 	void SetInputEnable(const bool InEnable);
 	
-private:
 	void CreateWidgetInstance();
 
 protected:

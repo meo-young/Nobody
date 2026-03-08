@@ -19,7 +19,7 @@ void APill::BeginPlay()
 {
     Super::BeginPlay();
     
-    // 마우스 이벤트 바인딩
+    /*// 마우스 이벤트 바인딩
     OnBeginCursorOver.AddDynamic(this, &APill::OnBeginCursorOverFunction);
     OnEndCursorOver.AddDynamic(this, &APill::OnEndCursorOverFunction);
     OnClicked.AddDynamic(this, &APill::OnClickedFunction);
@@ -32,7 +32,7 @@ void APill::BeginPlay()
         );
         
         LabelWidgetInstance->HideWidget();
-    }
+    }*/
 }
 
 void APill::OnBeginCursorOverFunction(AActor* TouchedActor)

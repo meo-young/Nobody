@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/Interactable.h"
+#include "Sound/SoundCue.h"
 #include "FamilyDoll.generated.h"
 
 class UBoxComponent;

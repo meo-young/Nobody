@@ -25,6 +25,16 @@ void AMainGameMode::InitGame(const FString& MapName, const FString& Options, FSt
 
 void AMainGameMode::StartStage()
 {
+	if (APlayerControllerBase* PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
+	{
+		PlayerController->CreateWidgetInstance();
+	}
+	
+	if (APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)))
+	{
+		PlayerCharacter->SetInputEnable(true);
+	}
+	
 	EventSpawnManager->SpawnEvent(CurrentStageNum);
 	
 	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
@@ -33,6 +43,7 @@ void AMainGameMode::StartStage()
 void AMainGameMode::StopStage()
 {
 	GetWorldTimerManager().ClearTimer(EventSpawnTimerHandle);
+	EventSpawnManager->StopEvent();
 }
 
 void AMainGameMode::RestartStage()
@@ -66,7 +77,6 @@ void AMainGameMode::StartPlay()
 	Super::StartPlay();
 	
 	ScareSoundManager->StartSpawnSoundTimer();
-	GetWorldTimerManager().SetTimer(EventSpawnTimerHandle, this, &ThisClass::StartStage, UMathLibrary::GetRandomInRange(EventSpawnDelay), false);
 }
 
 

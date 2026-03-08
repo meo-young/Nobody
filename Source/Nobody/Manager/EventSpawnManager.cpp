@@ -1,4 +1,6 @@
 #include "Manager/EventSpawnManager.h"
+
+#include "EngineUtils.h"
 #include "LevelSequencePlayer.h"
 #include "Nobody.h"
 #include "Character/Enemy/EnemyBase.h"
@@ -25,5 +27,13 @@ void UEventSpawnManager::AddEnemy(const TObjectPtr<AEnemyBase> InEnemy)
 	Enemies.Add(InEnemy);
 	
 	LOG(TEXT("Enemy를 추가합니다"))
+}
+
+void UEventSpawnManager::StopEvent()
+{
+	for (AEnemyBase* Enemy : TActorRange<AEnemyBase>(GetWorld()))
+	{
+		Enemy->StopStepSystem();
+	}
 }
 

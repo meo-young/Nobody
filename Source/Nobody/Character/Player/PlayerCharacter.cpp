@@ -85,6 +85,7 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerController = Cast<APlayerControllerBase>(GetController());
+	SetInputEnable(false);
 	
 	MergeAndApplyMeshes();
 	InitCharacterSetting();
@@ -142,6 +143,11 @@ void APlayerCharacter::ExecuteDeathSequence(EJumpScareType JumpScareType)
 	ShowDeadJumpScare_Implementation(JumpScareType);
 }
 
+void APlayerCharacter::SetInputEnable(const bool bEnable)
+{
+	bIsInputEnabled = bEnable;
+}
+
 void APlayerCharacter::ShowDeadJumpScare_Implementation(EJumpScareType JumpScareType)
 {
 	switch (JumpScareType)
@@ -163,6 +169,8 @@ void APlayerCharacter::ShowDeadJumpScare_Implementation(EJumpScareType JumpScare
 
 void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 {
+	if (!bIsInputEnabled) return;
+		
 	const FVector2D MoveValue = InputActionValue.Get<FVector2D>();
 	
 	// 카메라/컨트롤러 방향의 Yaw만 추출합니다.
@@ -188,6 +196,8 @@ void APlayerCharacter::DoMove(const FInputActionValue& InputActionValue)
 
 void APlayerCharacter::DoLook(const FInputActionValue& InputActionValue)
 {
+	if (!bIsInputEnabled) return;
+
 	const FVector2D LookValue = InputActionValue.Get<FVector2D>();
 	
 	AddControllerYawInput(LookValue.X);
@@ -196,6 +206,8 @@ void APlayerCharacter::DoLook(const FInputActionValue& InputActionValue)
 
 void APlayerCharacter::DoInteract(const FInputActionValue& InputActionValue)
 {
+	if (!bIsInputEnabled) return;
+
 	InteractionComponent->ExecuteInteractIfPossible();
 }
 
