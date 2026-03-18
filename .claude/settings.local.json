@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(__NEW_LINE_ef1e50ea11f93497__:*)"
+    ]
+  }
+}

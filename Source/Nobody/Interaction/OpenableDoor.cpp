@@ -79,10 +79,13 @@ bool AOpenableDoor::HasPlayScarySound()
 void AOpenableDoor::DoControl(const FInputActionValue& Value)
 {
 	if (!bIsInteractPossible) return;
-	
-	// 손전등을 활성화합니다.
-	SpotLightComponent->SetVisibility(false);
-	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Off, GetActorLocation());
+
+	// 손전등이 켜져 있을 때만 끄는 소리를 재생합니다.
+	if (SpotLightComponent->IsVisible())
+	{
+		SpotLightComponent->SetVisibility(false);
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Off, GetActorLocation());
+	}
 
 	Super::DoControl(Value);
 }
@@ -116,8 +119,18 @@ void AOpenableDoor::InitEvent()
 void AOpenableDoor::OnStartActorSequenceEnded()
 {
 	Super::OnStartActorSequenceEnded();
-	
-	// 손전등을 활성화합니다.
-	SpotLightComponent->SetVisibility(true);
-	USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
+
+	// 배터리를 소모하여 손전등 활성화를 시도합니다.
+	bFlashlightActivated = Player && Player->UseBattery();
+	if (bFlashlightActivated)
+	{
+		SpotLightComponent->SetVisibility(true);
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
+	}
+	else
+	{
+		// 배터리 소진 시 치지직 소리를 재생하고 손전등을 켜지 않습니다.
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
+		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Hum, GetActorLocation());
+	}
 }

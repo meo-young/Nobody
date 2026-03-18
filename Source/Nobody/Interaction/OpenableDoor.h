@@ -22,9 +22,10 @@ public:
 	
 protected:
 	virtual void OnStartActorSequenceEnded() override;
-	virtual void DoControl(const FInputActionValue& Value) override;	
+	virtual void DoControl(const FInputActionValue& Value) override;
 	virtual void CheckIfEventActivated() override;
 	virtual void InitEvent() override;
+	virtual bool CanResetEnemyEvent() const override { return bFlashlightActivated; }
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "변수|컴포넌트")
@@ -46,5 +47,9 @@ protected:
 	/** 무서운 소리 재생 위치 오프셋 변수입니다. */
 	UPROPERTY(EditDefaultsOnly, Category = "변수|수치")
 	FVector ScarySoundLocation = FVector::ZeroVector;
-	
+
+private:
+	/** 이번 상호작용에서 손전등이 켜졌는지 여부를 나타내는 변수입니다. */
+	uint8 bFlashlightActivated : 1 = false;
+
 };

@@ -60,6 +60,9 @@ protected:
 	
 	virtual void DoLook(const FInputActionValue& Value);
 	virtual void DoControl(const FInputActionValue& Value);
+
+	/** 상호작용 종료 시 EnemyBase 이벤트를 초기화할지 여부를 반환하는 함수입니다. */
+	virtual bool CanResetEnemyEvent() const { return true; }
 	
 protected:
 	UPROPERTY(EditAnywhere, Category = "변수")

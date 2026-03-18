@@ -149,10 +149,10 @@ void AInteractionBase::OnEndActorSequenceEnded()
 	InteractionZone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	
 	// 상호작용시 이벤트 활성화까지 남은 시간을 확인하고, 타이머를 재가동합니다.
-	if (EventEnemy)
+	if (EventEnemy && CanResetEnemyEvent())
 	{
 		EventEnemy->ResetRespawnTimer();
-		EventEnemy->bIsInteracting = false;	
+		EventEnemy->bIsInteracting = false;
 	}
 	
 	// PlayerCharacter의 InteractionComponent Tick을 다시 활성화합니다.

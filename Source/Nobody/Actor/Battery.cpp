@@ -1,8 +1,12 @@
 #include "Actor/Battery.h"
 #include "Nobody.h"
+#include "Character/Player/PlayerCharacter.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
 #include "Enum/EInteractType.h"
+#include "Enum/ESFX.h"
+#include "Kismet/GameplayStatics.h"
+#include "Library/SoundLibrary.h"
 
 ABattery::ABattery()
 {
@@ -23,8 +27,16 @@ void ABattery::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
 	
+	USoundLibrary::PlaySFXInLocation(this, ESFX::Battery_Get, GetActorLocation());
+
+	// 빙의 상태와 무관하게 PlayerCharacter 액터를 직접 찾아 배터리를 충전합니다.
+	if (APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetActorOfClass(GetWorld(), APlayerCharacter::StaticClass())))
+	{
+		LOG(TEXT("배터리 획득 - 손전등 충전 완료"));
+		Player->RechargeBattery();
+	}
+
 	//@TODO: 배터리 획득하는 소리
-	LOG(TEXT("상호작용"));
 	Destroy();
 }
 

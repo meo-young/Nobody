@@ -12,5 +12,6 @@ enum class ESFX	: uint8
 	Flash_Hum = 6,
 	Chair_On = 7,
 	Chair_Off = 8,
-	Chair_Sit = 9
+	Chair_Sit = 9,
+	Battery_Get = 10
 };

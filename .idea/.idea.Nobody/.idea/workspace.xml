@@ -14,13 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Component/InteractionComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/GameMode/MainGameMode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/PlayerController/PlayerControllerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +42,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../Coding/UE_5.6/Engine/Source/Runtime/Core/Public/Misc/Build.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Coding/UE_5.6/Engine/Source/Runtime/Engine/Classes/Engine/EngineBaseTypes.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Battery.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Battery.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Clock.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/DrawHandle.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/DrawHandle.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/FamilyDoll.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/Actor/Pill.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -127,6 +125,7 @@
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/TitleWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Nobody/UI/WidgetBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -336,6 +335,8 @@
       <workItem from="1772709310335" duration="6397000" />
       <workItem from="1772780948656" duration="4430000" />
       <workItem from="1772849753984" duration="10634000" />
+      <workItem from="1772928396162" duration="29488000" />
+      <workItem from="1773749214494" duration="1681000" />
     </task>
     <servers />
   </component>

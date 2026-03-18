@@ -37,6 +37,12 @@ public:
 	void SetEffectEnable(const bool bEnable);
 	void ExecuteDeathSequence(EJumpScareType JumpScareType);
 	void SetInputEnable(const bool bEnable);
+
+	/** 배터리를 1칸 소모합니다. 배터리가 남아있으면 true를 반환합니다. */
+	bool UseBattery();
+
+	/** 배터리를 최대치로 충전합니다. */
+	void RechargeBattery();
 	
 protected:
 	/** 이동에 대한 입력을 처리하는 함수입니다. */
@@ -112,6 +118,10 @@ protected:
 	// CameraBoom의 CameraRotationLagSpeed와 동일한 값으로 설정
 	UPROPERTY(EditDefaultsOnly, Category = "변수")
 	float RotationLagSpeed = 17.0f;
+	
+	/** 손전등 최대 배터리 칸수를 나타내는 변수입니다. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "변수")
+	int32 MaxBatteryCount = 3;
 
 	uint8 bIsHiding : 1 = false;
 
@@ -120,12 +130,17 @@ protected:
 	
 private:
 	uint8 bIsInputEnabled : 1 = false;
-	
+
+	/** 현재 남은 배터리 칸수를 나타내는 변수입니다. */
+	int32 CurrentBatteryCount = 3;
+
 public:
 	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	FORCEINLINE UVoiceComponent* GetVoiceComponent() const { return VoiceComponent; }
 	FORCEINLINE USpringArmComponent* GetSpringArm() const { return SpringArmComponent; }
 	FORCEINLINE void SetIsHiding(const bool bHiding) { bIsHiding = bHiding; }
 	FORCEINLINE bool GetIsHiding() const { return bIsHiding; }
+	FORCEINLINE int32 GetBatteryCount() const { return CurrentBatteryCount; }
+	FORCEINLINE int32 GetMaxBatteryCount() const { return MaxBatteryCount; }
 	
 };

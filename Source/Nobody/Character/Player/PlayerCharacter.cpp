@@ -164,6 +164,26 @@ void APlayerCharacter::SetInputEnable(const bool bEnable)
 	bIsInputEnabled = bEnable;
 }
 
+bool APlayerCharacter::UseBattery()
+{
+	// 배터리가 남아있지 않으면 실패를 반환합니다.
+	if (CurrentBatteryCount <= 0)
+	{
+		LOG(TEXT("배터리 소진 상태입니다."));
+		return false;
+	}
+
+	CurrentBatteryCount--;
+	LOG(TEXT("배터리 사용: %d / %d"), CurrentBatteryCount, MaxBatteryCount);
+	return true;
+}
+
+void APlayerCharacter::RechargeBattery()
+{
+	CurrentBatteryCount = MaxBatteryCount;
+	LOG(TEXT("배터리 완전 충전: %d / %d"), CurrentBatteryCount, MaxBatteryCount);
+}
+
 void APlayerCharacter::ShowDeadJumpScare_Implementation(EJumpScareType JumpScareType)
 {
 	switch (JumpScareType)
