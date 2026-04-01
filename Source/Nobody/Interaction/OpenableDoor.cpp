@@ -126,6 +126,11 @@ void AOpenableDoor::OnStartActorSequenceEnded()
 	{
 		SpotLightComponent->SetVisibility(true);
 		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
+		
+		if (GetIsEventActivated())
+		{
+			USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Event_Encounter, GetActorLocation());
+		}
 	}
 	else
 	{
@@ -133,4 +138,9 @@ void AOpenableDoor::OnStartActorSequenceEnded()
 		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_On, GetActorLocation());
 		USoundLibrary::PlaySFXInLocation(GetWorld(), ESFX::Flash_Hum, GetActorLocation());
 	}
+}
+
+void AOpenableDoor::DoLook(const FInputActionValue& Value)
+{
+	
 }

@@ -20,7 +20,7 @@ public:
 	
 public:
 	/** 상호작용이 가능한 상태일 때 상호작용을 수행하는 함수입니다. */
-	void ExecuteInteractIfPossible();
+	bool ExecuteInteractIfPossible();
 	
 	/** 컴포넌트의 Tick 활성화 여부를 설정하는 함수입니다. */
 	void SetTickEnabled(const bool bEnable);

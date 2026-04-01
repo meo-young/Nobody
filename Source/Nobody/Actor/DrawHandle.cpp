@@ -47,6 +47,8 @@ void ADrawHandle::BeginPlay()
 	OwnerDraw = Cast<ADraw>(GetAttachParentActor());
 	PlayerController = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+	
+	InteractionComponent->SetTickEnabled(false);
 
 	// 확률에 따라 Battery를 제거합니다.
 	if (FMath::FRand() > BatterySpawnChance)

@@ -22,6 +22,7 @@ public:
 	
 protected:
 	virtual void OnStartActorSequenceEnded() override;
+	virtual void DoLook(const FInputActionValue& Value) override;
 	virtual void DoControl(const FInputActionValue& Value) override;
 	virtual void CheckIfEventActivated() override;
 	virtual void InitEvent() override;

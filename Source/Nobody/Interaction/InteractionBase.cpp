@@ -9,9 +9,11 @@
 #include "Component/VoiceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Define/Define.h"
+#include "Enum/ESFX.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Enum/EVoiceType.h"
 #include "Kismet/GameplayStatics.h"
+#include "Library/SoundLibrary.h"
 #include "PlayerController/PlayerControllerBase.h"
 #include "UI/Manual/ManualWidget.h"
 

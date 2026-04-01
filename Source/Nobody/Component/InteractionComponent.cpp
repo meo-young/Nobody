@@ -75,15 +75,18 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	//DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.5f);
 }
 
-void UInteractionComponent::ExecuteInteractIfPossible()
+bool UInteractionComponent::ExecuteInteractIfPossible()
 {
 	if (AActor* HitActor = HitResult.GetActor())
 	{
 		if (HitActor->GetClass()->ImplementsInterface(UInteractable::StaticClass()))
 		{
 			IInteractable::Execute_Interact(HitActor);
+			return true;
 		}
 	}
+	
+	return false;
 }
 
 void UInteractionComponent::SetTickEnabled(const bool bEnable)

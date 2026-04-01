@@ -17,59 +17,6 @@ void USoundSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 void USoundSubsystem::Deinitialize()
 {
-	// BGM 오디오 컴포넌트를 정리합니다.
-	if (IsValid(BGMAudioComponent))
-	{
-		if (BGMAudioComponent->IsPlaying())
-		{
-			BGMAudioComponent->Stop();
-		}
-		
-		// 컴포넌트 등록을 해제합니다.
-		if (BGMAudioComponent->IsRegistered())
-		{
-			BGMAudioComponent->UnregisterComponent();
-		}
-		
-		BGMAudioComponent = nullptr;
-	}
-	
-	// 풀의 모든 오디오 컴포넌트를 정리합니다.
-	UAudioComponent* AC = nullptr;
-	while (SFXQueues.Dequeue(AC))
-	{
-		if (IsValid(AC))
-		{
-			if (AC->IsPlaying())
-			{
-				AC->Stop();
-			}
-			
-			// 컴포넌트 등록을 해제합니다.
-			if (AC->IsRegistered())
-			{
-				AC->UnregisterComponent();
-			}
-		}
-	}
-	
-	// 배열에 있는 모든 컴포넌트도 정리합니다.
-	for (UAudioComponent* Component : GCPreventionArray)
-	{
-		if (IsValid(Component))
-		{
-			if (Component->IsPlaying())
-			{
-				Component->Stop();
-			}
-			
-			if (Component->IsRegistered())
-			{
-				Component->UnregisterComponent();
-			}
-		}
-	}
-	
 	SFXQueues.Empty();
 	GCPreventionArray.Empty();
 

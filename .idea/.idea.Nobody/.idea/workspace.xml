@@ -15,6 +15,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ca627e86-c837-4479-9603-cad04d240be1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nobody/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Core/GM_Main.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Blueprint/Core/GM_Main.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/_Nobody/Level/LV_InGame.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Actor/DrawHandle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Actor/DrawHandle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Nobody/Interaction/OpenableDoor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,6 +342,9 @@
       <workItem from="1772849753984" duration="10634000" />
       <workItem from="1772928396162" duration="29488000" />
       <workItem from="1773749214494" duration="1681000" />
+      <workItem from="1773827883662" duration="8274000" />
+      <workItem from="1773837124147" duration="887000" />
+      <workItem from="1774770466071" duration="3078000" />
     </task>
     <servers />
   </component>

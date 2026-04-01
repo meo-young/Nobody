@@ -13,5 +13,6 @@ enum class ESFX	: uint8
 	Chair_On = 7,
 	Chair_Off = 8,
 	Chair_Sit = 9,
-	Battery_Get = 10
+	Battery_Get = 10,
+	Event_Encounter = 11
 };
